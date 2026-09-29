@@ -1271,6 +1271,15 @@
 
             <button
                 class="category"
+                data-category="sides">
+
+                🍟 Sides
+
+            </button>
+
+
+            <button
+                class="category"
                 data-category="desserts">
 
                 🍰 Desserts
@@ -1416,6 +1425,9 @@
         pasta:
             "Pasta",
 
+        sides:
+            "Sides",
+
         desserts:
             "Desserts"
 
@@ -1430,7 +1442,7 @@
 
 
         /* ========================================================
-           PIZZA
+           CLASSIC PIZZA
         ======================================================== */
 
         pizza: {
@@ -1459,7 +1471,7 @@
 
 
         /* ========================================================
-           BURGER
+           CLASSIC BURGER
         ======================================================== */
 
         burger: {
@@ -1473,7 +1485,7 @@
             arText: "📱 View Burger in AR",
 
             description:
-                "Juicy burger layered with a fresh bun, crispy vegetables, cheese and our signature sauce.",
+                "Juicy burger layered with a soft bun, fresh vegetables, cheese and our signature sauce.",
 
             instruction:
                 "🔄 Rotate the burger to explore",
@@ -1488,7 +1500,36 @@
 
 
         /* ========================================================
-           PASTA
+           REALISTIC BURGER
+        ======================================================== */
+
+        realisticBurger: {
+
+            name: "🍔 Realistic Burger",
+
+            price: "₹249",
+
+            model: "burger_realistic_free.glb",
+
+            arText: "📱 View Realistic Burger in AR",
+
+            description:
+                "A detailed burger presentation featuring a toasted bun, juicy patty, fresh vegetables and layered toppings.",
+
+            instruction:
+                "🔄 Explore the realistic burger",
+
+            tags: [
+                "✨ Realistic 3D",
+                "🥬 Fresh",
+                "⭐ Special"
+            ]
+
+        },
+
+
+        /* ========================================================
+           CLASSIC PASTA
         ======================================================== */
 
         pasta: {
@@ -1502,7 +1543,7 @@
             arText: "📱 View Pasta in AR",
 
             description:
-                "Delicious pasta prepared with rich sauce, herbs and fresh ingredients for a comforting meal.",
+                "Delicious pasta prepared with rich sauce, aromatic herbs and fresh ingredients for a comforting meal.",
 
             instruction:
                 "🔄 Rotate the pasta to explore",
@@ -1511,6 +1552,64 @@
                 "⭐ Popular",
                 "🌿 Fresh",
                 "🍝 Chef's Special"
+            ]
+
+        },
+
+
+        /* ========================================================
+           FRENCH FRIES
+        ======================================================== */
+
+        fries: {
+
+            name: "🍟 Crispy French Fries",
+
+            price: "₹149",
+
+            model: "lifelike_3d_model_of_crispy_french_fries.glb",
+
+            arText: "📱 View Fries in AR",
+
+            description:
+                "Golden crispy French fries with a delicious crunchy texture, perfect as a side or snack.",
+
+            instruction:
+                "🔄 Explore the fries in 3D",
+
+            tags: [
+                "🔥 Crispy",
+                "⭐ Popular",
+                "🍟 Fresh"
+            ]
+
+        },
+
+
+        /* ========================================================
+           DONUT
+        ======================================================== */
+
+        donut: {
+
+            name: "🍩 Classic Donut",
+
+            price: "₹129",
+
+            model: "donett.glb",
+
+            arText: "📱 View Donut in AR",
+
+            description:
+                "A delicious sweet donut with a soft texture and tempting dessert-style presentation.",
+
+            instruction:
+                "🔄 Rotate the donut to explore",
+
+            tags: [
+                "🍫 Sweet",
+                "✨ Dessert",
+                "⭐ Special"
             ]
 
         }
@@ -1706,26 +1805,7 @@
 
                 createFoodCard(foods.pasta) +
 
-                `
-
-                <article class="coming-card">
-
-                    <div class="coming-icon">
-                        🍽️
-                    </div>
-
-                    <h3>
-                        More Dishes Coming Soon
-                    </h3>
-
-                    <p>
-                        More food items and 3D AR
-                        models will be added soon.
-                    </p>
-
-                </article>
-
-                `;
+                createFoodCard(foods.fries);
 
             return;
 
@@ -1740,28 +1820,7 @@
 
             menuGrid.innerHTML =
 
-                createFoodCard(foods.pizza) +
-
-                `
-
-                <article class="coming-card">
-
-                    <div class="coming-icon">
-                        🍕
-                    </div>
-
-                    <h3>
-                        More Pizza Coming Soon
-                    </h3>
-
-                    <p>
-                        Additional pizza varieties
-                        and AR models can be added.
-                    </p>
-
-                </article>
-
-                `;
+                createFoodCard(foods.pizza);
 
             return;
 
@@ -1778,26 +1837,7 @@
 
                 createFoodCard(foods.burger) +
 
-                `
-
-                <article class="coming-card">
-
-                    <div class="coming-icon">
-                        🍔
-                    </div>
-
-                    <h3>
-                        More Burgers Coming Soon
-                    </h3>
-
-                    <p>
-                        Additional burger varieties
-                        and AR models can be added.
-                    </p>
-
-                </article>
-
-                `;
+                createFoodCard(foods.realisticBurger);
 
             return;
 
@@ -1812,28 +1852,22 @@
 
             menuGrid.innerHTML =
 
-                createFoodCard(foods.pasta) +
+                createFoodCard(foods.pasta);
 
-                `
+            return;
 
-                <article class="coming-card">
+        }
 
-                    <div class="coming-icon">
-                        🍝
-                    </div>
 
-                    <h3>
-                        More Pasta Coming Soon
-                    </h3>
+        /* ========================================================
+           SIDES
+        ======================================================== */
 
-                    <p>
-                        Additional pasta varieties
-                        and AR models can be added.
-                    </p>
+        if (category === "sides") {
 
-                </article>
+            menuGrid.innerHTML =
 
-                `;
+                createFoodCard(foods.fries);
 
             return;
 
@@ -1846,26 +1880,11 @@
 
         if (category === "desserts") {
 
-            menuGrid.innerHTML = `
+            menuGrid.innerHTML =
 
-                <article class="coming-card">
+                createFoodCard(foods.donut);
 
-                    <div class="coming-icon">
-                        🍰
-                    </div>
-
-                    <h3>
-                        Desserts Coming Soon
-                    </h3>
-
-                    <p>
-                        Dessert 3D models will be
-                        added to the AR menu soon.
-                    </p>
-
-                </article>
-
-            `;
+            return;
 
         }
 
