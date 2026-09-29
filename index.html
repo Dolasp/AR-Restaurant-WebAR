@@ -7,11 +7,15 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
 
-    <title>Aroma Restaurant | AR Menu</title>
+    <title>Aroma Restaurant | AR Digital Menu</title>
 
-    <!-- Google Model Viewer -->
+
+    <!-- =========================================================
+         GOOGLE MODEL VIEWER
+    ========================================================== -->
+
     <script
         type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
@@ -21,8 +25,8 @@
     <style>
 
         /* =========================================================
-           GLOBAL
-        ========================================================= */
+           GLOBAL RESET
+        ========================================================== */
 
         * {
             box-sizing: border-box;
@@ -35,7 +39,10 @@
         }
 
         body {
+
             width: 100%;
+            min-height: 100vh;
+
             overflow-x: hidden;
 
             font-family:
@@ -47,24 +54,44 @@
                 sans-serif;
 
             background: #f6efdf;
+
             color: #173d2b;
         }
 
 
         /* =========================================================
-           HERO / RESTAURANT BANNER
-        ========================================================= */
+           MAIN WEBSITE CONTAINER
+        ========================================================== */
+
+        .site-wrapper {
+
+            width: 100%;
+
+            margin: 0 auto;
+
+            background: #f6efdf;
+        }
+
+
+        /* =========================================================
+           RESTAURANT BANNER
+        ========================================================== */
 
         .hero {
+
             width: 100%;
-            background: #f6efdf;
+
             overflow: hidden;
+
+            background: #f6efdf;
         }
 
         .hero img {
+
             display: block;
 
             width: 100%;
+
             height: auto;
 
             object-fit: cover;
@@ -72,52 +99,82 @@
 
 
         /* =========================================================
-           TOP NAVIGATION
-        ========================================================= */
+           DESKTOP NAVIGATION
+        ========================================================== */
+
+        .desktop-nav {
+
+            display: none;
+        }
+
+
+        /* =========================================================
+           MOBILE / GENERAL TOP BAR
+        ========================================================== */
 
         .top-bar {
+
             position: sticky;
+
             top: 0;
+
             z-index: 1000;
 
             width: 100%;
 
             background: #123d2b;
+
             color: white;
 
             padding: 13px 16px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             box-shadow:
                 0 3px 12px rgba(0, 0, 0, 0.18);
         }
 
+
         .brand {
+
             display: flex;
+
             flex-direction: column;
         }
 
+
         .brand-name {
+
             font-size: 19px;
+
             font-weight: 800;
+
             letter-spacing: 0.3px;
         }
 
+
         .brand-tagline {
+
             margin-top: 2px;
 
             font-size: 10px;
+
             opacity: 0.8;
 
             letter-spacing: 0.8px;
+
             text-transform: uppercase;
         }
 
+
         .ar-label {
+
             background: #d6ad55;
+
             color: #173d2b;
 
             padding: 8px 12px;
@@ -125,65 +182,83 @@
             border-radius: 20px;
 
             font-size: 12px;
+
             font-weight: 800;
         }
 
 
         /* =========================================================
-           INTRODUCTION
-        ========================================================= */
+           INTRO
+        ========================================================== */
 
         .intro {
+
             text-align: center;
 
-            padding: 27px 20px 18px;
+            padding:
+                34px 20px 20px;
         }
 
+
         .intro-label {
+
             display: inline-block;
 
             color: #b08732;
 
             font-size: 11px;
+
             font-weight: 800;
 
             letter-spacing: 1.5px;
+
             text-transform: uppercase;
 
-            margin-bottom: 7px;
+            margin-bottom: 8px;
         }
+
 
         .intro h1 {
+
             color: #123d2b;
 
-            font-size: 27px;
+            font-size: 30px;
+
             line-height: 1.2;
 
-            margin-bottom: 9px;
+            margin-bottom: 10px;
         }
 
+
         .intro p {
-            max-width: 390px;
+
+            max-width: 520px;
+
             margin: auto;
 
             color: #626262;
 
             font-size: 14px;
-            line-height: 1.55;
+
+            line-height: 1.6;
         }
 
 
         /* =========================================================
-           CATEGORY NAVIGATION
-        ========================================================= */
+           CATEGORY SECTION
+        ========================================================== */
 
         .category-section {
+
             width: 100%;
 
-            padding: 5px 0 20px;
+            padding:
+                7px 0 25px;
         }
 
+
         .categories {
+
             display: flex;
 
             gap: 9px;
@@ -196,31 +271,54 @@
             scrollbar-width: none;
         }
 
+
         .categories::-webkit-scrollbar {
+
             display: none;
         }
 
+
         .category {
+
             flex: 0 0 auto;
 
-            border: 1px solid #d9cba9;
+            border:
+                1px solid #d9cba9;
 
             background: #fffdf7;
 
             color: #173d2b;
 
-            padding: 10px 16px;
+            padding:
+                10px 17px;
 
             border-radius: 25px;
 
             font-size: 13px;
+
             font-weight: 700;
 
             white-space: nowrap;
+
+            cursor: pointer;
+
+            transition:
+                0.2s ease;
         }
 
+
+        .category:hover {
+
+            border-color: #123d2b;
+
+            transform: translateY(-1px);
+        }
+
+
         .category.active {
+
             background: #123d2b;
+
             color: white;
 
             border-color: #123d2b;
@@ -229,46 +327,74 @@
 
         /* =========================================================
            MAIN CONTENT
-        ========================================================= */
+        ========================================================== */
 
         .content {
+
             width: 100%;
 
+            max-width: 1180px;
+
+            margin: 0 auto;
+
             padding:
-                0 14px 35px;
+                0 14px 45px;
         }
 
 
         /* =========================================================
            SECTION HEADER
-        ========================================================= */
+        ========================================================== */
 
         .section-header {
+
             display: flex;
 
             align-items: center;
+
             justify-content: space-between;
 
             padding:
-                5px 4px 13px;
+                5px 4px 15px;
         }
 
+
         .section-header h2 {
+
             font-size: 21px;
+
             color: #123d2b;
         }
 
+
         .section-header span {
+
             font-size: 12px;
+
             color: #777;
         }
 
 
         /* =========================================================
+           MENU GRID
+        ========================================================== */
+
+        .menu-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 24px;
+        }
+
+
+        /* =========================================================
            FOOD CARD
-        ========================================================= */
+        ========================================================== */
 
         .food-card {
+
             width: 100%;
 
             background: #ffffff;
@@ -287,68 +413,120 @@
 
         /* =========================================================
            FOOD INFORMATION
-        ========================================================= */
+        ========================================================== */
 
         .food-info {
-            padding: 20px 18px 14px;
+
+            padding:
+                20px 18px 14px;
         }
 
+
         .food-title-row {
+
             display: flex;
 
             justify-content: space-between;
+
             align-items: flex-start;
 
             gap: 12px;
         }
 
+
         .food-name {
+
             color: #123d2b;
 
             font-size: 22px;
+
             font-weight: 800;
 
             line-height: 1.2;
         }
 
+
         .food-price {
+
             flex-shrink: 0;
 
             background: #f3e6c7;
 
             color: #9b7628;
 
-            padding: 7px 10px;
+            padding:
+                7px 10px;
 
             border-radius: 10px;
 
             font-size: 15px;
+
             font-weight: 800;
         }
 
+
         .food-description {
+
             margin-top: 10px;
 
             color: #666;
 
             font-size: 13px;
+
             line-height: 1.55;
         }
 
 
         /* =========================================================
+           DISH TAGS
+        ========================================================== */
+
+        .dish-tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 13px;
+        }
+
+
+        .dish-tag {
+
+            background: #f4f0e5;
+
+            color: #55705f;
+
+            padding:
+                6px 9px;
+
+            border-radius: 8px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
            MODEL VIEWER
-        ========================================================= */
+        ========================================================== */
 
         .model-wrapper {
+
             padding:
                 0 12px;
         }
 
+
         model-viewer {
+
             display: block;
 
             width: 100%;
+
             height: 310px;
 
             background:
@@ -363,6 +541,7 @@
             --poster-color: #eee7d7;
 
             --progress-bar-color: #123d2b;
+
             --progress-mask: #d6ad55;
 
             overflow: hidden;
@@ -371,21 +550,25 @@
 
         /* =========================================================
            CUSTOM AR BUTTON
-        ========================================================= */
+        ========================================================== */
 
         .ar-button {
+
             position: absolute;
 
             left: 50%;
+
             bottom: 18px;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             min-width: 165px;
 
             border: none;
 
             background: #123d2b;
+
             color: white;
 
             padding:
@@ -394,6 +577,7 @@
             border-radius: 30px;
 
             font-size: 14px;
+
             font-weight: 800;
 
             box-shadow:
@@ -402,11 +586,12 @@
             cursor: pointer;
 
             transition:
-                transform 0.2s ease,
-                background 0.2s ease;
+                transform 0.2s ease;
         }
 
+
         .ar-button:active {
+
             transform:
                 translateX(-50%)
                 scale(0.96);
@@ -414,17 +599,20 @@
 
 
         /* =========================================================
-           MODEL INSTRUCTIONS
-        ========================================================= */
+           MODEL INSTRUCTION
+        ========================================================== */
 
         .model-instruction {
+
             text-align: center;
 
             padding:
                 14px 15px 19px;
         }
 
+
         .model-instruction strong {
+
             display: block;
 
             color: #123d2b;
@@ -434,51 +622,90 @@
             margin-bottom: 5px;
         }
 
+
         .model-instruction span {
+
             color: #777;
 
             font-size: 12px;
+
             line-height: 1.45;
         }
 
 
         /* =========================================================
-           DISH TAGS
-        ========================================================= */
+           COMING SOON CARD
+        ========================================================== */
 
-        .dish-tags {
+        .coming-card {
+
             display: flex;
 
-            flex-wrap: wrap;
+            flex-direction: column;
 
-            gap: 7px;
+            align-items: center;
 
-            margin-top: 13px;
+            justify-content: center;
+
+            text-align: center;
+
+            min-height: 280px;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fffdf7,
+                    #eee5d1
+                );
+
+            border:
+                1px dashed #cdbd96;
+
+            border-radius: 22px;
         }
 
-        .dish-tag {
-            background: #f4f0e5;
 
-            color: #55705f;
+        .coming-icon {
 
-            padding:
-                6px 9px;
+            font-size: 45px;
 
-            border-radius: 8px;
+            margin-bottom: 15px;
+        }
 
-            font-size: 10px;
-            font-weight: 700;
+
+        .coming-card h3 {
+
+            color: #123d2b;
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .coming-card p {
+
+            max-width: 330px;
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.55;
         }
 
 
         /* =========================================================
-           INFORMATION SECTION
-        ========================================================= */
+           INFORMATION BOX
+        ========================================================== */
 
         .info-box {
-            margin-top: 24px;
 
-            padding: 19px;
+            margin-top: 28px;
+
+            padding: 21px;
 
             background: #123d2b;
 
@@ -489,25 +716,32 @@
             text-align: center;
         }
 
+
         .info-box h3 {
+
             font-size: 17px;
 
             margin-bottom: 7px;
         }
 
+
         .info-box p {
-            color: rgba(255,255,255,0.82);
+
+            color:
+                rgba(255,255,255,0.82);
 
             font-size: 12px;
+
             line-height: 1.55;
         }
 
 
         /* =========================================================
            FOOTER
-        ========================================================= */
+        ========================================================== */
 
         footer {
+
             width: 100%;
 
             background: #0d3021;
@@ -517,20 +751,26 @@
             text-align: center;
 
             padding:
-                28px 18px 32px;
+                30px 18px 34px;
         }
 
+
         .footer-name {
+
             font-size: 18px;
+
             font-weight: 800;
 
             margin-bottom: 5px;
         }
 
+
         .footer-tagline {
+
             color: #d6ad55;
 
             font-size: 11px;
+
             font-weight: 700;
 
             letter-spacing: 1px;
@@ -538,25 +778,31 @@
             margin-bottom: 14px;
         }
 
+
         .footer-text {
-            color: rgba(255,255,255,0.65);
+
+            color:
+                rgba(255,255,255,0.65);
 
             font-size: 11px;
+
             line-height: 1.5;
         }
 
 
         /* =========================================================
            SMALL PHONES
-        ========================================================= */
+        ========================================================== */
 
         @media (max-width: 380px) {
 
             .brand-name {
+
                 font-size: 17px;
             }
 
             .ar-label {
+
                 font-size: 11px;
 
                 padding:
@@ -564,22 +810,27 @@
             }
 
             .intro h1 {
-                font-size: 24px;
+
+                font-size: 25px;
             }
 
             .food-name {
+
                 font-size: 20px;
             }
 
             .food-price {
+
                 font-size: 14px;
             }
 
             model-viewer {
+
                 height: 275px;
             }
 
             .ar-button {
+
                 min-width: 150px;
 
                 font-size: 13px;
@@ -588,29 +839,317 @@
 
 
         /* =========================================================
-           TABLET / DESKTOP
-        ========================================================= */
+           TABLET
+        ========================================================== */
 
-        @media (min-width: 700px) {
+        @media (min-width: 600px) {
+
+            .hero img {
+
+                width: 100%;
+
+                height: auto;
+            }
+
+
+            .intro {
+
+                padding-top: 40px;
+            }
+
+
+            .intro h1 {
+
+                font-size: 34px;
+            }
+
+
+            .menu-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            model-viewer {
+
+                height: 350px;
+            }
+
+        }
+
+
+        /* =========================================================
+           DESKTOP
+        ========================================================== */
+
+        @media (min-width: 900px) {
 
             body {
-                max-width: 700px;
+
+                background: #e9e0cd;
+            }
+
+
+            .site-wrapper {
+
+                max-width: 1280px;
 
                 margin: 0 auto;
 
+                background: #f6efdf;
+
                 box-shadow:
-                    0 0 35px rgba(0,0,0,0.08);
+                    0 0 35px
+                    rgba(0,0,0,0.08);
             }
+
+
+            /* -----------------------------------------
+               DESKTOP NAVIGATION
+            ----------------------------------------- */
+
+            .top-bar {
+
+                display: none;
+            }
+
+
+            .desktop-nav {
+
+                position: sticky;
+
+                top: 0;
+
+                z-index: 1000;
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: space-between;
+
+                padding:
+                    15px 35px;
+
+                background: #123d2b;
+
+                color: white;
+
+                box-shadow:
+                    0 3px 12px
+                    rgba(0,0,0,0.18);
+            }
+
+
+            .desktop-brand {
+
+                display: flex;
+
+                flex-direction: column;
+            }
+
+
+            .desktop-brand strong {
+
+                font-size: 20px;
+            }
+
+
+            .desktop-brand span {
+
+                margin-top: 2px;
+
+                font-size: 9px;
+
+                letter-spacing: 1px;
+
+                opacity: 0.75;
+
+                text-transform: uppercase;
+            }
+
+
+            .desktop-links {
+
+                display: flex;
+
+                align-items: center;
+
+                gap: 30px;
+            }
+
+
+            .desktop-links a {
+
+                color: white;
+
+                text-decoration: none;
+
+                font-size: 13px;
+
+                font-weight: 600;
+
+                transition:
+                    color 0.2s ease;
+            }
+
+
+            .desktop-links a:hover {
+
+                color: #d6ad55;
+            }
+
+
+            .desktop-ar {
+
+                background: #d6ad55;
+
+                color: #173d2b;
+
+                padding:
+                    9px 15px;
+
+                border-radius: 25px;
+
+                font-size: 12px;
+
+                font-weight: 800;
+            }
+
+
+            /* -----------------------------------------
+               DESKTOP BANNER
+            ----------------------------------------- */
 
             .hero img {
-                max-height: 600px;
 
-                object-fit: contain;
+                width: 100%;
+
+                height: auto;
+
+                display: block;
             }
+
+
+            /* -----------------------------------------
+               DESKTOP INTRO
+            ----------------------------------------- */
+
+            .intro {
+
+                padding:
+                    48px 30px 25px;
+            }
+
+
+            .intro h1 {
+
+                font-size: 40px;
+            }
+
+
+            .intro p {
+
+                font-size: 15px;
+            }
+
+
+            /* -----------------------------------------
+               DESKTOP CATEGORIES
+            ----------------------------------------- */
+
+            .categories {
+
+                justify-content: center;
+
+                overflow: visible;
+
+                padding:
+                    5px 20px 15px;
+            }
+
+
+            /* -----------------------------------------
+               DESKTOP CONTENT
+            ----------------------------------------- */
+
+            .content {
+
+                padding:
+                    0 35px 55px;
+            }
+
+
+            .section-header {
+
+                padding:
+                    5px 2px 18px;
+            }
+
+
+            .section-header h2 {
+
+                font-size: 24px;
+            }
+
+
+            .menu-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 28px;
+            }
+
 
             model-viewer {
+
                 height: 390px;
             }
+
+
+            .info-box {
+
+                max-width: 750px;
+
+                margin:
+                    35px auto 0;
+            }
+
+
+            footer {
+
+                padding:
+                    38px 20px 42px;
+            }
+
+        }
+
+
+        /* =========================================================
+           LARGE DESKTOP
+        ========================================================== */
+
+        @media (min-width: 1200px) {
+
+            .hero img {
+
+                width: 100%;
+            }
+
+
+            .menu-grid {
+
+                gap: 32px;
+            }
+
+
+            model-viewer {
+
+                height: 420px;
+            }
+
         }
 
     </style>
@@ -621,9 +1160,12 @@
 <body>
 
 
+<div class="site-wrapper">
+
+
     <!-- =========================================================
          RESTAURANT BANNER
-    ========================================================= -->
+    ========================================================== -->
 
     <section class="hero">
 
@@ -636,10 +1178,55 @@
 
 
     <!-- =========================================================
-         TOP BAR
-    ========================================================= -->
+         DESKTOP NAVIGATION
+    ========================================================== -->
+
+    <nav class="desktop-nav">
+
+
+        <div class="desktop-brand">
+
+            <strong>
+                Aroma Restaurant
+            </strong>
+
+            <span>
+                Good Food • Great Vibes
+            </span>
+
+        </div>
+
+
+        <div class="desktop-links">
+
+            <a href="#menu">
+                Menu
+            </a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+            <a href="#how-it-works">
+                How AR Works
+            </a>
+
+            <span class="desktop-ar">
+                ✦ AR MENU
+            </span>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================================
+         MOBILE TOP BAR
+    ========================================================== -->
 
     <header class="top-bar">
+
 
         <div class="brand">
 
@@ -653,17 +1240,19 @@
 
         </div>
 
+
         <div class="ar-label">
             ✦ AR MENU
         </div>
+
 
     </header>
 
 
 
     <!-- =========================================================
-         INTRO
-    ========================================================= -->
+         INTRODUCTION
+    ========================================================== -->
 
     <section class="intro">
 
@@ -671,14 +1260,18 @@
             Digital Dining Experience
         </div>
 
+
         <h1>
             Explore Our Menu
         </h1>
 
+
         <p>
+
             Discover your favourite dishes in 3D
             and experience them directly on your
             table using Augmented Reality.
+
         </p>
 
     </section>
@@ -687,31 +1280,60 @@
 
     <!-- =========================================================
          CATEGORIES
-    ========================================================= -->
+    ========================================================== -->
 
-    <section class="category-section">
+    <section
+        class="category-section"
+        id="categories">
+
 
         <nav class="categories">
 
-            <div class="category active">
+
+            <button
+                class="category active"
+                data-category="popular">
+
                 ⭐ Popular
-            </div>
 
-            <div class="category">
+            </button>
+
+
+            <button
+                class="category"
+                data-category="pizza">
+
                 🍕 Pizza
-            </div>
 
-            <div class="category">
+            </button>
+
+
+            <button
+                class="category"
+                data-category="burgers">
+
                 🍔 Burgers
-            </div>
 
-            <div class="category">
+            </button>
+
+
+            <button
+                class="category"
+                data-category="pasta">
+
                 🍝 Pasta
-            </div>
 
-            <div class="category">
+            </button>
+
+
+            <button
+                class="category"
+                data-category="desserts">
+
                 🍰 Desserts
-            </div>
+
+            </button>
+
 
         </nav>
 
@@ -721,173 +1343,233 @@
 
     <!-- =========================================================
          MAIN MENU
-    ========================================================= -->
+    ========================================================== -->
 
-    <main class="content">
+    <main
+        class="content"
+        id="menu">
 
-
-        <!-- SECTION HEADER -->
 
         <div class="section-header">
 
-            <h2>
+
+            <h2 id="section-title">
                 Today's Special
             </h2>
+
 
             <span>
                 3D + AR
             </span>
+
 
         </div>
 
 
 
         <!-- =====================================================
-             PIZZA CARD
-        ===================================================== -->
+             DYNAMIC MENU GRID
+        ====================================================== -->
 
-        <article class="food-card">
+        <div
+            class="menu-grid"
+            id="menu-grid">
 
 
-            <!-- FOOD INFORMATION -->
+            <!-- =================================================
+                 PIZZA CARD
+            ================================================== -->
 
-            <div class="food-info">
+            <article class="food-card menu-item pizza-item">
 
-                <div class="food-title-row">
 
-                    <h3 class="food-name">
-                        🍕 Classic Pizza
-                    </h3>
+                <div class="food-info">
 
-                    <div class="food-price">
-                        ₹249
+
+                    <div class="food-title-row">
+
+
+                        <h3 class="food-name">
+                            🍕 Classic Pizza
+                        </h3>
+
+
+                        <div class="food-price">
+                            ₹249
+                        </div>
+
+
                     </div>
+
+
+                    <p class="food-description">
+
+                        Freshly baked pizza topped with
+                        melted cheese, tomato sauce,
+                        aromatic herbs and delicious
+                        toppings.
+
+                    </p>
+
+
+                    <div class="dish-tags">
+
+
+                        <div class="dish-tag">
+                            ⭐ Popular
+                        </div>
+
+
+                        <div class="dish-tag">
+                            🧀 Cheesy
+                        </div>
+
+
+                        <div class="dish-tag">
+                            🌿 Fresh
+                        </div>
+
+
+                    </div>
+
 
                 </div>
 
 
-                <p class="food-description">
 
-                    Freshly baked pizza topped with
-                    melted cheese, tomato sauce,
-                    aromatic herbs and delicious
-                    toppings.
+                <!-- =============================================
+                     3D MODEL
+                ============================================== -->
 
-                </p>
+                <div class="model-wrapper">
 
 
-                <!-- FOOD TAGS -->
+                    <model-viewer
 
-                <div class="dish-tags">
+                        src="pizza.glb"
 
-                    <div class="dish-tag">
-                        ⭐ Popular
-                    </div>
+                        alt="3D model of Classic Pizza"
 
-                    <div class="dish-tag">
-                        🧀 Cheesy
-                    </div>
+                        ar
 
-                    <div class="dish-tag">
-                        🌿 Fresh
-                    </div>
+                        ar-modes="
+                            scene-viewer
+                            webxr
+                            quick-look
+                        "
+
+                        camera-controls
+
+                        auto-rotate
+
+                        shadow-intensity="1"
+
+                        exposure="1"
+
+                        environment-image="neutral"
+
+                        loading="eager"
+
+                        reveal="auto">
+
+
+                        <button
+                            slot="ar-button"
+                            class="ar-button">
+
+                            📱 View Pizza in AR
+
+                        </button>
+
+
+                    </model-viewer>
+
 
                 </div>
 
-            </div>
+
+
+                <div class="model-instruction">
+
+
+                    <strong>
+                        🔄 Rotate the pizza to explore
+                    </strong>
+
+
+                    <span>
+
+                        Drag the model to rotate it,
+                        pinch to zoom, or tap
+                        "View Pizza in AR" to place
+                        it on your table.
+
+                    </span>
+
+
+                </div>
+
+
+            </article>
 
 
 
             <!-- =================================================
-                 3D MODEL
-            ================================================= -->
+                 SECOND DESKTOP CARD
+            ================================================== -->
 
-            <div class="model-wrapper">
-
-                <model-viewer
-
-                    src="pizza.glb"
-
-                    alt="3D model of Classic Pizza"
-
-                    ar
-
-                    ar-modes="
-                        scene-viewer
-                        webxr
-                        quick-look
-                    "
-
-                    camera-controls
-
-                    auto-rotate
-
-                    shadow-intensity="1"
-
-                    exposure="1"
-
-                    environment-image="neutral"
-
-                    loading="eager"
-
-                    reveal="auto">
+            <article class="coming-card">
 
 
-                    <!-- CUSTOM AR BUTTON -->
-
-                    <button
-                        slot="ar-button"
-                        class="ar-button">
-
-                        📱 View Pizza in AR
-
-                    </button>
+                <div class="coming-icon">
+                    🍽️
+                </div>
 
 
-                </model-viewer>
-
-            </div>
-
-
-
-            <!-- MODEL INSTRUCTION -->
-
-            <div class="model-instruction">
-
-                <strong>
-                    🔄 Rotate the pizza to explore
-                </strong>
-
-                <span>
-                    Drag the model to rotate it,
-                    pinch to zoom, or tap
-                    "View Pizza in AR" to place
-                    it on your table.
-                </span>
-
-            </div>
+                <h3>
+                    More Dishes Coming Soon
+                </h3>
 
 
-        </article>
+                <p>
+
+                    Additional 3D food models for
+                    burgers, pasta and desserts can
+                    be added to the AR menu.
+
+                </p>
+
+
+            </article>
+
+
+        </div>
 
 
 
         <!-- =====================================================
-             HOW IT WORKS
-        ===================================================== -->
+             HOW AR WORKS
+        ====================================================== -->
 
-        <section class="info-box">
+        <section
+            class="info-box"
+            id="how-it-works">
+
 
             <h3>
                 📱 How AR Menu Works
             </h3>
 
+
             <p>
+
                 Choose a dish → Explore the 3D model
                 → Tap View in AR → Point your camera
                 at a flat surface → See the dish
                 on your table.
+
             </p>
+
 
         </section>
 
@@ -898,25 +1580,406 @@
 
     <!-- =========================================================
          FOOTER
-    ========================================================= -->
+    ========================================================== -->
 
     <footer>
+
 
         <div class="footer-name">
             Aroma Restaurant
         </div>
 
+
         <div class="footer-tagline">
             GOOD FOOD • GREAT VIBES
         </div>
 
+
         <div class="footer-text">
+
             AR Digital Restaurant Menu
+
             <br>
+
             Experience food before you order.
+
         </div>
 
+
     </footer>
+
+
+</div>
+
+
+
+<!-- =============================================================
+     JAVASCRIPT
+     CATEGORY INTERACTION
+============================================================== -->
+
+<script>
+
+    /*
+     * ============================================================
+     * AROMA RESTAURANT
+     * Dynamic Category Navigation
+     * ============================================================
+     */
+
+
+    const categoryButtons =
+        document.querySelectorAll(".category");
+
+
+    const sectionTitle =
+        document.getElementById("section-title");
+
+
+    const menuGrid =
+        document.getElementById("menu-grid");
+
+
+    /*
+     * Category titles
+     */
+
+    const categoryTitles = {
+
+        popular:
+            "Today's Special",
+
+        pizza:
+            "Pizza",
+
+        burgers:
+            "Burgers",
+
+        pasta:
+            "Pasta",
+
+        desserts:
+            "Desserts"
+
+    };
+
+
+    /*
+     * Category descriptions
+     */
+
+    const categoryDescriptions = {
+
+        popular:
+            "Our featured dish available in 3D and AR.",
+
+        pizza:
+            "Explore our pizza selection in 3D.",
+
+        burgers:
+            "Burger models will be added soon.",
+
+        pasta:
+            "Pasta models will be added soon.",
+
+        desserts:
+            "Dessert models will be added soon."
+
+    };
+
+
+    /*
+     * Category button click
+     */
+
+    categoryButtons.forEach(button => {
+
+
+        button.addEventListener(
+            "click",
+            function () {
+
+
+                /*
+                 * Remove active state
+                 * from every button
+                 */
+
+                categoryButtons.forEach(item => {
+
+                    item.classList.remove("active");
+
+                });
+
+
+                /*
+                 * Activate clicked button
+                 */
+
+                this.classList.add("active");
+
+
+                /*
+                 * Get selected category
+                 */
+
+                const selectedCategory =
+                    this.dataset.category;
+
+
+                /*
+                 * Update heading
+                 */
+
+                sectionTitle.textContent =
+                    categoryTitles[selectedCategory];
+
+
+                /*
+                 * Handle category
+                 */
+
+                updateMenu(selectedCategory);
+
+
+            }
+        );
+
+    });
+
+
+    /*
+     * ============================================================
+     * UPDATE MENU
+     * ============================================================
+     */
+
+    function updateMenu(category) {
+
+
+        /*
+         * Pizza / Popular
+         */
+
+        if (
+            category === "popular" ||
+            category === "pizza"
+        ) {
+
+            menuGrid.innerHTML = `
+
+                <article class="food-card">
+
+
+                    <div class="food-info">
+
+
+                        <div class="food-title-row">
+
+
+                            <h3 class="food-name">
+                                🍕 Classic Pizza
+                            </h3>
+
+
+                            <div class="food-price">
+                                ₹249
+                            </div>
+
+
+                        </div>
+
+
+                        <p class="food-description">
+
+                            Freshly baked pizza topped with
+                            melted cheese, tomato sauce,
+                            aromatic herbs and delicious
+                            toppings.
+
+                        </p>
+
+
+                        <div class="dish-tags">
+
+
+                            <div class="dish-tag">
+                                ⭐ Popular
+                            </div>
+
+
+                            <div class="dish-tag">
+                                🧀 Cheesy
+                            </div>
+
+
+                            <div class="dish-tag">
+                                🌿 Fresh
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="model-wrapper">
+
+
+                        <model-viewer
+
+                            src="pizza.glb"
+
+                            alt="3D model of Classic Pizza"
+
+                            ar
+
+                            ar-modes="
+                                scene-viewer
+                                webxr
+                                quick-look
+                            "
+
+                            camera-controls
+
+                            auto-rotate
+
+                            shadow-intensity="1"
+
+                            exposure="1"
+
+                            environment-image="neutral"
+
+                            loading="eager"
+
+                            reveal="auto">
+
+
+                            <button
+                                slot="ar-button"
+                                class="ar-button">
+
+                                📱 View Pizza in AR
+
+                            </button>
+
+
+                        </model-viewer>
+
+
+                    </div>
+
+
+                    <div class="model-instruction">
+
+
+                        <strong>
+                            🔄 Rotate the pizza to explore
+                        </strong>
+
+
+                        <span>
+
+                            Drag the model to rotate it,
+                            pinch to zoom, or tap
+                            "View Pizza in AR" to place
+                            it on your table.
+
+                        </span>
+
+
+                    </div>
+
+
+                </article>
+
+
+                <article class="coming-card">
+
+
+                    <div class="coming-icon">
+                        🍽️
+                    </div>
+
+
+                    <h3>
+                        More Pizza Coming Soon
+                    </h3>
+
+
+                    <p>
+
+                        Additional pizza varieties
+                        and 3D models can be added
+                        to this category.
+
+                    </p>
+
+
+                </article>
+
+            `;
+
+
+            return;
+        }
+
+
+        /*
+         * Other categories
+         */
+
+        let icon = "🍽️";
+
+
+        if (category === "burgers") {
+            icon = "🍔";
+        }
+
+        if (category === "pasta") {
+            icon = "🍝";
+        }
+
+        if (category === "desserts") {
+            icon = "🍰";
+        }
+
+
+        menuGrid.innerHTML = `
+
+            <article class="coming-card">
+
+
+                <div class="coming-icon">
+                    ${icon}
+                </div>
+
+
+                <h3>
+                    ${categoryTitles[category]}
+                </h3>
+
+
+                <p>
+
+                    ${categoryDescriptions[category]}
+
+                    <br><br>
+
+                    The menu structure is ready
+                    for additional 3D models.
+
+                </p>
+
+
+            </article>
+
+        `;
+
+    }
+
+</script>
 
 
 </body>
