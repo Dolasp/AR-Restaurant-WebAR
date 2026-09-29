@@ -3,88 +3,211 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AR Restaurant Menu</title>
+    <title>Aroma Restaurant - AR Menu</title>
 
-    <!-- Google Model Viewer -->
     <script type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
     </script>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            text-align: center;
+            background: #f5ead2;
+            color: #123d2b;
         }
 
-        header {
-            background: #222;
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        .hero-text {
             color: white;
+            text-align: center;
+            text-shadow: 0 2px 8px black;
+        }
+
+        .hero-text h1 {
+            font-size: 34px;
+            margin: 0;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            margin: 8px 0 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
             padding: 20px;
         }
 
-        h1 {
-            margin: 0;
+        .welcome {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            margin-bottom: 8px;
         }
 
         .menu-card {
             background: white;
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 500px;
-            border-radius: 15px;
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .menu-card h2 {
+            margin-top: 0;
+        }
+
+        .description {
+            color: #555;
+        }
+
+        .price {
+            font-size: 21px;
+            font-weight: bold;
+            margin: 12px 0;
         }
 
         model-viewer {
             width: 100%;
-            height: 400px;
-            background: #eeeeee;
-            border-radius: 12px;
+            height: 350px;
+            background: #eee8d8;
+            border-radius: 14px;
         }
 
-        .price {
-            font-size: 22px;
-            font-weight: bold;
-            margin: 15px;
+        .instruction {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-top: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #123d2b;
+            color: white;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>AR Restaurant</h1>
-        <p>Explore your food in Augmented Reality</p>
-    </header>
+    <!-- Restaurant Cover -->
 
-    <div class="menu-card">
+    <section class="hero">
 
-        <h2>🍕 Pizza</h2>
+        <img src="aroma-restaurant.png"
+             alt="Aroma Restaurant">
 
-        <p>Freshly baked cheesy pizza</p>
+        <div class="overlay">
 
-        <div class="price">₹249</div>
+            <div class="hero-text">
 
-        <model-viewer
-            src="pizza.glb"
-            alt="3D model of Pizza"
-            ar
-            ar-modes="scene-viewer webxr quick-look"
-            camera-controls
-            auto-rotate
-            shadow-intensity="1">
-        </model-viewer>
+                <h1>Aroma Restaurant</h1>
 
-        <p>
-            Rotate the pizza or tap the AR button
-            to place it in your surroundings.
-        </p>
+                <p>Good Food • Great Vibes</p>
 
-    </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Menu -->
+
+    <main class="container">
+
+        <div class="welcome">
+
+            <h2>🍽️ Digital AR Menu</h2>
+
+            <p>
+                Explore our dishes in 3D and place them
+                on your table using Augmented Reality.
+            </p>
+
+        </div>
+
+
+        <!-- Pizza -->
+
+        <div class="menu-card">
+
+            <h2>🍕 Classic Pizza</h2>
+
+            <p class="description">
+                Freshly baked pizza with cheese,
+                tomato, herbs and delicious toppings.
+            </p>
+
+            <div class="price">
+                ₹249
+            </div>
+
+            <model-viewer
+                src="pizza.glb"
+                alt="3D model of Classic Pizza"
+                ar
+                ar-modes="scene-viewer webxr quick-look"
+                camera-controls
+                auto-rotate
+                shadow-intensity="1">
+
+            </model-viewer>
+
+            <p class="instruction">
+                👆 Rotate the model or tap the AR button
+                to view it on your table.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <strong>Aroma Restaurant</strong>
+
+        <br>
+
+        Good Food • Great Vibes
+
+    </footer>
 
 </body>
 
