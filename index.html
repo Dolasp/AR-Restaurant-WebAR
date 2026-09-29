@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,40 +8,84 @@
 
     <title>AR Restaurant Menu</title>
 
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <!-- Google Model Viewer -->
+    <script type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+    </script>
 
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            text-align: center;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .menu-card {
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 500px;
+            border-radius: 15px;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 400px;
+            background: #eeeeee;
+            border-radius: 12px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 15px;
+        }
+    </style>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<body>
 
-    <a-scene
-        embedded
-        vr-mode-ui="enabled: false"
-        renderer="antialias: true; alpha: true"
-        arjs="
-            sourceType: webcam;
-            sourceWidth: 640;
-            sourceHeight: 480;
-            displayWidth: 640;
-            displayHeight: 480;
-            trackingMethod: best;
-            debugUIEnabled: false;
-        ">
+    <header>
+        <h1>AR Restaurant</h1>
+        <p>Explore your food in Augmented Reality</p>
+    </header>
 
-        <a-marker preset="hiro">
+    <div class="menu-card">
 
-            <a-box
-                position="0 0.5 0"
-                scale="0.5 0.5 0.5"
-                color="red">
-            </a-box>
+        <h2>🍕 Pizza</h2>
 
-        </a-marker>
+        <p>Freshly baked cheesy pizza</p>
 
-        <a-entity camera></a-entity>
+        <div class="price">₹249</div>
 
-    </a-scene>
+        <model-viewer
+            src="pizza.glb"
+            alt="3D model of Pizza"
+            ar
+            ar-modes="scene-viewer webxr quick-look"
+            camera-controls
+            auto-rotate
+            shadow-intensity="1">
+        </model-viewer>
+
+        <p>
+            Rotate the pizza or tap the AR button
+            to place it in your surroundings.
+        </p>
+
+    </div>
 
 </body>
+
 </html>
