@@ -2,107 +2,195 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <title>Aroma Restaurant | AR Menu</title>
 
-    <script type="module"
+    <!-- Google Model Viewer -->
+    <script
+        type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
     </script>
 
+
     <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
 
         * {
             box-sizing: border-box;
-        }
-
-        html,
-        body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f5ead2;
-            color: #123d2b;
-        }
-
-        /* =========================
-           RESTAURANT COVER
-        ========================= */
-
-        .restaurant-cover {
             width: 100%;
-            background: #f5ead2;
+            overflow-x: hidden;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: #f6efdf;
+            color: #173d2b;
         }
 
-        .restaurant-cover img {
+
+        /* =========================================================
+           HERO / RESTAURANT IMAGE
+        ========================================================= */
+
+        .hero {
+            width: 100%;
+            background: #f6efdf;
+        }
+
+        .hero img {
             display: block;
+
             width: 100%;
             height: auto;
+
+            object-fit: contain;
         }
 
 
-        /* =========================
-           TOP BAR
-        ========================= */
+        /* =========================================================
+           TOP NAVIGATION
+        ========================================================= */
 
         .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            width: 100%;
+
             background: #123d2b;
             color: white;
-            text-align: center;
-            padding: 14px 12px;
+
+            padding: 13px 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.18);
         }
 
-        .top-bar h1 {
-            margin: 0;
-            font-size: 23px;
+        .brand {
+            display: flex;
+            flex-direction: column;
         }
 
-        .top-bar p {
-            margin: 5px 0 0;
-            font-size: 13px;
-            opacity: 0.9;
+        .brand-name {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+
+        .brand-tagline {
+            margin-top: 2px;
+
+            font-size: 10px;
+            opacity: 0.8;
+
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .ar-label {
+            background: #d6ad55;
+            color: #173d2b;
+
+            padding: 8px 12px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+            font-weight: 800;
         }
 
 
-        /* =========================
-           INTRO
-        ========================= */
+        /* =========================================================
+           INTRODUCTION
+        ========================================================= */
 
         .intro {
             text-align: center;
-            padding: 22px 18px 10px;
+
+            padding: 27px 20px 18px;
         }
 
-        .intro h2 {
-            margin: 0 0 8px;
-            font-size: 24px;
+        .intro-label {
+            display: inline-block;
+
+            color: #b08732;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            margin-bottom: 7px;
+        }
+
+        .intro h1 {
+            color: #123d2b;
+
+            font-size: 27px;
+            line-height: 1.2;
+
+            margin-bottom: 9px;
         }
 
         .intro p {
-            margin: 0;
+            max-width: 390px;
+            margin: auto;
+
+            color: #626262;
+
             font-size: 14px;
-            line-height: 1.5;
-            color: #555;
+            line-height: 1.55;
         }
 
 
-        /* =========================
-           CATEGORY BUTTONS
-        ========================= */
+        /* =========================================================
+           CATEGORY NAVIGATION
+        ========================================================= */
+
+        .category-section {
+            width: 100%;
+
+            padding: 5px 0 20px;
+        }
 
         .categories {
             display: flex;
-            gap: 10px;
+
+            gap: 9px;
+
             overflow-x: auto;
-            padding: 16px 16px 20px;
+
+            padding:
+                5px 16px 10px;
 
             scrollbar-width: none;
         }
@@ -113,153 +201,414 @@
 
         .category {
             flex: 0 0 auto;
-            background: white;
-            border: 1px solid #d8c9a8;
+
+            border: 1px solid #d9cba9;
+
+            background: #fffdf7;
+
+            color: #173d2b;
+
+            padding: 10px 16px;
+
             border-radius: 25px;
-            padding: 10px 17px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #123d2b;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            white-space: nowrap;
         }
 
         .category.active {
             background: #123d2b;
             color: white;
+
+            border-color: #123d2b;
         }
 
 
-        /* =========================
-           MENU CARD
-        ========================= */
+        /* =========================================================
+           MAIN CONTENT
+        ========================================================= */
 
-        .menu-container {
-            padding: 0 14px 30px;
-        }
-
-        .menu-card {
+        .content {
             width: 100%;
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-            margin-bottom: 22px;
 
-            box-shadow:
-                0 4px 16px rgba(0, 0, 0, 0.12);
+            padding:
+                0 14px 35px;
         }
 
-        .food-info {
-            padding: 18px 18px 10px;
-        }
 
-        .food-title {
+        /* =========================================================
+           SECTION HEADER
+        ========================================================= */
+
+        .section-header {
             display: flex;
-            justify-content: space-between;
+
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+
+            padding:
+                5px 4px 13px;
         }
 
-        .food-title h3 {
-            margin: 0;
+        .section-header h2 {
             font-size: 21px;
-        }
-
-        .price {
-            white-space: nowrap;
-            font-size: 18px;
-            font-weight: bold;
             color: #123d2b;
         }
 
-        .description {
-            margin: 9px 0 0;
-            color: #666;
-            font-size: 14px;
-            line-height: 1.45;
+        .section-header span {
+            font-size: 12px;
+            color: #777;
         }
 
 
-        /* =========================
-           3D MODEL
-        ========================= */
+        /* =========================================================
+           FOOD CARD
+        ========================================================= */
 
-        .model-container {
-            padding: 10px 14px 0;
+        .food-card {
+            width: 100%;
+
+            background: #ffffff;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 7px 25px rgba(30, 50, 35, 0.12);
+
+            border:
+                1px solid rgba(20, 60, 40, 0.06);
+        }
+
+
+        /* =========================================================
+           FOOD INFORMATION
+        ========================================================= */
+
+        .food-info {
+            padding: 20px 18px 14px;
+        }
+
+        .food-title-row {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: flex-start;
+
+            gap: 12px;
+        }
+
+        .food-name {
+            color: #123d2b;
+
+            font-size: 22px;
+            font-weight: 800;
+
+            line-height: 1.2;
+        }
+
+        .food-price {
+            flex-shrink: 0;
+
+            background: #f3e6c7;
+
+            color: #9b7628;
+
+            padding: 7px 10px;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .food-description {
+            margin-top: 10px;
+
+            color: #666;
+
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+
+        /* =========================================================
+           MODEL VIEWER
+        ========================================================= */
+
+        .model-wrapper {
+            padding:
+                0 12px;
         }
 
         model-viewer {
             display: block;
+
             width: 100%;
-            height: 290px;
+            height: 310px;
 
-            background: #eee8d8;
+            background:
+                linear-gradient(
+                    145deg,
+                    #eee7d7,
+                    #f7f2e8
+                );
 
-            border-radius: 14px;
+            border-radius: 17px;
 
-            --poster-color: #eee8d8;
+            --poster-color: #eee7d7;
+
+            --progress-bar-color: #123d2b;
+            --progress-mask: #d6ad55;
+
+            overflow: hidden;
         }
 
 
-        /* =========================
-           AR INSTRUCTION
-        ========================= */
+        /* =========================================================
+           CUSTOM AR BUTTON
+        ========================================================= */
 
-        .ar-help {
+        .ar-button {
+            position: absolute;
+
+            left: 50%;
+            bottom: 18px;
+
+            transform: translateX(-50%);
+
+            min-width: 165px;
+
+            border: none;
+
+            background: #123d2b;
+            color: white;
+
+            padding:
+                13px 20px;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.25);
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .ar-button:active {
+            transform:
+                translateX(-50%)
+                scale(0.96);
+        }
+
+
+        /* =========================================================
+           MODEL INSTRUCTIONS
+        ========================================================= */
+
+        .model-instruction {
             text-align: center;
-            padding: 14px 18px 18px;
+
+            padding:
+                14px 15px 19px;
         }
 
-        .ar-help strong {
+        .model-instruction strong {
             display: block;
-            font-size: 15px;
+
+            color: #123d2b;
+
+            font-size: 14px;
+
             margin-bottom: 5px;
         }
 
-        .ar-help span {
+        .model-instruction span {
+            color: #777;
+
             font-size: 12px;
-            color: #666;
-            line-height: 1.4;
+            line-height: 1.45;
         }
 
 
-        /* =========================
+        /* =========================================================
+           DISH TAGS
+        ========================================================= */
+
+        .dish-tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 13px;
+        }
+
+        .dish-tag {
+            background: #f4f0e5;
+
+            color: #55705f;
+
+            padding:
+                6px 9px;
+
+            border-radius: 8px;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           INFORMATION SECTION
+        ========================================================= */
+
+        .info-box {
+            margin-top: 24px;
+
+            padding: 19px;
+
+            background: #123d2b;
+
+            color: white;
+
+            border-radius: 18px;
+
+            text-align: center;
+        }
+
+        .info-box h3 {
+            font-size: 17px;
+
+            margin-bottom: 7px;
+        }
+
+        .info-box p {
+            color: rgba(255,255,255,0.82);
+
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+
+        /* =========================================================
            FOOTER
-        ========================= */
+        ========================================================= */
 
         footer {
-            background: #123d2b;
-            color: white;
-            text-align: center;
-            padding: 24px 15px;
+            width: 100%;
 
-            font-size: 13px;
-            line-height: 1.6;
+            background: #0d3021;
+
+            color: white;
+
+            text-align: center;
+
+            padding:
+                28px 18px 32px;
+        }
+
+        .footer-name {
+            font-size: 18px;
+            font-weight: 800;
+
+            margin-bottom: 5px;
+        }
+
+        .footer-tagline {
+            color: #d6ad55;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 14px;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.65);
+
+            font-size: 11px;
+            line-height: 1.5;
         }
 
 
-        /* =========================
+        /* =========================================================
            SMALL PHONES
-        ========================= */
+        ========================================================= */
 
         @media (max-width: 380px) {
 
-            .top-bar h1 {
-                font-size: 21px;
-            }
-
-            .intro h2 {
-                font-size: 22px;
-            }
-
-            .food-title h3 {
-                font-size: 19px;
-            }
-
-            .price {
+            .brand-name {
                 font-size: 17px;
             }
 
+            .ar-label {
+                font-size: 11px;
+
+                padding:
+                    7px 10px;
+            }
+
+            .intro h1 {
+                font-size: 24px;
+            }
+
+            .food-name {
+                font-size: 20px;
+            }
+
+            .food-price {
+                font-size: 14px;
+            }
+
             model-viewer {
-                height: 260px;
+                height: 275px;
+            }
+
+            .ar-button {
+                min-width: 150px;
+
+                font-size: 13px;
+            }
+        }
+
+
+        /* =========================================================
+           TABLET / DESKTOP
+        ========================================================= */
+
+        @media (min-width: 700px) {
+
+            body {
+                max-width: 700px;
+
+                margin: 0 auto;
+
+                box-shadow:
+                    0 0 35px rgba(0,0,0,0.08);
+            }
+
+            .hero img {
+                max-height: 600px;
+
+                object-fit: contain;
+            }
+
+            model-viewer {
+                height: 390px;
             }
         }
 
@@ -271,165 +620,300 @@
 <body>
 
 
-    <!-- =========================
+    <!-- =========================================================
          RESTAURANT COVER
-    ========================== -->
+    ========================================================= -->
 
-    <section class="restaurant-cover">
+    <section class="hero">
 
         <img
-            src="aroma-restaurant.png"
+            src="aroma-restaurant.png.png"
             alt="Aroma Restaurant">
 
     </section>
 
 
-    <!-- =========================
-         MOBILE HEADER
-    ========================== -->
+
+    <!-- =========================================================
+         TOP BAR
+    ========================================================= -->
 
     <header class="top-bar">
 
-        <h1>Aroma Restaurant</h1>
+        <div class="brand">
 
-        <p>
-            Good Food • Great Vibes
-        </p>
+            <div class="brand-name">
+                Aroma Restaurant
+            </div>
+
+            <div class="brand-tagline">
+                Good Food • Great Vibes
+            </div>
+
+        </div>
+
+        <div class="ar-label">
+            ✦ AR MENU
+        </div>
 
     </header>
 
 
-    <!-- =========================
-         INTRODUCTION
-    ========================== -->
+
+    <!-- =========================================================
+         INTRO
+    ========================================================= -->
 
     <section class="intro">
 
-        <h2>🍽️ AR Digital Menu</h2>
+        <div class="intro-label">
+            Digital Dining Experience
+        </div>
+
+        <h1>
+            Explore Our Menu
+        </h1>
 
         <p>
-            Explore our dishes in 3D
-            and see them on your table
-            using Augmented Reality.
+            Discover your favourite dishes in 3D
+            and experience them directly on your
+            table using Augmented Reality.
         </p>
 
     </section>
 
 
-    <!-- =========================
+
+    <!-- =========================================================
          CATEGORIES
-    ========================== -->
+    ========================================================= -->
 
-    <nav class="categories">
+    <section class="category-section">
 
-        <div class="category active">
-            ⭐ Popular
+        <nav class="categories">
+
+            <div class="category active">
+                ⭐ Popular
+            </div>
+
+            <div class="category">
+                🍕 Pizza
+            </div>
+
+            <div class="category">
+                🍔 Burgers
+            </div>
+
+            <div class="category">
+                🍝 Pasta
+            </div>
+
+            <div class="category">
+                🍰 Desserts
+            </div>
+
+        </nav>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         MAIN MENU
+    ========================================================= -->
+
+    <main class="content">
+
+
+        <!-- SECTION HEADER -->
+
+        <div class="section-header">
+
+            <h2>
+                Today's Special
+            </h2>
+
+            <span>
+                3D + AR
+            </span>
+
         </div>
 
-        <div class="category">
-            🍕 Pizza
-        </div>
-
-        <div class="category">
-            🍔 Burgers
-        </div>
-
-        <div class="category">
-            🍝 Pasta
-        </div>
-
-        <div class="category">
-            🍰 Desserts
-        </div>
-
-    </nav>
 
 
-    <!-- =========================
-         MENU
-    ========================== -->
+        <!-- =====================================================
+             PIZZA CARD
+        ===================================================== -->
 
-    <main class="menu-container">
+        <article class="food-card">
 
 
-        <!-- PIZZA -->
-
-        <article class="menu-card">
+            <!-- FOOD INFORMATION -->
 
             <div class="food-info">
 
-                <div class="food-title">
+                <div class="food-title-row">
 
-                    <h3>🍕 Classic Pizza</h3>
+                    <h3 class="food-name">
+                        🍕 Classic Pizza
+                    </h3>
 
-                    <div class="price">
+                    <div class="food-price">
                         ₹249
                     </div>
 
                 </div>
 
-                <p class="description">
-                    Freshly baked pizza with
-                    melted cheese, tomato,
-                    herbs and delicious toppings.
+
+                <p class="food-description">
+
+                    Freshly baked pizza topped with
+                    melted cheese, tomato sauce,
+                    aromatic herbs and delicious
+                    toppings.
+
                 </p>
+
+
+                <!-- FOOD TAGS -->
+
+                <div class="dish-tags">
+
+                    <div class="dish-tag">
+                        ⭐ Popular
+                    </div>
+
+                    <div class="dish-tag">
+                        🧀 Cheesy
+                    </div>
+
+                    <div class="dish-tag">
+                        🌿 Fresh
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <div class="model-container">
+
+            <!-- =================================================
+                 3D MODEL
+            ================================================= -->
+
+            <div class="model-wrapper">
 
                 <model-viewer
+
                     src="pizza.glb"
+
                     alt="3D model of Classic Pizza"
 
                     ar
-                    ar-modes="scene-viewer webxr quick-look"
+
+                    ar-modes="
+                        scene-viewer
+                        webxr
+                        quick-look
+                    "
 
                     camera-controls
+
                     auto-rotate
 
-                    shadow-intensity="1">
+                    shadow-intensity="1"
+
+                    exposure="1"
+
+                    environment-image="neutral"
+
+                    loading="eager"
+
+                    reveal="auto">
+
+
+                    <!-- CUSTOM AR BUTTON -->
+
+                    <button
+                        slot="ar-button"
+                        class="ar-button">
+
+                        📱 View Pizza in AR
+
+                    </button>
+
 
                 </model-viewer>
 
             </div>
 
 
-            <div class="ar-help">
+
+            <!-- MODEL INSTRUCTION -->
+
+            <div class="model-instruction">
 
                 <strong>
-                    📱 View this dish in AR
+                    🔄 Rotate the pizza to explore
                 </strong>
 
                 <span>
-                    Tap the AR button above to
-                    place the pizza on your table.
+                    Drag the model to rotate it,
+                    pinch to zoom, or tap
+                    "View Pizza in AR" to place
+                    it on your table.
                 </span>
 
             </div>
 
+
         </article>
+
+
+
+        <!-- =====================================================
+             HOW IT WORKS
+        ===================================================== -->
+
+        <section class="info-box">
+
+            <h3>
+                📱 How AR Menu Works
+            </h3>
+
+            <p>
+                Choose a dish → Explore the 3D model
+                → Tap View in AR → Point your camera
+                at a flat surface → See the dish
+                on your table.
+            </p>
+
+        </section>
 
 
     </main>
 
 
-    <!-- =========================
+
+    <!-- =========================================================
          FOOTER
-    ========================== -->
+    ========================================================= -->
 
     <footer>
 
-        <strong>Aroma Restaurant</strong>
+        <div class="footer-name">
+            Aroma Restaurant
+        </div>
 
-        <br>
+        <div class="footer-tagline">
+            GOOD FOOD • GREAT VIBES
+        </div>
 
-        Good Food • Great Vibes
-
-        <br><br>
-
-        AR Digital Menu
+        <div class="footer-text">
+            AR Digital Restaurant Menu
+            <br>
+            Experience food before you order.
+        </div>
 
     </footer>
 
