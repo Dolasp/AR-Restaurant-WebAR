@@ -53,7 +53,7 @@
                 Arial,
                 sans-serif;
 
-            background: #f6efdf;
+            background: #e9e0cd;
 
             color: #173d2b;
         }
@@ -86,13 +86,14 @@
             background: #f6efdf;
         }
 
+
         .hero img {
 
             display: block;
 
             width: 100%;
 
-            height: auto;
+            height: 180px;
 
             object-fit: cover;
         }
@@ -536,7 +537,7 @@
 
 
         /* =========================================================
-           CUSTOM AR BUTTON
+           AR BUTTON
         ========================================================== */
 
         .ar-button {
@@ -569,17 +570,6 @@
                 0 5px 15px rgba(0, 0, 0, 0.25);
 
             cursor: pointer;
-
-            transition:
-                transform 0.2s ease;
-        }
-
-
-        .ar-button:active {
-
-            transform:
-                translateX(-50%)
-                scale(0.96);
         }
 
 
@@ -774,55 +764,6 @@
 
 
         /* =========================================================
-           SMALL PHONES
-        ========================================================== */
-
-        @media (max-width: 380px) {
-
-            .brand-name {
-                font-size: 17px;
-            }
-
-
-            .ar-label {
-
-                font-size: 11px;
-
-                padding: 7px 10px;
-            }
-
-
-            .intro h1 {
-                font-size: 25px;
-            }
-
-
-            .food-name {
-                font-size: 20px;
-            }
-
-
-            .food-price {
-                font-size: 14px;
-            }
-
-
-            model-viewer {
-                height: 275px;
-            }
-
-
-            .ar-button {
-
-                min-width: 150px;
-
-                font-size: 13px;
-            }
-
-        }
-
-
-        /* =========================================================
            TABLET
         ========================================================== */
 
@@ -858,16 +799,6 @@
 
         @media (min-width: 900px) {
 
-            body {
-
-                background: #e9e0cd;
-            }
-
-
-            /* -----------------------------------------
-               WEBSITE CONTAINER
-            ----------------------------------------- */
-
             .site-wrapper {
 
                 width: 100%;
@@ -884,12 +815,19 @@
             }
 
 
-            /* -----------------------------------------
-               DESKTOP NAVIGATION
-            ----------------------------------------- */
+            .hero img {
+
+                width: 100%;
+
+                height: 220px;
+
+                object-fit: cover;
+
+                display: block;
+            }
+
 
             .top-bar {
-
                 display: none;
             }
 
@@ -929,7 +867,6 @@
 
 
             .desktop-brand strong {
-
                 font-size: 19px;
             }
 
@@ -967,14 +904,10 @@
                 font-size: 13px;
 
                 font-weight: 600;
-
-                transition:
-                    color 0.2s ease;
             }
 
 
             .desktop-links a:hover {
-
                 color: #d6ad55;
             }
 
@@ -995,24 +928,6 @@
             }
 
 
-            /* -----------------------------------------
-               DESKTOP BANNER
-            ----------------------------------------- */
-
-            .hero img {
-
-                width: 100%;
-
-                height: auto;
-
-                display: block;
-            }
-
-
-            /* -----------------------------------------
-               DESKTOP INTRO
-            ----------------------------------------- */
-
             .intro {
 
                 padding:
@@ -1021,20 +936,9 @@
 
 
             .intro h1 {
-
                 font-size: 34px;
             }
 
-
-            .intro p {
-
-                font-size: 14px;
-            }
-
-
-            /* -----------------------------------------
-               DESKTOP CATEGORIES
-            ----------------------------------------- */
 
             .categories {
 
@@ -1046,10 +950,6 @@
                     3px 20px 15px;
             }
 
-
-            /* -----------------------------------------
-               DESKTOP CONTENT
-            ----------------------------------------- */
 
             .content {
 
@@ -1072,14 +972,9 @@
 
 
             .section-header h2 {
-
                 font-size: 22px;
             }
 
-
-            /* -----------------------------------------
-               DESKTOP MENU GRID
-            ----------------------------------------- */
 
             .menu-grid {
 
@@ -1090,10 +985,6 @@
             }
 
 
-            /* -----------------------------------------
-               DESKTOP FOOD INFORMATION
-            ----------------------------------------- */
-
             .food-info {
 
                 padding:
@@ -1102,23 +993,16 @@
 
 
             .food-name {
-
                 font-size: 20px;
             }
 
 
             .food-description {
-
                 font-size: 12px;
             }
 
 
-            /* -----------------------------------------
-               DESKTOP MODEL
-            ----------------------------------------- */
-
             model-viewer {
-
                 height: 320px;
             }
 
@@ -1130,19 +1014,10 @@
             }
 
 
-            /* -----------------------------------------
-               COMING SOON
-            ----------------------------------------- */
-
             .coming-card {
-
                 min-height: 320px;
             }
 
-
-            /* -----------------------------------------
-               INFORMATION BOX
-            ----------------------------------------- */
 
             .info-box {
 
@@ -1150,17 +1025,6 @@
 
                 margin:
                     28px auto 0;
-            }
-
-
-            /* -----------------------------------------
-               FOOTER
-            ----------------------------------------- */
-
-            footer {
-
-                padding:
-                    30px 20px 34px;
             }
 
         }
@@ -1174,19 +1038,63 @@
 
             .hero img {
 
-                width: 100%;
-            }
+                height: 240px;
 
-
-            .menu-grid {
-
-                gap: 24px;
+                object-fit: cover;
             }
 
 
             model-viewer {
-
                 height: 340px;
+            }
+
+        }
+
+
+        /* =========================================================
+           SMALL PHONES
+        ========================================================== */
+
+        @media (max-width: 380px) {
+
+            .hero img {
+                height: 160px;
+            }
+
+
+            .brand-name {
+                font-size: 17px;
+            }
+
+
+            .ar-label {
+
+                font-size: 11px;
+
+                padding: 7px 10px;
+            }
+
+
+            .intro h1 {
+                font-size: 25px;
+            }
+
+
+            .food-name {
+                font-size: 20px;
+            }
+
+
+            model-viewer {
+                height: 275px;
+            }
+
+
+            .ar-button {
+
+                min-width: 150px;
+
+                font-size: 13px;
             }
 
         }
@@ -1221,7 +1129,6 @@
     ========================================================== -->
 
     <nav class="desktop-nav">
-
 
         <div class="desktop-brand">
 
@@ -1266,7 +1173,6 @@
 
     <header class="top-bar">
 
-
         <div class="brand">
 
             <div class="brand-name">
@@ -1283,7 +1189,6 @@
         <div class="ar-label">
             ✦ AR MENU
         </div>
-
 
     </header>
 
@@ -1324,7 +1229,6 @@
     <section
         class="category-section"
         id="categories">
-
 
         <nav class="categories">
 
@@ -1373,7 +1277,6 @@
 
             </button>
 
-
         </nav>
 
     </section>
@@ -1402,38 +1305,31 @@
         </div>
 
 
-
-        <!-- =====================================================
-             DYNAMIC MENU GRID
-        ====================================================== -->
-
         <div
             class="menu-grid"
             id="menu-grid">
 
 
             <!-- =================================================
-                 PIZZA CARD
+                 DEFAULT POPULAR ITEMS
             ================================================== -->
+
+            <!-- PIZZA -->
 
             <article class="food-card">
 
 
                 <div class="food-info">
 
-
                     <div class="food-title-row">
-
 
                         <h3 class="food-name">
                             🍕 Classic Pizza
                         </h3>
 
-
                         <div class="food-price">
                             ₹249
                         </div>
-
 
                     </div>
 
@@ -1450,35 +1346,24 @@
 
                     <div class="dish-tags">
 
-
                         <div class="dish-tag">
                             ⭐ Popular
                         </div>
-
 
                         <div class="dish-tag">
                             🧀 Cheesy
                         </div>
 
-
                         <div class="dish-tag">
                             🌿 Fresh
                         </div>
 
-
                     </div>
-
 
                 </div>
 
 
-
-                <!-- =================================================
-                     3D MODEL
-                ================================================== -->
-
                 <div class="model-wrapper">
-
 
                     <model-viewer
 
@@ -1517,21 +1402,16 @@
 
                         </button>
 
-
                     </model-viewer>
-
 
                 </div>
 
 
-
                 <div class="model-instruction">
-
 
                     <strong>
                         🔄 Rotate the pizza to explore
                     </strong>
-
 
                     <span>
 
@@ -1542,42 +1422,259 @@
 
                     </span>
 
-
                 </div>
-
 
             </article>
 
 
 
-            <!-- =================================================
-                 SECOND CARD
-            ================================================== -->
+            <!-- BURGER -->
+
+            <article class="food-card">
+
+
+                <div class="food-info">
+
+                    <div class="food-title-row">
+
+                        <h3 class="food-name">
+                            🍔 Classic Burger
+                        </h3>
+
+                        <div class="food-price">
+                            ₹199
+                        </div>
+
+                    </div>
+
+
+                    <p class="food-description">
+
+                        Juicy burger layered with a
+                        fresh bun, crispy vegetables,
+                        cheese and our signature sauce.
+
+                    </p>
+
+
+                    <div class="dish-tags">
+
+                        <div class="dish-tag">
+                            ⭐ Popular
+                        </div>
+
+                        <div class="dish-tag">
+                            🧀 Cheesy
+                        </div>
+
+                        <div class="dish-tag">
+                            🔥 Fresh
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="model-wrapper">
+
+                    <model-viewer
+
+                        src="burger.glb"
+
+                        alt="3D model of Classic Burger"
+
+                        ar
+
+                        ar-modes="
+                            scene-viewer
+                            webxr
+                            quick-look
+                        "
+
+                        camera-controls
+
+                        auto-rotate
+
+                        shadow-intensity="1"
+
+                        exposure="1"
+
+                        environment-image="neutral"
+
+                        loading="eager"
+
+                        reveal="auto">
+
+
+                        <button
+                            slot="ar-button"
+                            class="ar-button">
+
+                            📱 View Burger in AR
+
+                        </button>
+
+                    </model-viewer>
+
+                </div>
+
+
+                <div class="model-instruction">
+
+                    <strong>
+                        🔄 Rotate the burger to explore
+                    </strong>
+
+                    <span>
+
+                        Drag the model to rotate it,
+                        pinch to zoom, or tap
+                        "View Burger in AR" to place
+                        it on your table.
+
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PASTA -->
+
+            <article class="food-card">
+
+
+                <div class="food-info">
+
+                    <div class="food-title-row">
+
+                        <h3 class="food-name">
+                            🍝 Classic Pasta
+                        </h3>
+
+                        <div class="food-price">
+                            ₹229
+                        </div>
+
+                    </div>
+
+
+                    <p class="food-description">
+
+                        Delicious pasta prepared with
+                        rich sauce, herbs and fresh
+                        ingredients for a comforting meal.
+
+                    </p>
+
+
+                    <div class="dish-tags">
+
+                        <div class="dish-tag">
+                            ⭐ Popular
+                        </div>
+
+                        <div class="dish-tag">
+                            🌿 Fresh
+                        </div>
+
+                        <div class="dish-tag">
+                            🍝 Chef's Special
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="model-wrapper">
+
+                    <model-viewer
+
+                        src="pasta.glb"
+
+                        alt="3D model of Classic Pasta"
+
+                        ar
+
+                        ar-modes="
+                            scene-viewer
+                            webxr
+                            quick-look
+                        "
+
+                        camera-controls
+
+                        auto-rotate
+
+                        shadow-intensity="1"
+
+                        exposure="1"
+
+                        environment-image="neutral"
+
+                        loading="eager"
+
+                        reveal="auto">
+
+
+                        <button
+                            slot="ar-button"
+                            class="ar-button">
+
+                            📱 View Pasta in AR
+
+                        </button>
+
+                    </model-viewer>
+
+                </div>
+
+
+                <div class="model-instruction">
+
+                    <strong>
+                        🔄 Rotate the pasta to explore
+                    </strong>
+
+                    <span>
+
+                        Drag the model to rotate it,
+                        pinch to zoom, or tap
+                        "View Pasta in AR" to place
+                        it on your table.
+
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- MORE ITEMS -->
 
             <article class="coming-card">
-
 
                 <div class="coming-icon">
                     🍽️
                 </div>
 
-
                 <h3>
                     More Dishes Coming Soon
                 </h3>
 
-
                 <p>
 
-                    Additional 3D food models for
-                    burgers, pasta and desserts can
-                    be added to the AR menu.
+                    Additional pizza, burger,
+                    pasta and dessert models
+                    will be added to the AR menu.
 
                 </p>
 
-
             </article>
-
 
         </div>
 
@@ -1591,11 +1688,9 @@
             class="info-box"
             id="how-it-works">
 
-
             <h3>
                 📱 How AR Menu Works
             </h3>
-
 
             <p>
 
@@ -1606,9 +1701,7 @@
 
             </p>
 
-
         </section>
-
 
     </main>
 
@@ -1620,16 +1713,13 @@
 
     <footer>
 
-
         <div class="footer-name">
             Aroma Restaurant
         </div>
 
-
         <div class="footer-tagline">
             GOOD FOOD • GREAT VIBES
         </div>
-
 
         <div class="footer-text">
 
@@ -1641,7 +1731,6 @@
 
         </div>
 
-
     </footer>
 
 
@@ -1651,14 +1740,14 @@
 
 <!-- =============================================================
      JAVASCRIPT
-     DYNAMIC CATEGORY NAVIGATION
+     CATEGORY NAVIGATION
 ============================================================== -->
 
 <script>
 
 
     /* ============================================================
-       CATEGORY BUTTONS
+       ELEMENTS
     ============================================================ */
 
     const categoryButtons =
@@ -1698,27 +1787,215 @@
 
 
     /* ============================================================
-       CATEGORY DESCRIPTIONS
+       FOOD DATA
     ============================================================ */
 
-    const categoryDescriptions = {
+    const foods = {
 
-        popular:
-            "Our featured dish available in 3D and AR.",
+        pizza: {
 
-        pizza:
-            "Explore our pizza selection in 3D.",
+            name: "🍕 Classic Pizza",
 
-        burgers:
-            "Burger models will be added soon.",
+            price: "₹249",
 
-        pasta:
-            "Pasta models will be added soon.",
+            model: "pizza.glb",
 
-        desserts:
-            "Dessert models will be added soon."
+            arText: "📱 View Pizza in AR",
+
+            description:
+                "Freshly baked pizza topped with melted cheese, tomato sauce, aromatic herbs and delicious toppings.",
+
+            instruction:
+                "🔄 Rotate the pizza to explore",
+
+            tags: [
+                "⭐ Popular",
+                "🧀 Cheesy",
+                "🌿 Fresh"
+            ]
+
+        },
+
+
+        burger: {
+
+            name: "🍔 Classic Burger",
+
+            price: "₹199",
+
+            model: "burger.glb",
+
+            arText: "📱 View Burger in AR",
+
+            description:
+                "Juicy burger layered with a fresh bun, crispy vegetables, cheese and our signature sauce.",
+
+            instruction:
+                "🔄 Rotate the burger to explore",
+
+            tags: [
+                "⭐ Popular",
+                "🧀 Cheesy",
+                "🔥 Fresh"
+            ]
+
+        },
+
+
+        pasta: {
+
+            name: "🍝 Classic Pasta",
+
+            price: "₹229",
+
+            model: "pasta.glb",
+
+            arText: "📱 View Pasta in AR",
+
+            description:
+                "Delicious pasta prepared with rich sauce, herbs and fresh ingredients for a comforting meal.",
+
+            instruction:
+                "🔄 Rotate the pasta to explore",
+
+            tags: [
+                "⭐ Popular",
+                "🌿 Fresh",
+                "🍝 Chef's Special"
+            ]
+
+        }
 
     };
+
+
+    /* ============================================================
+       CREATE FOOD CARD
+    ============================================================ */
+
+    function createFoodCard(food) {
+
+        return `
+
+            <article class="food-card">
+
+
+                <div class="food-info">
+
+
+                    <div class="food-title-row">
+
+
+                        <h3 class="food-name">
+                            ${food.name}
+                        </h3>
+
+
+                        <div class="food-price">
+                            ${food.price}
+                        </div>
+
+
+                    </div>
+
+
+                    <p class="food-description">
+
+                        ${food.description}
+
+                    </p>
+
+
+                    <div class="dish-tags">
+
+
+                        ${food.tags.map(tag => `
+
+                            <div class="dish-tag">
+                                ${tag}
+                            </div>
+
+                        `).join("")}
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="model-wrapper">
+
+
+                    <model-viewer
+
+                        src="${food.model}"
+
+                        alt="3D model of ${food.name}"
+
+                        ar
+
+                        ar-modes="
+                            scene-viewer
+                            webxr
+                            quick-look
+                        "
+
+                        camera-controls
+
+                        auto-rotate
+
+                        shadow-intensity="1"
+
+                        exposure="1"
+
+                        environment-image="neutral"
+
+                        loading="eager"
+
+                        reveal="auto">
+
+
+                        <button
+                            slot="ar-button"
+                            class="ar-button">
+
+                            ${food.arText}
+
+                        </button>
+
+
+                    </model-viewer>
+
+
+                </div>
+
+
+                <div class="model-instruction">
+
+
+                    <strong>
+                        ${food.instruction}
+                    </strong>
+
+
+                    <span>
+
+                        Drag the model to rotate it,
+                        pinch to zoom, or tap the AR
+                        button to place it on your table.
+
+                    </span>
+
+
+                </div>
+
+
+            </article>
+
+        `;
+
+    }
 
 
     /* ============================================================
@@ -1733,8 +2010,6 @@
             function () {
 
 
-                /* Remove active state */
-
                 categoryButtons.forEach(item => {
 
                     item.classList.remove("active");
@@ -1742,24 +2017,16 @@
                 });
 
 
-                /* Add active state */
-
                 this.classList.add("active");
 
-
-                /* Get selected category */
 
                 const selectedCategory =
                     this.dataset.category;
 
 
-                /* Update title */
-
                 sectionTitle.textContent =
                     categoryTitles[selectedCategory];
 
-
-                /* Update menu */
 
                 updateMenu(selectedCategory);
 
@@ -1776,236 +2043,185 @@
     function updateMenu(category) {
 
 
-        /* --------------------------------------------------------
-           POPULAR / PIZZA
-        -------------------------------------------------------- */
+        /* ========================================================
+           POPULAR
+        ======================================================== */
 
-        if (
-            category === "popular" ||
-            category === "pizza"
-        ) {
+        if (category === "popular") {
 
+            menuGrid.innerHTML =
 
-            menuGrid.innerHTML = `
+                createFoodCard(foods.pizza) +
 
-                <article class="food-card">
+                createFoodCard(foods.burger) +
 
+                createFoodCard(foods.pasta) +
 
-                    <div class="food-info">
-
-
-                        <div class="food-title-row">
-
-
-                            <h3 class="food-name">
-                                🍕 Classic Pizza
-                            </h3>
-
-
-                            <div class="food-price">
-                                ₹249
-                            </div>
-
-
-                        </div>
-
-
-                        <p class="food-description">
-
-                            Freshly baked pizza topped with
-                            melted cheese, tomato sauce,
-                            aromatic herbs and delicious
-                            toppings.
-
-                        </p>
-
-
-                        <div class="dish-tags">
-
-
-                            <div class="dish-tag">
-                                ⭐ Popular
-                            </div>
-
-
-                            <div class="dish-tag">
-                                🧀 Cheesy
-                            </div>
-
-
-                            <div class="dish-tag">
-                                🌿 Fresh
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="model-wrapper">
-
-
-                        <model-viewer
-
-                            src="pizza.glb"
-
-                            alt="3D model of Classic Pizza"
-
-                            ar
-
-                            ar-modes="
-                                scene-viewer
-                                webxr
-                                quick-look
-                            "
-
-                            camera-controls
-
-                            auto-rotate
-
-                            shadow-intensity="1"
-
-                            exposure="1"
-
-                            environment-image="neutral"
-
-                            loading="eager"
-
-                            reveal="auto">
-
-
-                            <button
-                                slot="ar-button"
-                                class="ar-button">
-
-                                📱 View Pizza in AR
-
-                            </button>
-
-
-                        </model-viewer>
-
-
-                    </div>
-
-
-                    <div class="model-instruction">
-
-
-                        <strong>
-                            🔄 Rotate the pizza to explore
-                        </strong>
-
-
-                        <span>
-
-                            Drag the model to rotate it,
-                            pinch to zoom, or tap
-                            "View Pizza in AR" to place
-                            it on your table.
-
-                        </span>
-
-
-                    </div>
-
-
-                </article>
-
+                `
 
                 <article class="coming-card">
-
 
                     <div class="coming-icon">
                         🍽️
                     </div>
 
+                    <h3>
+                        More Dishes Coming Soon
+                    </h3>
+
+                    <p>
+                        More food items and 3D AR
+                        models will be added soon.
+                    </p>
+
+                </article>
+
+                `;
+
+            return;
+
+        }
+
+
+        /* ========================================================
+           PIZZA
+        ======================================================== */
+
+        if (category === "pizza") {
+
+            menuGrid.innerHTML =
+
+                createFoodCard(foods.pizza) +
+
+                `
+
+                <article class="coming-card">
+
+                    <div class="coming-icon">
+                        🍕
+                    </div>
 
                     <h3>
                         More Pizza Coming Soon
                     </h3>
 
-
                     <p>
-
                         Additional pizza varieties
-                        and 3D models can be added
-                        to this category.
-
+                        and AR models can be added.
                     </p>
 
+                </article>
+
+                `;
+
+            return;
+
+        }
+
+
+        /* ========================================================
+           BURGERS
+        ======================================================== */
+
+        if (category === "burgers") {
+
+            menuGrid.innerHTML =
+
+                createFoodCard(foods.burger) +
+
+                `
+
+                <article class="coming-card">
+
+                    <div class="coming-icon">
+                        🍔
+                    </div>
+
+                    <h3>
+                        More Burgers Coming Soon
+                    </h3>
+
+                    <p>
+                        Additional burger varieties
+                        and AR models can be added.
+                    </p>
+
+                </article>
+
+                `;
+
+            return;
+
+        }
+
+
+        /* ========================================================
+           PASTA
+        ======================================================== */
+
+        if (category === "pasta") {
+
+            menuGrid.innerHTML =
+
+                createFoodCard(foods.pasta) +
+
+                `
+
+                <article class="coming-card">
+
+                    <div class="coming-icon">
+                        🍝
+                    </div>
+
+                    <h3>
+                        More Pasta Coming Soon
+                    </h3>
+
+                    <p>
+                        Additional pasta varieties
+                        and AR models can be added.
+                    </p>
+
+                </article>
+
+                `;
+
+            return;
+
+        }
+
+
+        /* ========================================================
+           DESSERTS
+        ======================================================== */
+
+        if (category === "desserts") {
+
+            menuGrid.innerHTML = `
+
+                <article class="coming-card">
+
+                    <div class="coming-icon">
+                        🍰
+                    </div>
+
+                    <h3>
+                        Desserts Coming Soon
+                    </h3>
+
+                    <p>
+                        Dessert 3D models will be
+                        added to the AR menu soon.
+                    </p>
 
                 </article>
 
             `;
 
-
-            return;
         }
-
-
-        /* --------------------------------------------------------
-           OTHER CATEGORIES
-        -------------------------------------------------------- */
-
-        let icon = "🍽️";
-
-
-        if (category === "burgers") {
-
-            icon = "🍔";
-
-        }
-
-
-        if (category === "pasta") {
-
-            icon = "🍝";
-
-        }
-
-
-        if (category === "desserts") {
-
-            icon = "🍰";
-
-        }
-
-
-        menuGrid.innerHTML = `
-
-            <article class="coming-card">
-
-
-                <div class="coming-icon">
-                    ${icon}
-                </div>
-
-
-                <h3>
-                    ${categoryTitles[category]}
-                </h3>
-
-
-                <p>
-
-                    ${categoryDescriptions[category]}
-
-                    <br><br>
-
-                    The menu structure is ready
-                    for additional 3D models.
-
-                </p>
-
-
-            </article>
-
-        `;
 
     }
+
 
 </script>
 
