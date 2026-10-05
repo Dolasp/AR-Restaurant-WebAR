@@ -4587,271 +4587,434 @@
 
 
     /* ============================================================
-       AR HIT TEST
-    ============================================================ */
+   AR HIT TEST
+============================================================ */
 
-    async function updateARHitTest(
-        frame
-    ) {
+async function updateARHitTest(
+    frame
+) {
 
-        const session =
-            renderer.xr.getSession();
+    const session =
+        renderer.xr.getSession();
 
-        if (!session) {
-            return;
-        }
 
-        /*
-         * Request the hit-test source once per session.
-         */
-        if (!hitTestSourceRequested) {
+    if (!session) {
+        return;
+    }
 
-            hitTestSourceRequested = true;
 
-            try {
+    /* ---------------------------------------------------------
+       REQUEST HIT TEST SOURCE
+    --------------------------------------------------------- */
 
-                const viewerSpace =
-                    await session.requestReferenceSpace(
-                        "viewer"
-                    );
+    if (!hitTestSourceRequested) {
 
-                xrReferenceSpace =
-                    await session.requestReferenceSpace(
-                        "local"
-                    );
+        hitTestSourceRequested =
+            true;
 
-                hitTestSource =
-                    await session.requestHitTestSource({
-                        space: viewerSpace
-                    });
+        try {
 
-            } catch (error) {
-
-                console.error(
-                    "Hit test error:",
-                    error
+            const viewerSpace =
+                await session.requestReferenceSpace(
+                    "viewer"
                 );
 
-                hitTestSourceRequested = false;
 
-            }
+            xrReferenceSpace =
+                await session.requestReferenceSpace(
+                    "local"
+                );
+
+
+            hitTestSource =
+                await session.requestHitTestSource({
+                    space: viewerSpace
+                });
 
         }
 
-        if (
-            !hitTestSource ||
-            !xrReferenceSpace
-        ) {
-            return;
-        }
+        catch (error) {
 
-        const hitTestResults =
-            frame.getHitTestResults(
-                hitTestSource
+            console.error(
+                "Hit test error:",
+                error
             );
 
-        /*
-         * Do not simply use the first hit.
-         * A hit can be a wall or another vertical surface.
-         * We only accept a surface whose normal points
-         * sufficiently close to world-up.
-         */
-        let horizontalPose = null;
-
-        for (
-            const hit of hitTestResults
-        ) {
-
-            const pose =
-                hit.getPose(
-                    xrReferenceSpace
-                );
-
-            if (!pose) {
-                continue;
-            }
-
-            const hitMatrix =
-                new THREE.Matrix4();
-
-            hitMatrix.fromArray(
-                pose.transform.matrix
-            );
-
-            const hitPosition =
-                new THREE.Vector3();
-
-            const hitQuaternion =
-                new THREE.Quaternion();
-
-            const hitScale =
-                new THREE.Vector3();
-
-            hitMatrix.decompose(
-                hitPosition,
-                hitQuaternion,
-                hitScale
-            );
-
-            /*
-             * WebXR plane normal = local +Y axis.
-             */
-            const surfaceNormal =
-                new THREE.Vector3(
-                    0,
-                    1,
-                    0
-                );
-
-            surfaceNormal.applyQuaternion(
-                hitQuaternion
-            );
-
-            const worldUp =
-                new THREE.Vector3(
-                    0,
-                    1,
-                    0
-                );
-
-            const horizontalness =
-                Math.abs(
-                    surfaceNormal.dot(
-                        worldUp
-                    )
-                );
-
-            /*
-             * 0.85 accepts a reasonably level table/floor
-             * while rejecting normal walls.
-             */
-            if (
-                horizontalness >= 0.85
-            ) {
-
-                horizontalPose = pose;
-                break;
-
-            }
-
-        }
-
-        if (!horizontalPose) {
-
-            arReticle.visible = false;
-
-            if (!arPlaced) {
-
-                arStatus.textContent =
-                    "Please point your camera at a table or floor.";
-
-            }
-
-            return;
-
-        }
-
-        arReticle.visible = true;
-
-        arReticle.matrix.fromArray(
-            horizontalPose.transform.matrix
-        );
-
-        if (!arPlaced) {
-
-            arStatus.textContent =
-                "✓ Table/floor detected — tap to place your plate.";
+            hitTestSourceRequested =
+                false;
 
         }
 
     }
 
 
+    if (
+        !hitTestSource ||
+        !xrReferenceSpace
+    ) {
+
+        return;
+
+    }
 
 
-    /* ============================================================
-       AR TAP / SELECT
-    ============================================================ */
+    /* ---------------------------------------------------------
+       GET HIT TEST RESULTS
+    --------------------------------------------------------- */
 
-    function onARSelect() {
+    const hitTestResults =
+        frame.getHitTestResults(
+            hitTestSource
+        );
 
-        if (
-            !arReticle ||
-            !arReticle.visible ||
-            !arSceneGroup
-        ) {
-            return;
+
+    if (
+        hitTestResults.length === 0
+    ) {
+
+        arReticle.visible =
+            false;
+
+
+        if (!arPlaced) {
+
+            arStatus.textContent =
+                "Move your phone slowly to find a table or floor.";
+
         }
 
-        /*
-         * Read the reticle's detected horizontal-surface pose.
-         */
-        const position =
+        return;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       FIND A HORIZONTAL SURFACE
+    --------------------------------------------------------- */
+
+    let horizontalPose =
+        null;
+
+
+    for (
+        const hit of hitTestResults
+    ) {
+
+        const pose =
+            hit.getPose(
+                xrReferenceSpace
+            );
+
+
+        if (!pose) {
+            continue;
+        }
+
+
+        const hitMatrix =
+            new THREE.Matrix4();
+
+
+        hitMatrix.fromArray(
+            pose.transform.matrix
+        );
+
+
+        const hitPosition =
             new THREE.Vector3();
 
-        const quaternion =
+
+        const hitQuaternion =
             new THREE.Quaternion();
 
-        const scale =
+
+        const hitScale =
             new THREE.Vector3();
 
-        arReticle.matrix.decompose(
-            position,
-            quaternion,
-            scale
+
+        hitMatrix.decompose(
+            hitPosition,
+            hitQuaternion,
+            hitScale
         );
+
 
         /*
-         * Place the complete plate at the detected surface.
+         * Determine whether the detected surface
+         * is horizontal.
+         *
+         * WebXR surface normal = local +Y.
          */
-        arSceneGroup.position.copy(
-            position
-        );
 
-        arSceneGroup.quaternion.copy(
-            quaternion
-        );
-
-        /*
-         * The plate has a real-world thickness.
-         * Lift the whole group 1.2 cm above the detected
-         * surface so its underside does not clip into the table.
-         * The offset is applied along the plate's own up direction.
-         */
-        const surfaceOffset =
+        const surfaceNormal =
             new THREE.Vector3(
                 0,
-                0.012,
+                1,
                 0
             );
 
-        surfaceOffset.applyQuaternion(
-            arSceneGroup.quaternion
+
+        surfaceNormal.applyQuaternion(
+            hitQuaternion
         );
 
-        arSceneGroup.position.add(
-            surfaceOffset
-        );
+
+        const worldUp =
+            new THREE.Vector3(
+                0,
+                1,
+                0
+            );
+
+
+        const horizontalness =
+            Math.abs(
+                surfaceNormal.dot(
+                    worldUp
+                )
+            );
+
 
         /*
-         * Keep the original real-world scale.
+         * Accept only reasonably horizontal
+         * surfaces such as tables and floors.
          */
-        arSceneGroup.scale.set(
+
+        if (
+            horizontalness >= 0.85
+        ) {
+
+            horizontalPose =
+                pose;
+
+            break;
+
+        }
+
+    }
+
+
+    /* ---------------------------------------------------------
+       NO HORIZONTAL SURFACE
+    --------------------------------------------------------- */
+
+    if (!horizontalPose) {
+
+        arReticle.visible =
+            false;
+
+
+        if (!arPlaced) {
+
+            arStatus.textContent =
+                "Please point your camera at a table or floor.";
+
+        }
+
+        return;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       GET ONLY THE POSITION
+       
+       IMPORTANT:
+       We intentionally DO NOT copy the hit-test
+       rotation into the reticle.
+    --------------------------------------------------------- */
+
+    const hitMatrix =
+        new THREE.Matrix4();
+
+
+    hitMatrix.fromArray(
+        horizontalPose.transform.matrix
+    );
+
+
+    const hitPosition =
+        new THREE.Vector3();
+
+
+    const hitQuaternion =
+        new THREE.Quaternion();
+
+
+    const hitScale =
+        new THREE.Vector3();
+
+
+    hitMatrix.decompose(
+        hitPosition,
+        hitQuaternion,
+        hitScale
+    );
+
+
+    /* ---------------------------------------------------------
+       CREATE A COMPLETELY HORIZONTAL RETICLE
+    --------------------------------------------------------- */
+
+    const horizontalQuaternion =
+        new THREE.Quaternion();
+
+
+    horizontalQuaternion.identity();
+
+
+    const reticleScale =
+        new THREE.Vector3(
             1,
             1,
             1
         );
 
-        arSceneGroup.visible = true;
 
-        arPlaced = true;
+    const horizontalMatrix =
+        new THREE.Matrix4();
 
-        arReticle.visible = false;
+
+    horizontalMatrix.compose(
+        hitPosition,
+        horizontalQuaternion,
+        reticleScale
+    );
+
+
+    arReticle.matrix.copy(
+        horizontalMatrix
+    );
+
+
+    arReticle.visible =
+        true;
+
+
+    /* ---------------------------------------------------------
+       STATUS
+    --------------------------------------------------------- */
+
+    if (!arPlaced) {
 
         arStatus.textContent =
-            "✓ Plate placed on the surface. Move around to view your complete meal.";
+            "✓ Table/floor detected — tap to place your plate.";
 
     }
+
+}
+
+
+   /* ============================================================
+   AR TAP / SELECT
+============================================================ */
+
+function onARSelect() {
+
+    if (
+        !arReticle ||
+        !arReticle.visible ||
+        !arSceneGroup
+    ) {
+
+        return;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       GET ONLY THE DETECTED POSITION
+       
+       The reticle has intentionally been made horizontal,
+       so its rotation is no longer taken from WebXR.
+    --------------------------------------------------------- */
+
+    const position =
+        new THREE.Vector3();
+
+
+    const quaternion =
+        new THREE.Quaternion();
+
+
+    const scale =
+        new THREE.Vector3();
+
+
+    arReticle.matrix.decompose(
+        position,
+        quaternion,
+        scale
+    );
+
+
+    /* ---------------------------------------------------------
+       PLACE PLATE
+    --------------------------------------------------------- */
+
+    arSceneGroup.position.copy(
+        position
+    );
+
+
+    /*
+     * IMPORTANT:
+     *
+     * Do NOT use the WebXR hit-test quaternion.
+     *
+     * The complete plate must remain perfectly horizontal.
+     */
+
+    arSceneGroup.quaternion.identity();
+
+
+    /*
+     * Real-world scale.
+     */
+
+    arSceneGroup.scale.set(
+        1,
+        1,
+        1
+    );
+
+
+    /* ---------------------------------------------------------
+       LIFT PLATE SLIGHTLY ABOVE SURFACE
+    --------------------------------------------------------- */
+
+    /*
+     * The AR plate has approximately 18 mm thickness.
+     *
+     * We place its center slightly above the detected
+     * surface so the bottom does not disappear into
+     * the table/floor.
+     */
+
+    arSceneGroup.position.y +=
+        0.012;
+
+
+    /* ---------------------------------------------------------
+       SHOW PLATE
+    --------------------------------------------------------- */
+
+    arSceneGroup.visible =
+        true;
+
+
+    arPlaced =
+        true;
+
+
+    arReticle.visible =
+        false;
+
+
+    arStatus.textContent =
+        "✓ Plate placed. Move around to view your complete meal.";
+
+}
 
 
 
