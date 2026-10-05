@@ -3857,9 +3857,9 @@
 
         const reticleGeometry =
             new THREE.RingGeometry(
-                0.12,
-                0.18,
-                32
+                0.16,
+                0.22,
+                48
             );
 
 
@@ -4597,133 +4597,175 @@
         const session =
             renderer.xr.getSession();
 
-
         if (!session) {
             return;
         }
 
-
         /*
-         * Request hit test source
-         * once per session.
+         * Request the hit-test source once per session.
          */
+        if (!hitTestSourceRequested) {
 
-        if (
-            !hitTestSourceRequested
-        ) {
-
-            hitTestSourceRequested =
-                true;
-
+            hitTestSourceRequested = true;
 
             try {
 
                 const viewerSpace =
-                    await session
-                        .requestReferenceSpace(
-                            "viewer"
-                        );
-
+                    await session.requestReferenceSpace(
+                        "viewer"
+                    );
 
                 xrReferenceSpace =
-                    await session
-                        .requestReferenceSpace(
-                            "local"
-                        );
-
+                    await session.requestReferenceSpace(
+                        "local"
+                    );
 
                 hitTestSource =
-                    await session
-                        .requestHitTestSource({
+                    await session.requestHitTestSource({
+                        space: viewerSpace
+                    });
 
-                            space:
-                                viewerSpace
-
-                        });
-
-            }
-
-            catch (error) {
+            } catch (error) {
 
                 console.error(
                     "Hit test error:",
                     error
                 );
 
-                hitTestSourceRequested =
-                    false;
+                hitTestSourceRequested = false;
 
             }
 
         }
 
-
         if (
             !hitTestSource ||
             !xrReferenceSpace
         ) {
-
             return;
-
         }
-
 
         const hitTestResults =
             frame.getHitTestResults(
                 hitTestSource
             );
 
+        /*
+         * Do not simply use the first hit.
+         * A hit can be a wall or another vertical surface.
+         * We only accept a surface whose normal points
+         * sufficiently close to world-up.
+         */
+        let horizontalPose = null;
 
-        if (
-            hitTestResults.length > 0
+        for (
+            const hit of hitTestResults
         ) {
-
-            const hit =
-                hitTestResults[0];
-
 
             const pose =
                 hit.getPose(
                     xrReferenceSpace
                 );
 
-
-            if (pose) {
-
-                arReticle.visible =
-                    true;
-
-
-                arReticle.matrix.fromArray(
-                    pose.transform.matrix
-                );
-
-
-                if (!arPlaced) {
-
-                    arStatus.textContent =
-                        "Surface found — tap the screen to place your plate.";
-
-                }
-
+            if (!pose) {
+                continue;
             }
 
-        } else {
+            const hitMatrix =
+                new THREE.Matrix4();
 
-            arReticle.visible =
-                false;
+            hitMatrix.fromArray(
+                pose.transform.matrix
+            );
 
+            const hitPosition =
+                new THREE.Vector3();
 
-            if (!arPlaced) {
+            const hitQuaternion =
+                new THREE.Quaternion();
 
-                arStatus.textContent =
-                    "Move your phone slowly to find a table or flat surface.";
+            const hitScale =
+                new THREE.Vector3();
+
+            hitMatrix.decompose(
+                hitPosition,
+                hitQuaternion,
+                hitScale
+            );
+
+            /*
+             * WebXR plane normal = local +Y axis.
+             */
+            const surfaceNormal =
+                new THREE.Vector3(
+                    0,
+                    1,
+                    0
+                );
+
+            surfaceNormal.applyQuaternion(
+                hitQuaternion
+            );
+
+            const worldUp =
+                new THREE.Vector3(
+                    0,
+                    1,
+                    0
+                );
+
+            const horizontalness =
+                Math.abs(
+                    surfaceNormal.dot(
+                        worldUp
+                    )
+                );
+
+            /*
+             * 0.85 accepts a reasonably level table/floor
+             * while rejecting normal walls.
+             */
+            if (
+                horizontalness >= 0.85
+            ) {
+
+                horizontalPose = pose;
+                break;
 
             }
 
         }
 
+        if (!horizontalPose) {
+
+            arReticle.visible = false;
+
+            if (!arPlaced) {
+
+                arStatus.textContent =
+                    "Please point your camera at a table or floor.";
+
+            }
+
+            return;
+
+        }
+
+        arReticle.visible = true;
+
+        arReticle.matrix.fromArray(
+            horizontalPose.transform.matrix
+        );
+
+        if (!arPlaced) {
+
+            arStatus.textContent =
+                "✓ Table/floor detected — tap to place your plate.";
+
+        }
+
     }
+
 
 
 
@@ -4738,54 +4780,79 @@
             !arReticle.visible ||
             !arSceneGroup
         ) {
-
             return;
-
         }
 
-
         /*
-         * Place complete plate exactly
-         * where the reticle is.
+         * Read the reticle's detected horizontal-surface pose.
          */
+        const position =
+            new THREE.Vector3();
+
+        const quaternion =
+            new THREE.Quaternion();
+
+        const scale =
+            new THREE.Vector3();
 
         arReticle.matrix.decompose(
-
-            arSceneGroup.position,
-
-            arSceneGroup.quaternion,
-
-            arSceneGroup.scale
-
+            position,
+            quaternion,
+            scale
         );
 
+        /*
+         * Place the complete plate at the detected surface.
+         */
+        arSceneGroup.position.copy(
+            position
+        );
+
+        arSceneGroup.quaternion.copy(
+            quaternion
+        );
 
         /*
-         * Slightly reduce the scale
-         * for comfortable table viewing.
+         * The plate has a real-world thickness.
+         * Lift the whole group 1.2 cm above the detected
+         * surface so its underside does not clip into the table.
+         * The offset is applied along the plate's own up direction.
          */
+        const surfaceOffset =
+            new THREE.Vector3(
+                0,
+                0.012,
+                0
+            );
 
-        arSceneGroup.scale.multiplyScalar(
+        surfaceOffset.applyQuaternion(
+            arSceneGroup.quaternion
+        );
+
+        arSceneGroup.position.add(
+            surfaceOffset
+        );
+
+        /*
+         * Keep the original real-world scale.
+         */
+        arSceneGroup.scale.set(
+            1,
+            1,
             1
         );
 
+        arSceneGroup.visible = true;
 
-        arSceneGroup.visible =
-            true;
+        arPlaced = true;
 
-
-        arPlaced =
-            true;
-
-
-        arReticle.visible =
-            false;
-
+        arReticle.visible = false;
 
         arStatus.textContent =
-            "✓ Plate placed. Move around to view your complete meal.";
+            "✓ Plate placed on the surface. Move around to view your complete meal.";
 
     }
+
 
 
 
