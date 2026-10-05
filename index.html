@@ -24,7 +24,6 @@
 
     <!-- =========================================================
          THREE.JS
-         Used for the Build Your Plate 3D scene
     ========================================================== -->
 
     <script
@@ -53,10 +52,8 @@
         }
 
         body {
-
             width: 100%;
             min-height: 100vh;
-
             overflow-x: hidden;
 
             font-family:
@@ -68,7 +65,6 @@
                 sans-serif;
 
             background: #e9e0cd;
-
             color: #173d2b;
         }
 
@@ -78,11 +74,8 @@
         ========================================================== */
 
         .site-wrapper {
-
             width: 100%;
-
             margin: 0 auto;
-
             background: #f6efdf;
         }
 
@@ -92,23 +85,15 @@
         ========================================================== */
 
         .hero {
-
             width: 100%;
-
             overflow: hidden;
-
             background: #f6efdf;
         }
 
-
         .hero img {
-
             display: block;
-
             width: 100%;
-
             height: 120px;
-
             object-fit: cover;
         }
 
@@ -118,7 +103,6 @@
         ========================================================== */
 
         .desktop-nav {
-
             display: none;
         }
 
@@ -128,76 +112,52 @@
         ========================================================== */
 
         .top-bar {
-
             position: sticky;
-
             top: 0;
-
             z-index: 1000;
 
             width: 100%;
 
             background: #123d2b;
-
             color: white;
 
             padding: 13px 16px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             box-shadow:
                 0 3px 12px rgba(0, 0, 0, 0.18);
         }
 
-
         .brand {
-
             display: flex;
-
             flex-direction: column;
         }
 
-
         .brand-name {
-
             font-size: 19px;
-
             font-weight: 800;
-
             letter-spacing: 0.3px;
         }
 
-
         .brand-tagline {
-
             margin-top: 2px;
-
             font-size: 10px;
-
             opacity: 0.8;
-
             letter-spacing: 0.8px;
-
             text-transform: uppercase;
         }
 
-
         .ar-label {
-
             background: #d6ad55;
-
             color: #173d2b;
 
             padding: 8px 12px;
-
             border-radius: 20px;
 
             font-size: 12px;
-
             font-weight: 800;
         }
 
@@ -207,53 +167,38 @@
         ========================================================== */
 
         .intro {
-
             text-align: center;
-
             padding: 34px 20px 20px;
         }
 
-
         .intro-label {
-
             display: inline-block;
 
             color: #b08732;
 
             font-size: 11px;
-
             font-weight: 800;
 
             letter-spacing: 1.5px;
-
             text-transform: uppercase;
 
             margin-bottom: 8px;
         }
 
-
         .intro h1 {
-
             color: #123d2b;
-
             font-size: 30px;
-
             line-height: 1.2;
-
             margin-bottom: 10px;
         }
 
-
         .intro p {
-
             max-width: 520px;
-
             margin: auto;
 
             color: #626262;
 
             font-size: 14px;
-
             line-height: 1.6;
         }
 
@@ -263,17 +208,12 @@
         ========================================================== */
 
         .category-section {
-
             width: 100%;
-
             padding: 7px 0 25px;
         }
 
-
         .categories {
-
             display: flex;
-
             gap: 9px;
 
             overflow-x: auto;
@@ -283,20 +223,16 @@
             scrollbar-width: none;
         }
 
-
         .categories::-webkit-scrollbar {
             display: none;
         }
 
-
         .category {
-
             flex: 0 0 auto;
 
             border: 1px solid #d9cba9;
 
             background: #fffdf7;
-
             color: #173d2b;
 
             padding: 10px 17px;
@@ -304,7 +240,6 @@
             border-radius: 25px;
 
             font-size: 13px;
-
             font-weight: 700;
 
             white-space: nowrap;
@@ -314,115 +249,15 @@
             transition: 0.2s ease;
         }
 
-
         .category:hover {
-
             border-color: #123d2b;
-
             transform: translateY(-1px);
         }
-
 
         .category.active {
-
             background: #123d2b;
-
             color: white;
-
             border-color: #123d2b;
-        }
-
-
-        /* =========================================================
-           BUILD YOUR PLATE BAR
-        ========================================================== */
-
-        .plate-bar {
-
-            width: 92%;
-
-            max-width: 1180px;
-
-            margin: 0 auto 24px;
-
-            padding: 16px 18px;
-
-            background: #123d2b;
-
-            border-radius: 18px;
-
-            color: white;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 15px;
-
-            box-shadow:
-                0 7px 20px rgba(30, 50, 35, 0.14);
-        }
-
-
-        .plate-bar-text {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 4px;
-        }
-
-
-        .plate-bar-title {
-
-            font-size: 16px;
-
-            font-weight: 800;
-        }
-
-
-        .plate-bar-subtitle {
-
-            font-size: 11px;
-
-            color:
-                rgba(255,255,255,0.72);
-        }
-
-
-        .plate-open-button {
-
-            border: none;
-
-            background: #d6ad55;
-
-            color: #173d2b;
-
-            padding: 10px 16px;
-
-            border-radius: 25px;
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            cursor: pointer;
-
-            white-space: nowrap;
-
-            transition: 0.2s ease;
-        }
-
-
-        .plate-open-button:hover {
-
-            transform: translateY(-1px);
-
-            box-shadow:
-                0 5px 12px rgba(0,0,0,0.18);
         }
 
 
@@ -431,9 +266,7 @@
         ========================================================== */
 
         .content {
-
             width: 100%;
-
             max-width: 1180px;
 
             margin: 0 auto;
@@ -447,29 +280,20 @@
         ========================================================== */
 
         .section-header {
-
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             padding: 5px 4px 15px;
         }
 
-
         .section-header h2 {
-
             font-size: 21px;
-
             color: #123d2b;
         }
 
-
         .section-header span {
-
             font-size: 12px;
-
             color: #777;
         }
 
@@ -479,11 +303,8 @@
         ========================================================== */
 
         .menu-grid {
-
             display: grid;
-
             grid-template-columns: 1fr;
-
             gap: 24px;
         }
 
@@ -493,7 +314,6 @@
         ========================================================== */
 
         .food-card {
-
             width: 100%;
 
             background: #ffffff;
@@ -515,41 +335,30 @@
         ========================================================== */
 
         .food-info {
-
             padding: 20px 18px 14px;
         }
 
-
         .food-title-row {
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: flex-start;
 
             gap: 12px;
         }
 
-
         .food-name {
-
             color: #123d2b;
 
             font-size: 22px;
-
             font-weight: 800;
 
             line-height: 1.2;
         }
 
-
         .food-price {
-
             flex-shrink: 0;
 
             background: #f3e6c7;
-
             color: #9b7628;
 
             padding: 7px 10px;
@@ -557,19 +366,15 @@
             border-radius: 10px;
 
             font-size: 15px;
-
             font-weight: 800;
         }
 
-
         .food-description {
-
             margin-top: 10px;
 
             color: #666;
 
             font-size: 13px;
-
             line-height: 1.55;
         }
 
@@ -579,9 +384,7 @@
         ========================================================== */
 
         .dish-tags {
-
             display: flex;
-
             flex-wrap: wrap;
 
             gap: 7px;
@@ -589,11 +392,8 @@
             margin-top: 13px;
         }
 
-
         .dish-tag {
-
             background: #f4f0e5;
-
             color: #55705f;
 
             padding: 6px 9px;
@@ -601,56 +401,7 @@
             border-radius: 8px;
 
             font-size: 10px;
-
             font-weight: 700;
-        }
-
-
-        /* =========================================================
-           ADD TO PLATE BUTTON
-        ========================================================== */
-
-        .add-plate-button {
-
-            width: 100%;
-
-            margin-top: 15px;
-
-            border: 1px solid #123d2b;
-
-            background: #ffffff;
-
-            color: #123d2b;
-
-            padding: 11px 14px;
-
-            border-radius: 12px;
-
-            font-size: 13px;
-
-            font-weight: 800;
-
-            cursor: pointer;
-
-            transition: 0.2s ease;
-        }
-
-
-        .add-plate-button:hover {
-
-            background: #123d2b;
-
-            color: white;
-        }
-
-
-        .add-plate-button.added {
-
-            background: #123d2b;
-
-            color: white;
-
-            border-color: #123d2b;
         }
 
 
@@ -659,17 +410,13 @@
         ========================================================== */
 
         .model-wrapper {
-
             padding: 0 12px;
         }
 
-
         model-viewer {
-
             display: block;
 
             width: 100%;
-
             height: 310px;
 
             background:
@@ -682,9 +429,7 @@
             border-radius: 17px;
 
             --poster-color: #eee7d7;
-
             --progress-bar-color: #123d2b;
-
             --progress-mask: #d6ad55;
 
             overflow: hidden;
@@ -696,11 +441,9 @@
         ========================================================== */
 
         .ar-button {
-
             position: absolute;
 
             left: 50%;
-
             bottom: 18px;
 
             transform: translateX(-50%);
@@ -710,7 +453,6 @@
             border: none;
 
             background: #123d2b;
-
             color: white;
 
             padding: 13px 20px;
@@ -718,7 +460,6 @@
             border-radius: 30px;
 
             font-size: 14px;
-
             font-weight: 800;
 
             box-shadow:
@@ -729,19 +470,57 @@
 
 
         /* =========================================================
+           ADD TO PLATE BUTTON
+        ========================================================== */
+
+        .plate-add-button {
+            display: block;
+
+            width: calc(100% - 24px);
+
+            margin: 0 12px 14px;
+
+            border: 2px solid #123d2b;
+
+            background: white;
+
+            color: #123d2b;
+
+            padding: 11px 16px;
+
+            border-radius: 13px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .plate-add-button:hover {
+            background: #123d2b;
+            color: white;
+        }
+
+        .plate-add-button.selected {
+            background: #d6ad55;
+            color: #173d2b;
+            border-color: #d6ad55;
+        }
+
+
+        /* =========================================================
            MODEL INSTRUCTION
         ========================================================== */
 
         .model-instruction {
-
             text-align: center;
 
             padding: 14px 15px 19px;
         }
 
-
         .model-instruction strong {
-
             display: block;
 
             color: #123d2b;
@@ -751,14 +530,80 @@
             margin-bottom: 5px;
         }
 
-
         .model-instruction span {
-
             color: #777;
 
             font-size: 12px;
-
             line-height: 1.45;
+        }
+
+
+        /* =========================================================
+           BUILD YOUR PLATE BAR
+        ========================================================== */
+
+        .plate-bar {
+            position: sticky;
+            bottom: 15px;
+
+            z-index: 900;
+
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 12px;
+
+            margin: 20px 0;
+
+            padding: 13px 15px;
+
+            background: #123d2b;
+            color: white;
+
+            border-radius: 17px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .plate-bar-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .plate-bar-title {
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .plate-bar-count {
+            margin-top: 2px;
+
+            font-size: 11px;
+
+            color: rgba(255,255,255,0.75);
+        }
+
+        .view-plate-button {
+            flex-shrink: 0;
+
+            border: none;
+
+            background: #d6ad55;
+            color: #173d2b;
+
+            padding: 10px 15px;
+
+            border-radius: 25px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            cursor: pointer;
         }
 
 
@@ -766,74 +611,65 @@
            BUILD YOUR PLATE SECTION
         ========================================================== */
 
-        #plate-builder {
-
+        #plateBuilder {
             display: none;
 
-            margin-top: 10px;
+            width: 100%;
 
-            padding-bottom: 25px;
+            padding: 0 0 45px;
         }
 
-
         .plate-builder-header {
-
             display: flex;
 
-            justify-content: space-between;
-
             align-items: center;
+            justify-content: space-between;
 
             gap: 15px;
 
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
-
-        .plate-builder-header h2 {
-
+        .plate-builder-title {
             color: #123d2b;
 
-            font-size: 24px;
+            font-size: 26px;
+            font-weight: 800;
         }
 
-
-        .plate-builder-header p {
+        .plate-builder-subtitle {
+            margin-top: 5px;
 
             color: #777;
 
-            font-size: 12px;
-
-            margin-top: 4px;
+            font-size: 13px;
+            line-height: 1.5;
         }
 
-
         .back-menu-button {
+            flex-shrink: 0;
 
-            border: 1px solid #d6c79f;
+            border: 1px solid #d9cba9;
 
             background: white;
+            color: #123d2b;
 
-            color: #173d2b;
+            padding: 10px 14px;
 
-            padding: 9px 13px;
-
-            border-radius: 10px;
+            border-radius: 25px;
 
             font-size: 12px;
-
-            font-weight: 700;
+            font-weight: 800;
 
             cursor: pointer;
         }
 
 
         /* =========================================================
-           SELECTED ITEMS
+           SELECTED FOOD CHIPS
         ========================================================== */
 
         .selected-items {
-
             display: flex;
 
             flex-wrap: wrap;
@@ -843,71 +679,64 @@
             margin-bottom: 15px;
         }
 
-
         .selected-chip {
-
             display: flex;
 
             align-items: center;
 
-            gap: 7px;
+            gap: 6px;
 
-            background: #f3e6c7;
+            background: #fffdf7;
+
+            border: 1px solid #d9cba9;
 
             color: #173d2b;
 
-            border-radius: 20px;
-
             padding: 7px 10px;
 
-            font-size: 11px;
+            border-radius: 20px;
 
+            font-size: 11px;
             font-weight: 700;
         }
 
-
-        .remove-chip {
-
+        .selected-chip button {
             border: none;
 
-            background: #123d2b;
+            background: transparent;
 
-            color: white;
+            color: #a23c2f;
 
-            width: 20px;
+            font-size: 14px;
 
-            height: 20px;
-
-            border-radius: 50%;
+            font-weight: 900;
 
             cursor: pointer;
-
-            font-size: 11px;
-
-            line-height: 20px;
         }
 
 
         /* =========================================================
-           PLATE CANVAS
+           PLATE VIEWER
         ========================================================== */
 
-        .plate-scene-wrapper {
-
+        #plateViewer {
             position: relative;
 
             width: 100%;
-
             height: 560px;
+            min-height: 560px;
 
             background:
-                linear-gradient(
-                    145deg,
-                    #e8dfce,
-                    #f8f2e7
+                radial-gradient(
+                    circle at center,
+                    #fffdf7 0%,
+                    #f2ead8 65%,
+                    #e6dac0 100%
                 );
 
-            border-radius: 24px;
+            border-radius: 22px;
+
+            border: 2px solid #d6c8a8;
 
             overflow: hidden;
 
@@ -915,173 +744,107 @@
                 0 8px 25px rgba(30, 50, 35, 0.12);
         }
 
+        #plateViewer canvas {
+            display: block !important;
 
-        #plate-canvas {
+            position: absolute !important;
 
-            display: block;
+            top: 0;
+            left: 0;
 
-            width: 100%;
-
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
         }
 
-
         .plate-help {
-
             position: absolute;
 
             left: 50%;
-
             bottom: 15px;
 
             transform: translateX(-50%);
 
-            background:
-                rgba(18,61,43,0.88);
+            z-index: 10;
+
+            width: calc(100% - 30px);
+
+            max-width: 430px;
+
+            padding: 10px 14px;
+
+            background: rgba(18, 61, 43, 0.9);
 
             color: white;
 
-            padding: 9px 15px;
-
             border-radius: 20px;
 
-            font-size: 11px;
+            text-align: center;
 
-            white-space: nowrap;
+            font-size: 11px;
 
             pointer-events: none;
         }
 
 
         /* =========================================================
-           PLATE ACTIONS
+           EMPTY PLATE
         ========================================================== */
 
-        .plate-actions {
+        .plate-empty {
+            text-align: center;
 
+            padding: 15px;
+
+            margin-bottom: 15px;
+
+            background: #fffdf7;
+
+            border: 1px dashed #cdbd96;
+
+            border-radius: 15px;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           PLATE CONTROLS
+        ========================================================== */
+
+        .plate-controls {
             display: flex;
 
             justify-content: center;
 
-            gap: 10px;
-
             flex-wrap: wrap;
+
+            gap: 10px;
 
             margin-top: 15px;
         }
 
+        .plate-control-button {
+            border: 1px solid #d9cba9;
 
-        .plate-action {
+            background: white;
+            color: #123d2b;
 
-            border: none;
+            padding: 10px 15px;
 
-            background: #123d2b;
-
-            color: white;
-
-            padding: 12px 18px;
-
-            border-radius: 25px;
+            border-radius: 22px;
 
             font-size: 12px;
-
             font-weight: 800;
 
             cursor: pointer;
         }
 
-
-        .plate-action.secondary {
-
-            background: white;
-
-            color: #123d2b;
-
-            border: 1px solid #d5c69d;
-        }
-
-
-        /* =========================================================
-           EMPTY PLATE MESSAGE
-        ========================================================== */
-
-        .empty-plate {
-
-            position: absolute;
-
-            top: 50%;
-
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-
-            text-align: center;
-
-            width: 85%;
-
-            pointer-events: none;
-        }
-
-
-        .empty-plate-icon {
-
-            font-size: 55px;
-
-            margin-bottom: 12px;
-        }
-
-
-        .empty-plate h3 {
-
-            color: #123d2b;
-
-            font-size: 20px;
-
-            margin-bottom: 7px;
-        }
-
-
-        .empty-plate p {
-
-            color: #777;
-
-            font-size: 12px;
-
-            line-height: 1.5;
-        }
-
-
-        /* =========================================================
-           COMING SOON CARD
-        ========================================================== */
-
-        .coming-card {
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            min-height: 280px;
-
-            padding: 30px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #fffdf7,
-                    #eee5d1
-                );
-
-            border:
-                1px dashed #cdbd96;
-
-            border-radius: 22px;
+        .plate-control-button.reset {
+            background: #f7e5e2;
+            color: #9c3b31;
+            border-color: #e2bbb5;
         }
 
 
@@ -1090,13 +853,11 @@
         ========================================================== */
 
         .info-box {
-
             margin-top: 28px;
 
             padding: 21px;
 
             background: #123d2b;
-
             color: white;
 
             border-radius: 18px;
@@ -1104,22 +865,15 @@
             text-align: center;
         }
 
-
         .info-box h3 {
-
             font-size: 17px;
-
             margin-bottom: 7px;
         }
 
-
         .info-box p {
-
-            color:
-                rgba(255,255,255,0.82);
+            color: rgba(255,255,255,0.82);
 
             font-size: 12px;
-
             line-height: 1.55;
         }
 
@@ -1129,11 +883,9 @@
         ========================================================== */
 
         footer {
-
             width: 100%;
 
             background: #0d3021;
-
             color: white;
 
             text-align: center;
@@ -1141,23 +893,17 @@
             padding: 30px 18px 34px;
         }
 
-
         .footer-name {
-
             font-size: 18px;
-
             font-weight: 800;
 
             margin-bottom: 5px;
         }
 
-
         .footer-tagline {
-
             color: #d6ad55;
 
             font-size: 11px;
-
             font-weight: 700;
 
             letter-spacing: 1px;
@@ -1165,14 +911,10 @@
             margin-bottom: 14px;
         }
 
-
         .footer-text {
-
-            color:
-                rgba(255,255,255,0.65);
+            color: rgba(255,255,255,0.65);
 
             font-size: 11px;
-
             line-height: 1.5;
         }
 
@@ -1187,26 +929,17 @@
                 padding-top: 38px;
             }
 
-
             .intro h1 {
                 font-size: 34px;
             }
 
-
             .menu-grid {
-
                 grid-template-columns:
                     repeat(2, 1fr);
             }
 
-
             model-viewer {
                 height: 350px;
-            }
-
-
-            .plate-scene-wrapper {
-                height: 620px;
             }
 
         }
@@ -1219,9 +952,7 @@
         @media (min-width: 900px) {
 
             .site-wrapper {
-
                 width: 100%;
-
                 max-width: 1440px;
 
                 margin: 0 auto;
@@ -1233,26 +964,19 @@
                     rgba(0,0,0,0.08);
             }
 
-
             .hero img {
-
                 width: 100%;
-
                 height: 150px;
 
                 object-fit: cover;
-
                 display: block;
             }
-
 
             .top-bar {
                 display: none;
             }
 
-
             .desktop-nav {
-
                 position: sticky;
 
                 top: 0;
@@ -1262,13 +986,11 @@
                 display: flex;
 
                 align-items: center;
-
                 justify-content: space-between;
 
                 padding: 12px 28px;
 
                 background: #123d2b;
-
                 color: white;
 
                 box-shadow:
@@ -1276,22 +998,16 @@
                     rgba(0,0,0,0.18);
             }
 
-
             .desktop-brand {
-
                 display: flex;
-
                 flex-direction: column;
             }
-
 
             .desktop-brand strong {
                 font-size: 19px;
             }
 
-
             .desktop-brand span {
-
                 margin-top: 2px;
 
                 font-size: 9px;
@@ -1303,9 +1019,7 @@
                 text-transform: uppercase;
             }
 
-
             .desktop-links {
-
                 display: flex;
 
                 align-items: center;
@@ -1313,26 +1027,20 @@
                 gap: 25px;
             }
 
-
             .desktop-links a {
-
                 color: white;
 
                 text-decoration: none;
 
                 font-size: 13px;
-
                 font-weight: 600;
             }
-
 
             .desktop-links a:hover {
                 color: #d6ad55;
             }
 
-
             .desktop-ar {
-
                 background: #d6ad55;
 
                 color: #173d2b;
@@ -1342,97 +1050,90 @@
                 border-radius: 25px;
 
                 font-size: 12px;
-
                 font-weight: 800;
             }
 
-
             .intro {
-
-                padding:
-                    34px 25px 18px;
+                padding: 34px 25px 18px;
             }
-
 
             .intro h1 {
                 font-size: 34px;
             }
 
-
             .categories {
-
                 justify-content: center;
 
                 overflow: visible;
 
-                padding:
-                    3px 20px 15px;
+                padding: 3px 20px 15px;
             }
 
-
             .content {
-
                 width: 92%;
-
                 max-width: 1180px;
 
-                padding:
-                    0 0 40px;
+                padding: 0 0 40px;
 
                 margin: 0 auto;
             }
 
-
             .section-header {
-
-                padding:
-                    4px 2px 13px;
+                padding: 4px 2px 13px;
             }
-
 
             .section-header h2 {
                 font-size: 22px;
             }
 
-
             .menu-grid {
-
                 grid-template-columns:
                     repeat(2, minmax(0, 1fr));
 
                 gap: 24px;
             }
 
-
             .food-info {
-
-                padding:
-                    17px 17px 12px;
+                padding: 17px 17px 12px;
             }
-
 
             .food-name {
                 font-size: 20px;
             }
 
-
             .food-description {
                 font-size: 12px;
             }
-
 
             model-viewer {
                 height: 320px;
             }
 
-
-            .plate-bar {
-                width: 92%;
+            .model-instruction {
+                padding: 11px 15px 15px;
             }
 
+            .coming-card {
+                min-height: 320px;
+            }
 
-            .plate-scene-wrapper {
-                height: 650px;
+            .info-box {
+                max-width: 700px;
+
+                margin:
+                    28px auto 0;
+            }
+
+            #plateBuilder {
+                width: 92%;
+                max-width: 1180px;
+
+                margin: 0 auto;
+            }
+
+            #plateViewer {
+                height: 600px;
+                min-height: 600px;
             }
 
         }
@@ -1445,12 +1146,9 @@
         @media (min-width: 1200px) {
 
             .hero img {
-
                 height: 170px;
-
                 object-fit: cover;
             }
-
 
             model-viewer {
                 height: 340px;
@@ -1469,70 +1167,43 @@
                 height: 110px;
             }
 
-
             .brand-name {
                 font-size: 17px;
             }
 
-
             .ar-label {
-
                 font-size: 11px;
-
                 padding: 7px 10px;
             }
-
 
             .intro h1 {
                 font-size: 25px;
             }
 
-
             .food-name {
                 font-size: 20px;
             }
-
 
             model-viewer {
                 height: 275px;
             }
 
-
             .ar-button {
-
                 min-width: 150px;
-
                 font-size: 13px;
             }
 
-
-            .plate-bar {
-
-                align-items: stretch;
-
-                flex-direction: column;
+            #plateViewer {
+                height: 430px;
+                min-height: 430px;
             }
-
-
-            .plate-open-button {
-                width: 100%;
-            }
-
 
             .plate-builder-header {
                 align-items: flex-start;
-
-                flex-direction: column;
             }
 
-
-            .plate-scene-wrapper {
-                height: 500px;
-            }
-
-
-            .plate-help {
-                font-size: 9px;
+            .plate-builder-title {
+                font-size: 22px;
             }
 
         }
@@ -1591,17 +1262,9 @@
                 Categories
             </a>
 
-            <a href="#plate-builder-link"
-               onclick="openPlateBuilder(); return false;">
-
-                Build Your Plate
-
-            </a>
-
             <a href="#how-it-works">
                 How AR Works
             </a>
-
 
             <span class="desktop-ar">
                 ✦ AR MENU
@@ -1657,11 +1320,9 @@
 
 
         <p>
-
             Discover your favourite dishes in 3D
             and experience them directly on your
             table using Augmented Reality.
-
         </p>
 
     </section>
@@ -1739,38 +1400,6 @@
 
 
     <!-- =========================================================
-         BUILD YOUR PLATE BAR
-    ========================================================== -->
-
-    <section class="plate-bar">
-
-        <div class="plate-bar-text">
-
-            <div class="plate-bar-title">
-                🍽️ Build Your Plate
-            </div>
-
-            <div class="plate-bar-subtitle">
-                Select multiple dishes and create your own plate.
-            </div>
-
-        </div>
-
-
-        <button
-            class="plate-open-button"
-            onclick="openPlateBuilder()">
-
-            Your Plate
-            (<span id="plate-count">0</span>)
-
-        </button>
-
-    </section>
-
-
-
-    <!-- =========================================================
          MAIN MENU
     ========================================================== -->
 
@@ -1779,9 +1408,7 @@
         id="menu">
 
 
-        <div
-            class="section-header"
-            id="menu-header">
+        <div class="section-header">
 
             <h2 id="section-title">
                 Today's Special
@@ -1794,120 +1421,47 @@
         </div>
 
 
+        <!-- =====================================================
+             YOUR PLATE BAR
+        ====================================================== -->
+
+        <div
+            class="plate-bar"
+            id="plateBar">
+
+            <div class="plate-bar-info">
+
+                <div class="plate-bar-title">
+                    🍽️ Your Plate
+                </div>
+
+                <div
+                    class="plate-bar-count"
+                    id="plateCount">
+
+                    0 items selected
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="view-plate-button"
+                onclick="openPlateBuilder()">
+
+                View Your Plate
+
+            </button>
+
+        </div>
+
+
         <div
             class="menu-grid"
             id="menu-grid">
 
         </div>
-
-
-        <!-- =====================================================
-             BUILD YOUR PLATE
-        ====================================================== -->
-
-        <section
-            id="plate-builder">
-
-
-            <div class="plate-builder-header">
-
-                <div>
-
-                    <h2>
-                        🍽️ Build Your Plate
-                    </h2>
-
-                    <p>
-                        Choose multiple dishes and arrange them
-                        together on your virtual plate.
-                    </p>
-
-                </div>
-
-
-                <button
-                    class="back-menu-button"
-                    onclick="closePlateBuilder()">
-
-                    ← Back to Menu
-
-                </button>
-
-            </div>
-
-
-            <!-- SELECTED FOOD CHIPS -->
-
-            <div
-                class="selected-items"
-                id="selected-items">
-
-            </div>
-
-
-            <!-- 3D PLATE -->
-
-            <div class="plate-scene-wrapper">
-
-                <canvas
-                    id="plate-canvas">
-                </canvas>
-
-
-                <div
-                    class="empty-plate"
-                    id="empty-plate">
-
-                    <div class="empty-plate-icon">
-                        🍽️
-                    </div>
-
-                    <h3>
-                        Your plate is empty
-                    </h3>
-
-                    <p>
-                        Go back to the menu and add
-                        dishes to start building your plate.
-                    </p>
-
-                </div>
-
-
-                <div class="plate-help">
-
-                    🖱️ Drag to rotate • Scroll to zoom
-
-                </div>
-
-            </div>
-
-
-            <!-- ACTIONS -->
-
-            <div class="plate-actions">
-
-                <button
-                    class="plate-action"
-                    onclick="resetPlate()">
-
-                    ↻ Reset Plate
-
-                </button>
-
-
-                <button
-                    class="plate-action secondary"
-                    onclick="closePlateBuilder()">
-
-                    + Add More Food
-
-                </button>
-
-            </div>
-
-
-        </section>
 
 
         <!-- =====================================================
@@ -1936,6 +1490,113 @@
 
 
     </main>
+
+
+
+    <!-- =========================================================
+         BUILD YOUR PLATE
+    ========================================================== -->
+
+    <section
+        id="plateBuilder"
+        class="content">
+
+
+        <div class="plate-builder-header">
+
+            <div>
+
+                <h2 class="plate-builder-title">
+                    🍽️ Build Your Plate
+                </h2>
+
+                <p class="plate-builder-subtitle">
+                    Select dishes from the menu and
+                    see them together on one interactive plate.
+                </p>
+
+            </div>
+
+
+            <button
+                class="back-menu-button"
+                onclick="closePlateBuilder()">
+
+                ← Back to Menu
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             EMPTY MESSAGE
+        ====================================================== -->
+
+        <div
+            class="plate-empty"
+            id="plateEmpty">
+
+            No dishes selected yet.
+            Go back to the menu and tap
+            <strong>+ Add to Plate</strong>.
+
+        </div>
+
+
+        <!-- =====================================================
+             SELECTED CHIPS
+        ====================================================== -->
+
+        <div
+            class="selected-items"
+            id="selectedItems">
+        </div>
+
+
+        <!-- =====================================================
+             THREE.JS PLATE
+        ====================================================== -->
+
+        <div id="plateViewer">
+
+            <div
+                class="plate-help">
+
+                🖱️ Drag to rotate • Scroll to zoom
+                • Touch and drag on mobile
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             PLATE CONTROLS
+        ====================================================== -->
+
+        <div class="plate-controls">
+
+            <button
+                class="plate-control-button"
+                onclick="resetPlate()">
+
+                🗑️ Clear Plate
+
+            </button>
+
+            <button
+                class="plate-control-button"
+                onclick="closePlateBuilder()">
+
+                ➕ Add More Items
+
+            </button>
+
+        </div>
+
+
+    </section>
 
 
 
@@ -1974,6 +1635,7 @@
 
 <!-- =============================================================
      JAVASCRIPT
+     FOOD DATA + MENU + BUILD YOUR PLATE
 ============================================================== -->
 
 <script>
@@ -1995,28 +1657,24 @@
         document.getElementById("menu-grid");
 
 
-    const plateBuilder =
-        document.getElementById("plate-builder");
-
-
-    const menuHeader =
-        document.getElementById("menu-header");
-
-
     const plateCount =
-        document.getElementById("plate-count");
+        document.getElementById("plateCount");
+
+
+    const plateBuilder =
+        document.getElementById("plateBuilder");
+
+
+    const plateBar =
+        document.getElementById("plateBar");
 
 
     const selectedItemsContainer =
-        document.getElementById("selected-items");
+        document.getElementById("selectedItems");
 
 
-    const emptyPlate =
-        document.getElementById("empty-plate");
-
-
-    const canvas =
-        document.getElementById("plate-canvas");
+    const plateEmpty =
+        document.getElementById("plateEmpty");
 
 
     /* ============================================================
@@ -2053,6 +1711,10 @@
     const foods = {
 
 
+        /* ========================================================
+           CLASSIC PIZZA
+        ======================================================== */
+
         pizza: {
 
             id: "pizza",
@@ -2081,6 +1743,10 @@
 
         },
 
+
+        /* ========================================================
+           CLASSIC BURGER
+        ======================================================== */
 
         burger: {
 
@@ -2111,6 +1777,10 @@
         },
 
 
+        /* ========================================================
+           REALISTIC BURGER
+        ======================================================== */
+
         realisticBurger: {
 
             id: "realisticBurger",
@@ -2139,6 +1809,10 @@
 
         },
 
+
+        /* ========================================================
+           CLASSIC PASTA
+        ======================================================== */
 
         pasta: {
 
@@ -2169,6 +1843,10 @@
         },
 
 
+        /* ========================================================
+           FRENCH FRIES
+        ======================================================== */
+
         fries: {
 
             id: "fries",
@@ -2198,6 +1876,10 @@
 
         },
 
+
+        /* ========================================================
+           DONUT
+        ======================================================== */
 
         donut: {
 
@@ -2231,31 +1913,48 @@
 
 
     /* ============================================================
-       PLATE STATE
+       SELECTED PLATE ITEMS
     ============================================================ */
 
     let selectedPlateItems = [];
 
 
     /* ============================================================
+       CURRENT CATEGORY
+    ============================================================ */
+
+    let currentCategory = "popular";
+
+
+    /* ============================================================
        THREE.JS VARIABLES
     ============================================================ */
 
-    let scene;
+    let scene = null;
 
-    let camera;
+    let camera = null;
 
-    let renderer;
+    let renderer = null;
 
-    let plateGroup;
+    let plateGroup = null;
 
-    let foodGroup;
+    let foodGroup = null;
 
-    let animationStarted = false;
+    let plateInitialized = false;
 
-    let currentRotationX = 0.35;
+    let plateAnimationStarted = false;
 
-    let currentRotationY = 0;
+    let plateMouseDown = false;
+
+    let plateLastX = 0;
+
+    let plateLastY = 0;
+
+    let plateRotationX = -0.15;
+
+    let plateRotationY = 0;
+
+    let plateZoom = 10;
 
 
     /* ============================================================
@@ -2301,6 +2000,7 @@
 
                     <div class="dish-tags">
 
+
                         ${food.tags.map(tag => `
 
                             <div class="dish-tag">
@@ -2309,19 +2009,8 @@
 
                         `).join("")}
 
+
                     </div>
-
-
-                    <button
-                        class="add-plate-button
-                        ${isSelected ? "added" : ""}"
-                        onclick="togglePlateItem('${food.id}')">
-
-                        ${isSelected
-                            ? "✓ Added to Your Plate"
-                            : "+ Add to Plate"}
-
-                    </button>
 
 
                 </div>
@@ -2374,6 +2063,29 @@
                 </div>
 
 
+                <!-- =================================================
+                     ADD TO PLATE
+                ================================================== -->
+
+                <button
+
+                    class="
+                        plate-add-button
+                        ${isSelected ? "selected" : ""}
+                    "
+
+                    onclick="
+                        togglePlateItem('${food.id}')
+                    ">
+
+                    ${isSelected
+                        ? "✓ Added to Plate"
+                        : "+ Add to Plate"
+                    }
+
+                </button>
+
+
                 <div class="model-instruction">
 
 
@@ -2402,46 +2114,146 @@
 
 
     /* ============================================================
-       TOGGLE PLATE ITEM
+       CATEGORY CLICK EVENTS
     ============================================================ */
 
-    function togglePlateItem(foodId) {
-
-        const index =
-            selectedPlateItems.indexOf(foodId);
+    categoryButtons.forEach(button => {
 
 
-        if (index === -1) {
+        button.addEventListener(
+            "click",
+            function () {
 
-            selectedPlateItems.push(foodId);
 
-        } else {
+                categoryButtons.forEach(item => {
 
-            selectedPlateItems.splice(index, 1);
+                    item.classList.remove("active");
+
+                });
+
+
+                this.classList.add("active");
+
+
+                const selectedCategory =
+                    this.dataset.category;
+
+
+                currentCategory =
+                    selectedCategory;
+
+
+                sectionTitle.textContent =
+                    categoryTitles[selectedCategory];
+
+
+                updateMenu(selectedCategory);
+
+            }
+        );
+
+    });
+
+
+    /* ============================================================
+       UPDATE MENU
+    ============================================================ */
+
+    function updateMenu(category) {
+
+
+        if (category === "popular") {
+
+            menuGrid.innerHTML =
+
+                createFoodCard(foods.pizza) +
+
+                createFoodCard(foods.burger) +
+
+                createFoodCard(foods.pasta) +
+
+                createFoodCard(foods.fries);
+
+            return;
 
         }
 
 
-        updatePlateUI();
+        if (category === "pizza") {
 
-        refreshCurrentMenu();
+            menuGrid.innerHTML =
+                createFoodCard(foods.pizza);
+
+            return;
+
+        }
+
+
+        if (category === "burgers") {
+
+            menuGrid.innerHTML =
+
+                createFoodCard(foods.burger) +
+
+                createFoodCard(foods.realisticBurger);
+
+            return;
+
+        }
+
+
+        if (category === "pasta") {
+
+            menuGrid.innerHTML =
+                createFoodCard(foods.pasta);
+
+            return;
+
+        }
+
+
+        if (category === "sides") {
+
+            menuGrid.innerHTML =
+                createFoodCard(foods.fries);
+
+            return;
+
+        }
+
+
+        if (category === "desserts") {
+
+            menuGrid.innerHTML =
+                createFoodCard(foods.donut);
+
+            return;
+
+        }
 
     }
 
 
     /* ============================================================
-       REMOVE PLATE ITEM
+       TOGGLE FOOD ON PLATE
     ============================================================ */
 
-    function removePlateItem(foodId) {
+    function togglePlateItem(foodId) {
 
-        const index =
+        const existingIndex =
             selectedPlateItems.indexOf(foodId);
 
 
-        if (index !== -1) {
+        if (existingIndex === -1) {
 
-            selectedPlateItems.splice(index, 1);
+            selectedPlateItems.push(foodId);
+
+        } else {
+
+            selectedPlateItems.splice(
+                existingIndex,
+                1
+            );
 
         }
 
@@ -2449,6 +2261,39 @@
         updatePlateUI();
 
         refreshCurrentMenu();
+
+
+        if (plateInitialized) {
+
+            updateThreeJSPlate();
+
+        }
+
+    }
+
+
+    /* ============================================================
+       REMOVE ITEM FROM PLATE
+    ============================================================ */
+
+    function removePlateItem(foodId) {
+
+        selectedPlateItems =
+            selectedPlateItems.filter(
+                id => id !== foodId
+            );
+
+
+        updatePlateUI();
+
+        refreshCurrentMenu();
+
+
+        if (plateInitialized) {
+
+            updateThreeJSPlate();
+
+        }
 
     }
 
@@ -2459,59 +2304,94 @@
 
     function updatePlateUI() {
 
-        plateCount.textContent =
+        const count =
             selectedPlateItems.length;
 
 
-        if (
-            selectedPlateItems.length === 0
-        ) {
+        if (count === 0) {
 
-            selectedItemsContainer.innerHTML = "";
+            plateCount.textContent =
+                "0 items selected";
+
+            plateEmpty.style.display =
+                "block";
 
         } else {
 
-            selectedItemsContainer.innerHTML =
+            plateCount.textContent =
+                `${count} item${count === 1 ? "" : "s"} selected`;
 
-                selectedPlateItems.map(id => {
-
-                    const food = foods[id];
-
-                    return `
-
-                        <div class="selected-chip">
-
-                            ${food.name}
-
-                            <button
-                                class="remove-chip"
-                                onclick="removePlateItem('${id}')">
-
-                                ×
-
-                            </button>
-
-                        </div>
-
-                    `;
-
-                }).join("");
+            plateEmpty.style.display =
+                "none";
 
         }
 
 
-        if (selectedPlateItems.length === 0) {
-
-            emptyPlate.style.display = "block";
-
-        } else {
-
-            emptyPlate.style.display = "none";
-
-        }
+        selectedItemsContainer.innerHTML = "";
 
 
-        updateThreeJSPlate();
+        selectedPlateItems.forEach(foodId => {
+
+            const food =
+                getFoodById(foodId);
+
+
+            if (!food) return;
+
+
+            const chip =
+                document.createElement("div");
+
+
+            chip.className =
+                "selected-chip";
+
+
+            chip.innerHTML = `
+
+                <span>
+                    ${food.name}
+                </span>
+
+                <button
+                    onclick="
+                        removePlateItem('${food.id}')
+                    "
+                    aria-label="Remove ${food.shortName}">
+
+                    ×
+
+                </button>
+
+            `;
+
+
+            selectedItemsContainer.appendChild(chip);
+
+        });
+
+    }
+
+
+    /* ============================================================
+       GET FOOD BY ID
+    ============================================================ */
+
+    function getFoodById(foodId) {
+
+        return Object.values(foods)
+            .find(food => food.id === foodId);
+
+    }
+
+
+    /* ============================================================
+       REFRESH CURRENT MENU
+    ============================================================ */
+
+    function refreshCurrentMenu() {
+
+        updateMenu(currentCategory);
 
     }
 
@@ -2522,22 +2402,74 @@
 
     function openPlateBuilder() {
 
-        menuGrid.style.display = "none";
+        const menu =
+            document.getElementById("menu");
 
-        menuHeader.style.display = "none";
+        const categories =
+            document.getElementById("categories");
+
+        const intro =
+            document.querySelector(".intro");
+
+
+        /*
+         * Hide normal menu areas.
+         */
+
+        menu.style.display = "none";
+
+        categories.style.display = "none";
+
+        intro.style.display = "none";
+
+
+        /*
+         * Show plate builder.
+         */
 
         plateBuilder.style.display = "block";
 
+        plateBar.style.display = "none";
 
-        initializeThreeJS();
 
+        /*
+         * Update selected item information.
+         */
 
         updatePlateUI();
 
 
-        plateBuilder.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+        /*
+         * IMPORTANT:
+         *
+         * Initialize Three.js only AFTER
+         * the plate viewer becomes visible.
+         *
+         * This prevents width/height = 0.
+         */
+
+        setTimeout(() => {
+
+            if (!plateInitialized) {
+
+                initializeThreeJS();
+
+                plateInitialized = true;
+
+            }
+
+
+            resizePlateViewer();
+
+            updateThreeJSPlate();
+
+
+        }, 150);
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
 
     }
@@ -2549,19 +2481,52 @@
 
     function closePlateBuilder() {
 
-        plateBuilder.style.display = "none";
+        const menu =
+            document.getElementById("menu");
 
-        menuGrid.style.display = "grid";
+        const categories =
+            document.getElementById("categories");
 
-        menuHeader.style.display = "flex";
+        const intro =
+            document.querySelector(".intro");
 
 
-        document
-            .getElementById("menu")
-            .scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        plateBuilder.style.display =
+            "none";
+
+
+        menu.style.display =
+            "block";
+
+
+        categories.style.display =
+            "block";
+
+
+        intro.style.display =
+            "block";
+
+
+        plateBar.style.display =
+            "flex";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+        /*
+         * If user later reopens the plate,
+         * make sure renderer gets correct size.
+         */
+
+        setTimeout(() => {
+
+            resizePlateViewer();
+
+        }, 100);
 
     }
 
@@ -2574,131 +2539,136 @@
 
         selectedPlateItems = [];
 
+
         updatePlateUI();
 
         refreshCurrentMenu();
+
+
+        if (plateInitialized) {
+
+            updateThreeJSPlate();
+
+        }
 
     }
 
 
     /* ============================================================
-       THREE.JS INITIALIZATION
+       INITIALIZE THREE.JS
     ============================================================ */
 
     function initializeThreeJS() {
 
-        if (animationStarted) {
+        const container =
+            document.getElementById("plateViewer");
+
+
+        if (!container) {
+
+            console.error(
+                "Plate viewer container not found."
+            );
+
             return;
+
         }
 
 
-        animationStarted = true;
+        /*
+         * Remove any previous canvas.
+         */
+
+        container
+            .querySelectorAll("canvas")
+            .forEach(canvas => canvas.remove());
 
 
-        scene = new THREE.Scene();
+        /*
+         * Create canvas.
+         */
+
+        const canvas =
+            document.createElement("canvas");
+
+
+        canvas.id =
+            "plateCanvas";
+
+
+        container.appendChild(canvas);
+
+
+        /*
+         * Scene.
+         */
+
+        scene =
+            new THREE.Scene();
 
 
         scene.background =
-            new THREE.Color(0xe9e0cd);
+            new THREE.Color(0xf2ead8);
 
+
+        /*
+         * Camera.
+         */
 
         camera =
             new THREE.PerspectiveCamera(
                 45,
-                canvas.clientWidth /
-                canvas.clientHeight,
+                1,
                 0.1,
-                100
+                1000
             );
 
 
         camera.position.set(
             0,
-            5.5,
-            8
+            8,
+            plateZoom
         );
 
+
+        camera.lookAt(
+            0,
+            0,
+            0
+        );
+
+
+        /*
+         * Renderer.
+         */
 
         renderer =
             new THREE.WebGLRenderer({
                 canvas: canvas,
                 antialias: true,
-                alpha: true
+                alpha: false
             });
 
 
         renderer.setPixelRatio(
             Math.min(
-                window.devicePixelRatio,
+                window.devicePixelRatio || 1,
                 2
             )
         );
 
 
-        renderer.setSize(
-            canvas.clientWidth,
-            canvas.clientHeight,
-            false
-        );
+        renderer.shadowMap.enabled =
+            true;
 
 
-        renderer.outputEncoding =
-            THREE.sRGBEncoding;
+        renderer.shadowMap.type =
+            THREE.PCFSoftShadowMap;
 
 
-        /* ========================================================
-           LIGHTING
-        ======================================================== */
-
-        const ambientLight =
-            new THREE.AmbientLight(
-                0xffffff,
-                2.2
-            );
-
-
-        scene.add(ambientLight);
-
-
-        const directionalLight =
-            new THREE.DirectionalLight(
-                0xffffff,
-                3
-            );
-
-
-        directionalLight.position.set(
-            4,
-            8,
-            5
-        );
-
-
-        scene.add(
-            directionalLight
-        );
-
-
-        const fillLight =
-            new THREE.DirectionalLight(
-                0xfff2d5,
-                1.5
-            );
-
-
-        fillLight.position.set(
-            -5,
-            4,
-            -3
-        );
-
-
-        scene.add(fillLight);
-
-
-        /* ========================================================
-           PLATE
-        ======================================================== */
+        /*
+         * Main plate group.
+         */
 
         plateGroup =
             new THREE.Group();
@@ -2709,74 +2679,9 @@
         );
 
 
-        const outerPlateGeometry =
-            new THREE.CylinderGeometry(
-                3.7,
-                3.5,
-                0.35,
-                96
-            );
-
-
-        const outerPlateMaterial =
-            new THREE.MeshStandardMaterial({
-                color: 0xffffff,
-                roughness: 0.28,
-                metalness: 0.05
-            });
-
-
-        const outerPlate =
-            new THREE.Mesh(
-                outerPlateGeometry,
-                outerPlateMaterial
-            );
-
-
-        outerPlate.position.y =
-            -0.15;
-
-
-        plateGroup.add(
-            outerPlate
-        );
-
-
-        const innerPlateGeometry =
-            new THREE.CylinderGeometry(
-                3.15,
-                3.0,
-                0.18,
-                96
-            );
-
-
-        const innerPlateMaterial =
-            new THREE.MeshStandardMaterial({
-                color: 0xf8f4e8,
-                roughness: 0.3
-            });
-
-
-        const innerPlate =
-            new THREE.Mesh(
-                innerPlateGeometry,
-                innerPlateMaterial
-            );
-
-
-        innerPlate.position.y =
-            0.04;
-
-
-        plateGroup.add(
-            innerPlate
-        );
-
-
-        /* ========================================================
-           FOOD GROUP
-        ======================================================== */
+        /*
+         * Food group.
+         */
 
         foodGroup =
             new THREE.Group();
@@ -2787,53 +2692,349 @@
         );
 
 
-        /* ========================================================
-           INITIAL ROTATION
-        ======================================================== */
+        /*
+         * Lighting.
+         */
 
-        plateGroup.rotation.x =
-            currentRotationX;
+        const ambientLight =
+            new THREE.AmbientLight(
+                0xffffff,
+                2.2
+            );
 
 
-        plateGroup.rotation.y =
-            currentRotationY;
-
-
-        /* ========================================================
-           RESIZE
-        ======================================================== */
-
-        window.addEventListener(
-            "resize",
-            resizePlateCanvas
+        scene.add(
+            ambientLight
         );
 
 
-        /* ========================================================
-           MOUSE CONTROLS
-        ======================================================== */
+        const mainLight =
+            new THREE.DirectionalLight(
+                0xffffff,
+                3
+            );
+
+
+        mainLight.position.set(
+            5,
+            10,
+            5
+        );
+
+
+        mainLight.castShadow =
+            true;
+
+
+        scene.add(
+            mainLight
+        );
+
+
+        const fillLight =
+            new THREE.DirectionalLight(
+                0xffffff,
+                1.3
+            );
+
+
+        fillLight.position.set(
+            -5,
+            6,
+            -4
+        );
+
+
+        scene.add(
+            fillLight
+        );
+
+
+        /*
+         * Create plate.
+         */
+
+        createPlate();
+
+
+        /*
+         * Controls.
+         */
 
         setupPlateControls();
 
 
-        /* ========================================================
-           ANIMATION LOOP
-        ======================================================== */
+        /*
+         * Start animation only once.
+         */
 
-        animatePlate();
+        if (!plateAnimationStarted) {
+
+            plateAnimationStarted =
+                true;
+
+            animatePlate();
+
+        }
+
+
+        /*
+         * Set correct initial size.
+         */
+
+        resizePlateViewer();
 
     }
 
 
     /* ============================================================
-       LOAD GLB
+       CREATE PROCEDURAL PLATE
+    ============================================================ */
+
+    function createPlate() {
+
+        /*
+         * Main plate.
+         */
+
+        const plateGeometry =
+            new THREE.CylinderGeometry(
+                4.5,
+                4.5,
+                0.35,
+                96
+            );
+
+
+        const plateMaterial =
+            new THREE.MeshStandardMaterial({
+
+                color: 0xffffff,
+
+                roughness: 0.32,
+
+                metalness: 0.02
+
+            });
+
+
+        const plate =
+            new THREE.Mesh(
+                plateGeometry,
+                plateMaterial
+            );
+
+
+        plate.name =
+            "mainPlate";
+
+
+        plate.position.y =
+            -0.25;
+
+
+        plate.receiveShadow =
+            true;
+
+
+        plate.castShadow =
+            true;
+
+
+        plateGroup.add(
+            plate
+        );
+
+
+        /*
+         * Raised inner plate.
+         */
+
+        const innerGeometry =
+            new THREE.CylinderGeometry(
+                3.75,
+                3.75,
+                0.15,
+                96
+            );
+
+
+        const innerMaterial =
+            new THREE.MeshStandardMaterial({
+
+                color: 0xfafafa,
+
+                roughness: 0.35
+
+            });
+
+
+        const innerPlate =
+            new THREE.Mesh(
+                innerGeometry,
+                innerMaterial
+            );
+
+
+        innerPlate.position.y =
+            -0.02;
+
+
+        innerPlate.receiveShadow =
+            true;
+
+
+        plateGroup.add(
+            innerPlate
+        );
+
+
+        /*
+         * Plate rim.
+         */
+
+        const rimGeometry =
+            new THREE.TorusGeometry(
+                4.15,
+                0.12,
+                20,
+                96
+            );
+
+
+        const rimMaterial =
+            new THREE.MeshStandardMaterial({
+
+                color: 0xd6ad55,
+
+                roughness: 0.3,
+
+                metalness: 0.1
+
+            });
+
+
+        const rim =
+            new THREE.Mesh(
+                rimGeometry,
+                rimMaterial
+            );
+
+
+        rim.rotation.x =
+            Math.PI / 2;
+
+
+        rim.position.y =
+            0.08;
+
+
+        plateGroup.add(
+            rim
+        );
+
+    }
+
+
+    /* ============================================================
+       RESIZE THREE.JS VIEWER
+    ============================================================ */
+
+    function resizePlateViewer() {
+
+        if (!renderer || !camera) {
+            return;
+        }
+
+
+        const container =
+            document.getElementById(
+                "plateViewer"
+            );
+
+
+        if (!container) {
+            return;
+        }
+
+
+        const width =
+            container.clientWidth;
+
+
+        const height =
+            container.clientHeight;
+
+
+        /*
+         * Critical protection:
+         *
+         * Do not resize using zero dimensions.
+         */
+
+        if (
+            width <= 0 ||
+            height <= 0
+        ) {
+
+            return;
+
+        }
+
+
+        camera.aspect =
+            width / height;
+
+
+        camera.updateProjectionMatrix();
+
+
+        renderer.setSize(
+            width,
+            height,
+            false
+        );
+
+
+        renderer.setPixelRatio(
+            Math.min(
+                window.devicePixelRatio || 1,
+                2
+            )
+        );
+
+    }
+
+
+    /* ============================================================
+       WINDOW RESIZE
+    ============================================================ */
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            resizePlateViewer();
+
+        }
+    );
+
+
+    /* ============================================================
+       LOAD FOOD MODEL
     ============================================================ */
 
     function loadFoodModel(
         food,
         position,
-        scale
+        index,
+        total
     ) {
+
+        if (!foodGroup) {
+            return;
+        }
+
 
         const loader =
             new THREE.GLTFLoader();
@@ -2843,41 +3044,148 @@
 
             food.model,
 
+
             function (gltf) {
 
-                const object =
+                const model =
                     gltf.scene;
 
 
-                object.position.copy(
-                    position
+                /*
+                 * Calculate original model size.
+                 */
+
+                const box =
+                    new THREE.Box3()
+                        .setFromObject(model);
+
+
+                const size =
+                    new THREE.Vector3();
+
+
+                box.getSize(size);
+
+
+                /*
+                 * Find largest dimension.
+                 */
+
+                const maxDimension =
+                    Math.max(
+                        size.x,
+                        size.y,
+                        size.z
+                    );
+
+
+                /*
+                 * Normalize every food model.
+                 *
+                 * This is important because
+                 * different GLB files have
+                 * different original scales.
+                 */
+
+                const targetSize =
+                    1.75;
+
+
+                if (
+                    maxDimension > 0 &&
+                    isFinite(maxDimension)
+                ) {
+
+                    const scale =
+                        targetSize /
+                        maxDimension;
+
+
+                    model.scale.set(
+                        scale,
+                        scale,
+                        scale
+                    );
+
+                }
+
+
+                /*
+                 * Recalculate bounds
+                 * after scaling.
+                 */
+
+                const scaledBox =
+                    new THREE.Box3()
+                        .setFromObject(model);
+
+
+                const center =
+                    new THREE.Vector3();
+
+
+                scaledBox.getCenter(
+                    center
                 );
 
 
-                object.scale.set(
-                    scale,
-                    scale,
-                    scale
-                );
+                /*
+                 * Move model origin
+                 * to its center.
+                 */
+
+                model.position.x -=
+                    center.x;
 
 
-                object.rotation.y =
-                    Math.random() *
-                    Math.PI *
-                    2;
+                model.position.y -=
+                    scaledBox.min.y;
 
 
-                object.traverse(
-                    function(child) {
+                model.position.z -=
+                    center.z;
+
+
+                /*
+                 * Place model.
+                 */
+
+                model.position.x +=
+                    position.x;
+
+
+                model.position.y +=
+                    0.12;
+
+
+                model.position.z +=
+                    position.z;
+
+
+                /*
+                 * Small rotation variation.
+                 */
+
+                model.rotation.y =
+                    index *
+                    (Math.PI * 0.17);
+
+
+                /*
+                 * Shadows.
+                 */
+
+                model.traverse(
+                    function (object) {
 
                         if (
-                            child.isMesh
+                            object.isMesh
                         ) {
 
-                            child.castShadow =
+                            object.castShadow =
                                 true;
 
-                            child.receiveShadow =
+                            object.receiveShadow =
                                 true;
 
                         }
@@ -2886,18 +3194,24 @@
                 );
 
 
+                /*
+                 * Add to plate.
+                 */
+
                 foodGroup.add(
-                    object
+                    model
                 );
 
             },
 
+
             undefined,
 
-            function(error) {
+
+            function (error) {
 
                 console.error(
-                    "Unable to load:",
+                    "Could not load model:",
                     food.model,
                     error
                 );
@@ -2915,336 +3229,118 @@
 
     function updateThreeJSPlate() {
 
-        if (!foodGroup) {
+        if (
+            !plateInitialized ||
+            !foodGroup
+        ) {
+
             return;
+
         }
 
+
+        /*
+         * Remove previous food models.
+         */
 
         while (
             foodGroup.children.length > 0
         ) {
 
+            const object =
+                foodGroup.children[0];
+
+
             foodGroup.remove(
-                foodGroup.children[0]
+                object
+            );
+
+
+            object.traverse(
+                function (child) {
+
+                    if (
+                        child.geometry
+                    ) {
+
+                        child.geometry.dispose();
+
+                    }
+
+
+                    if (
+                        child.material
+                    ) {
+
+                        if (
+                            Array.isArray(
+                                child.material
+                            )
+                        ) {
+
+                            child.material
+                                .forEach(
+                                    material =>
+                                        material.dispose()
+                                );
+
+                        } else {
+
+                            child.material.dispose();
+
+                        }
+
+                    }
+
+                }
             );
 
         }
 
 
-        const count =
-            selectedPlateItems.length;
+        /*
+         * No selected items.
+         */
 
+        if (
+            selectedPlateItems.length === 0
+        ) {
 
-        if (count === 0) {
             return;
+
         }
 
 
         /*
-         * Arrange selected food models
-         * around the center of the plate.
+         * Create positions around
+         * the center of the plate.
          */
 
-        const positions = [
-
-            {
-                x: 0,
-                y: 0.45,
-                z: 0
-            },
-
-            {
-                x: -1.35,
-                y: 0.42,
-                z: 0.35
-            },
-
-            {
-                x: 1.35,
-                y: 0.42,
-                z: 0.35
-            },
-
-            {
-                x: 0,
-                y: 0.43,
-                z: -1.35
-            },
-
-            {
-                x: -1.15,
-                y: 0.42,
-                z: -1.25
-            },
-
-            {
-                x: 1.15,
-                y: 0.42,
-                z: -1.25
-            }
-
-        ];
+        const positions =
+            getPlatePositions(
+                selectedPlateItems.length
+            );
 
 
         selectedPlateItems.forEach(
-            function(foodId, index) {
+            function (foodId, index) {
 
                 const food =
-                    foods[foodId];
+                    getFoodById(foodId);
 
 
-                const position =
-                    positions[
-                        index %
-                        positions.length
-                    ];
-
-
-                /*
-                 * Different food models have
-                 * different original dimensions.
-                 * These values provide reasonable
-                 * starting sizes.
-                 */
-
-                let scale = 1;
-
-
-                if (foodId === "pizza") {
-                    scale = 1.15;
-                }
-
-
-                if (foodId === "burger") {
-                    scale = 0.95;
-                }
-
-
-                if (
-                    foodId ===
-                    "realisticBurger"
-                ) {
-
-                    scale = 0.85;
-
-                }
-
-
-                if (foodId === "pasta") {
-                    scale = 0.9;
-                }
-
-
-                if (foodId === "fries") {
-                    scale = 0.8;
-                }
-
-
-                if (foodId === "donut") {
-                    scale = 0.75;
-                }
-
-
-                loadFoodModel(
-
-                    food,
-
-                    new THREE.Vector3(
-                        position.x,
-                        position.y,
-                        position.z
-                    ),
-
-                    scale
-
-                );
-
-            }
-        );
-
-    }
-
-
-    /* ============================================================
-       RESIZE PLATE CANVAS
-    ============================================================ */
-
-    function resizePlateCanvas() {
-
-        if (
-            !renderer ||
-            !camera
-        ) {
-            return;
-        }
-
-
-        const width =
-            canvas.clientWidth;
-
-
-        const height =
-            canvas.clientHeight;
-
-
-        if (
-            width === 0 ||
-            height === 0
-        ) {
-            return;
-        }
-
-
-        camera.aspect =
-            width / height;
-
-
-        camera.updateProjectionMatrix();
-
-
-        renderer.setSize(
-            width,
-            height,
-            false
-        );
-
-    }
-
-
-    /* ============================================================
-       MOUSE / TOUCH CONTROLS
-    ============================================================ */
-
-    function setupPlateControls() {
-
-        let dragging = false;
-
-        let previousX = 0;
-
-        let previousY = 0;
-
-
-        canvas.addEventListener(
-            "pointerdown",
-            function(event) {
-
-                dragging = true;
-
-                previousX =
-                    event.clientX;
-
-                previousY =
-                    event.clientY;
-
-                canvas.setPointerCapture(
-                    event.pointerId
-                );
-
-            }
-        );
-
-
-        canvas.addEventListener(
-            "pointermove",
-            function(event) {
-
-                if (!dragging) {
+                if (!food) {
                     return;
                 }
 
 
-                const deltaX =
-                    event.clientX -
-                    previousX;
+                loadFoodModel(
+                    food,
+                    positions[index],
+                    index,
+                    selectedPlateItems.length
+                );
 
-
-                const deltaY =
-                    event.clientY -
-                    previousY;
-
-
-                currentRotationY +=
-                    deltaX * 0.01;
-
-
-                currentRotationX +=
-                    deltaY * 0.01;
-
-
-                currentRotationX =
-                    Math.max(
-                        -0.8,
-                        Math.min(
-                            1.1,
-                            currentRotationX
-                        )
-                    );
-
-
-                if (plateGroup) {
-
-                    plateGroup.rotation.y =
-                        currentRotationY;
-
-                    plateGroup.rotation.x =
-                        currentRotationX;
-
-                }
-
-
-                previousX =
-                    event.clientX;
-
-                previousY =
-                    event.clientY;
-
-            }
-        );
-
-
-        canvas.addEventListener(
-            "pointerup",
-            function() {
-
-                dragging = false;
-
-            }
-        );
-
-
-        canvas.addEventListener(
-            "pointercancel",
-            function() {
-
-                dragging = false;
-
-            }
-        );
-
-
-        canvas.addEventListener(
-            "wheel",
-            function(event) {
-
-                event.preventDefault();
-
-
-                camera.position.z +=
-                    event.deltaY * 0.005;
-
-
-                camera.position.z =
-                    Math.max(
-                        5,
-                        Math.min(
-                            11,
-                            camera.position.z
-                        )
-                    );
-
-            },
-            {
-                passive: false
             }
         );
 
@@ -3252,7 +3348,151 @@
 
 
     /* ============================================================
-       ANIMATION
+       GET FOOD POSITIONS
+    ============================================================ */
+
+    function getPlatePositions(count) {
+
+        const positions = [];
+
+
+        /*
+         * One item.
+         */
+
+        if (count === 1) {
+
+            positions.push({
+                x: 0,
+                z: 0
+            });
+
+            return positions;
+
+        }
+
+
+        /*
+         * Two items.
+         */
+
+        if (count === 2) {
+
+            positions.push(
+                {
+                    x: -1.45,
+                    z: 0
+                },
+                {
+                    x: 1.45,
+                    z: 0
+                }
+            );
+
+            return positions;
+
+        }
+
+
+        /*
+         * Three items.
+         */
+
+        if (count === 3) {
+
+            positions.push(
+                {
+                    x: 0,
+                    z: -1.45
+                },
+                {
+                    x: -1.45,
+                    z: 1
+                },
+                {
+                    x: 1.45,
+                    z: 1
+                }
+            );
+
+            return positions;
+
+        }
+
+
+        /*
+         * Four items.
+         */
+
+        if (count === 4) {
+
+            positions.push(
+                {
+                    x: -1.35,
+                    z: -1.25
+                },
+                {
+                    x: 1.35,
+                    z: -1.25
+                },
+                {
+                    x: -1.35,
+                    z: 1.25
+                },
+                {
+                    x: 1.35,
+                    z: 1.25
+                }
+            );
+
+            return positions;
+
+        }
+
+
+        /*
+         * Five or more.
+         */
+
+        const radius =
+            count <= 6
+                ? 1.8
+                : 2.1;
+
+
+        for (
+            let i = 0;
+            i < count;
+            i++
+        ) {
+
+            const angle =
+                (Math.PI * 2 * i) /
+                count;
+
+
+            positions.push({
+
+                x:
+                    Math.cos(angle) *
+                    radius,
+
+                z:
+                    Math.sin(angle) *
+                    radius
+
+            });
+
+        }
+
+
+        return positions;
+
+    }
+
+
+    /* ============================================================
+       PLATE ANIMATION
     ============================================================ */
 
     function animatePlate() {
@@ -3263,204 +3503,330 @@
 
 
         if (
-            renderer &&
-            scene &&
-            camera
+            !renderer ||
+            !scene ||
+            !camera
         ) {
 
-            renderer.render(
-                scene,
-                camera
-            );
-
-        }
-
-    }
-
-
-    /* ============================================================
-       CATEGORY CLICK EVENTS
-    ============================================================ */
-
-    categoryButtons.forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                function() {
-
-
-                    categoryButtons.forEach(
-                        item => {
-
-                            item.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                    this.classList.add(
-                        "active"
-                    );
-
-
-                    const selectedCategory =
-                        this.dataset.category;
-
-
-                    sectionTitle.textContent =
-                        categoryTitles[
-                            selectedCategory
-                        ];
-
-
-                    updateMenu(
-                        selectedCategory
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* ============================================================
-       CURRENT CATEGORY
-    ============================================================ */
-
-    let currentCategory =
-        "popular";
-
-
-    /* ============================================================
-       UPDATE MENU
-    ============================================================ */
-
-    function updateMenu(category) {
-
-        currentCategory =
-            category;
-
-
-        if (category === "popular") {
-
-            menuGrid.innerHTML =
-
-                createFoodCard(
-                    foods.pizza
-                ) +
-
-                createFoodCard(
-                    foods.burger
-                ) +
-
-                createFoodCard(
-                    foods.pasta
-                ) +
-
-                createFoodCard(
-                    foods.fries
-                );
-
             return;
 
         }
 
 
-        if (category === "pizza") {
+        /*
+         * Smooth rotation.
+         */
 
-            menuGrid.innerHTML =
+        if (plateGroup) {
 
-                createFoodCard(
-                    foods.pizza
-                );
-
-            return;
-
-        }
+            plateGroup.rotation.x +=
+                (
+                    plateRotationX -
+                    plateGroup.rotation.x
+                ) * 0.08;
 
 
-        if (category === "burgers") {
-
-            menuGrid.innerHTML =
-
-                createFoodCard(
-                    foods.burger
-                ) +
-
-                createFoodCard(
-                    foods.realisticBurger
-                );
-
-            return;
+            plateGroup.rotation.y +=
+                (
+                    plateRotationY -
+                    plateGroup.rotation.y
+                ) * 0.08;
 
         }
 
 
-        if (category === "pasta") {
+        /*
+         * Render.
+         */
 
-            menuGrid.innerHTML =
-
-                createFoodCard(
-                    foods.pasta
-                );
-
-            return;
-
-        }
-
-
-        if (category === "sides") {
-
-            menuGrid.innerHTML =
-
-                createFoodCard(
-                    foods.fries
-                );
-
-            return;
-
-        }
-
-
-        if (category === "desserts") {
-
-            menuGrid.innerHTML =
-
-                createFoodCard(
-                    foods.donut
-                );
-
-            return;
-
-        }
-
-    }
-
-
-    /* ============================================================
-       REFRESH CURRENT MENU
-    ============================================================ */
-
-    function refreshCurrentMenu() {
-
-        updateMenu(
-            currentCategory
+        renderer.render(
+            scene,
+            camera
         );
 
     }
 
 
     /* ============================================================
-       INITIAL LOAD
+       PLATE MOUSE / TOUCH CONTROLS
     ============================================================ */
 
-    updateMenu(
-        "popular"
-    );
+    function setupPlateControls() {
+
+        const container =
+            document.getElementById(
+                "plateViewer"
+            );
+
+
+        if (!container) {
+            return;
+        }
+
+
+        /*
+         * Mouse down.
+         */
+
+        container.addEventListener(
+            "mousedown",
+            function (event) {
+
+                plateMouseDown =
+                    true;
+
+                plateLastX =
+                    event.clientX;
+
+                plateLastY =
+                    event.clientY;
+
+            }
+        );
+
+
+        /*
+         * Mouse move.
+         */
+
+        window.addEventListener(
+            "mousemove",
+            function (event) {
+
+                if (
+                    !plateMouseDown
+                ) {
+
+                    return;
+
+                }
+
+
+                const deltaX =
+                    event.clientX -
+                    plateLastX;
+
+
+                const deltaY =
+                    event.clientY -
+                    plateLastY;
+
+
+                plateRotationY +=
+                    deltaX * 0.01;
+
+
+                plateRotationX +=
+                    deltaY * 0.005;
+
+
+                plateRotationX =
+                    Math.max(
+                        -0.8,
+                        Math.min(
+                            0.8,
+                            plateRotationX
+                        )
+                    );
+
+
+                plateLastX =
+                    event.clientX;
+
+
+                plateLastY =
+                    event.clientY;
+
+            }
+        );
+
+
+        /*
+         * Mouse up.
+         */
+
+        window.addEventListener(
+            "mouseup",
+            function () {
+
+                plateMouseDown =
+                    false;
+
+            }
+        );
+
+
+        /*
+         * Mouse wheel zoom.
+         */
+
+        container.addEventListener(
+            "wheel",
+            function (event) {
+
+                event.preventDefault();
+
+
+                plateZoom +=
+                    event.deltaY * 0.01;
+
+
+                plateZoom =
+                    Math.max(
+                        7,
+                        Math.min(
+                            15,
+                            plateZoom
+                        )
+                    );
+
+
+                if (camera) {
+
+                    camera.position.z =
+                        plateZoom;
+
+                }
+
+            },
+            {
+                passive: false
+            }
+        );
+
+
+        /*
+         * Touch start.
+         */
+
+        container.addEventListener(
+            "touchstart",
+            function (event) {
+
+                if (
+                    event.touches.length !== 1
+                ) {
+
+                    return;
+
+                }
+
+
+                plateMouseDown =
+                    true;
+
+
+                plateLastX =
+                    event.touches[0].clientX;
+
+
+                plateLastY =
+                    event.touches[0].clientY;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /*
+         * Touch move.
+         */
+
+        container.addEventListener(
+            "touchmove",
+            function (event) {
+
+                if (
+                    !plateMouseDown ||
+                    event.touches.length !== 1
+                ) {
+
+                    return;
+
+                }
+
+
+                const currentX =
+                    event.touches[0].clientX;
+
+
+                const currentY =
+                    event.touches[0].clientY;
+
+
+                const deltaX =
+                    currentX -
+                    plateLastX;
+
+
+                const deltaY =
+                    currentY -
+                    plateLastY;
+
+
+                plateRotationY +=
+                    deltaX * 0.01;
+
+
+                plateRotationX +=
+                    deltaY * 0.005;
+
+
+                plateRotationX =
+                    Math.max(
+                        -0.8,
+                        Math.min(
+                            0.8,
+                            plateRotationX
+                        )
+                    );
+
+
+                plateLastX =
+                    currentX;
+
+
+                plateLastY =
+                    currentY;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /*
+         * Touch end.
+         */
+
+        container.addEventListener(
+            "touchend",
+            function () {
+
+                plateMouseDown =
+                    false;
+
+            }
+        );
+
+    }
+
+
+    /* ============================================================
+       LOAD POPULAR MENU ON START
+    ============================================================ */
+
+    updateMenu("popular");
+
+
+    /* ============================================================
+       INITIAL PLATE UI
+    ============================================================ */
+
+    updatePlateUI();
 
 
 </script>
