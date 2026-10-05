@@ -22,6 +22,20 @@
     </script>
 
 
+    <!-- =========================================================
+         THREE.JS
+         Used for the Build Your Plate 3D scene
+    ========================================================== -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+    </script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js">
+    </script>
+
+
     <style>
 
         /* =========================================================
@@ -320,6 +334,99 @@
 
 
         /* =========================================================
+           BUILD YOUR PLATE BAR
+        ========================================================== */
+
+        .plate-bar {
+
+            width: 92%;
+
+            max-width: 1180px;
+
+            margin: 0 auto 24px;
+
+            padding: 16px 18px;
+
+            background: #123d2b;
+
+            border-radius: 18px;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            box-shadow:
+                0 7px 20px rgba(30, 50, 35, 0.14);
+        }
+
+
+        .plate-bar-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+        }
+
+
+        .plate-bar-title {
+
+            font-size: 16px;
+
+            font-weight: 800;
+        }
+
+
+        .plate-bar-subtitle {
+
+            font-size: 11px;
+
+            color:
+                rgba(255,255,255,0.72);
+        }
+
+
+        .plate-open-button {
+
+            border: none;
+
+            background: #d6ad55;
+
+            color: #173d2b;
+
+            padding: 10px 16px;
+
+            border-radius: 25px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+
+            transition: 0.2s ease;
+        }
+
+
+        .plate-open-button:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 5px 12px rgba(0,0,0,0.18);
+        }
+
+
+        /* =========================================================
            MAIN CONTENT
         ========================================================== */
 
@@ -500,6 +607,54 @@
 
 
         /* =========================================================
+           ADD TO PLATE BUTTON
+        ========================================================== */
+
+        .add-plate-button {
+
+            width: 100%;
+
+            margin-top: 15px;
+
+            border: 1px solid #123d2b;
+
+            background: #ffffff;
+
+            color: #123d2b;
+
+            padding: 11px 14px;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .add-plate-button:hover {
+
+            background: #123d2b;
+
+            color: white;
+        }
+
+
+        .add-plate-button.added {
+
+            background: #123d2b;
+
+            color: white;
+
+            border-color: #123d2b;
+        }
+
+
+        /* =========================================================
            MODEL VIEWER
         ========================================================== */
 
@@ -608,6 +763,295 @@
 
 
         /* =========================================================
+           BUILD YOUR PLATE SECTION
+        ========================================================== */
+
+        #plate-builder {
+
+            display: none;
+
+            margin-top: 10px;
+
+            padding-bottom: 25px;
+        }
+
+
+        .plate-builder-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .plate-builder-header h2 {
+
+            color: #123d2b;
+
+            font-size: 24px;
+        }
+
+
+        .plate-builder-header p {
+
+            color: #777;
+
+            font-size: 12px;
+
+            margin-top: 4px;
+        }
+
+
+        .back-menu-button {
+
+            border: 1px solid #d6c79f;
+
+            background: white;
+
+            color: #173d2b;
+
+            padding: 9px 13px;
+
+            border-radius: 10px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           SELECTED ITEMS
+        ========================================================== */
+
+        .selected-items {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .selected-chip {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            background: #f3e6c7;
+
+            color: #173d2b;
+
+            border-radius: 20px;
+
+            padding: 7px 10px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        .remove-chip {
+
+            border: none;
+
+            background: #123d2b;
+
+            color: white;
+
+            width: 20px;
+
+            height: 20px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            line-height: 20px;
+        }
+
+
+        /* =========================================================
+           PLATE CANVAS
+        ========================================================== */
+
+        .plate-scene-wrapper {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 560px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #e8dfce,
+                    #f8f2e7
+                );
+
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px rgba(30, 50, 35, 0.12);
+        }
+
+
+        #plate-canvas {
+
+            display: block;
+
+            width: 100%;
+
+            height: 100%;
+        }
+
+
+        .plate-help {
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: 15px;
+
+            transform: translateX(-50%);
+
+            background:
+                rgba(18,61,43,0.88);
+
+            color: white;
+
+            padding: 9px 15px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            white-space: nowrap;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           PLATE ACTIONS
+        ========================================================== */
+
+        .plate-actions {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-top: 15px;
+        }
+
+
+        .plate-action {
+
+            border: none;
+
+            background: #123d2b;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 25px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+
+        .plate-action.secondary {
+
+            background: white;
+
+            color: #123d2b;
+
+            border: 1px solid #d5c69d;
+        }
+
+
+        /* =========================================================
+           EMPTY PLATE MESSAGE
+        ========================================================== */
+
+        .empty-plate {
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+
+            width: 85%;
+
+            pointer-events: none;
+        }
+
+
+        .empty-plate-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .empty-plate h3 {
+
+            color: #123d2b;
+
+            font-size: 20px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .empty-plate p {
+
+            color: #777;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
            COMING SOON CARD
         ========================================================== */
 
@@ -638,36 +1082,6 @@
                 1px dashed #cdbd96;
 
             border-radius: 22px;
-        }
-
-
-        .coming-icon {
-
-            font-size: 45px;
-
-            margin-bottom: 15px;
-        }
-
-
-        .coming-card h3 {
-
-            color: #123d2b;
-
-            font-size: 20px;
-
-            margin-bottom: 8px;
-        }
-
-
-        .coming-card p {
-
-            max-width: 330px;
-
-            color: #777;
-
-            font-size: 13px;
-
-            line-height: 1.55;
         }
 
 
@@ -788,6 +1202,11 @@
 
             model-viewer {
                 height: 350px;
+            }
+
+
+            .plate-scene-wrapper {
+                height: 620px;
             }
 
         }
@@ -1007,24 +1426,13 @@
             }
 
 
-            .model-instruction {
-
-                padding:
-                    11px 15px 15px;
+            .plate-bar {
+                width: 92%;
             }
 
 
-            .coming-card {
-                min-height: 320px;
-            }
-
-
-            .info-box {
-
-                max-width: 700px;
-
-                margin:
-                    28px auto 0;
+            .plate-scene-wrapper {
+                height: 650px;
             }
 
         }
@@ -1097,6 +1505,36 @@
                 font-size: 13px;
             }
 
+
+            .plate-bar {
+
+                align-items: stretch;
+
+                flex-direction: column;
+            }
+
+
+            .plate-open-button {
+                width: 100%;
+            }
+
+
+            .plate-builder-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .plate-scene-wrapper {
+                height: 500px;
+            }
+
+
+            .plate-help {
+                font-size: 9px;
+            }
+
         }
 
     </style>
@@ -1153,9 +1591,17 @@
                 Categories
             </a>
 
+            <a href="#plate-builder-link"
+               onclick="openPlateBuilder(); return false;">
+
+                Build Your Plate
+
+            </a>
+
             <a href="#how-it-works">
                 How AR Works
             </a>
+
 
             <span class="desktop-ar">
                 ✦ AR MENU
@@ -1293,6 +1739,38 @@
 
 
     <!-- =========================================================
+         BUILD YOUR PLATE BAR
+    ========================================================== -->
+
+    <section class="plate-bar">
+
+        <div class="plate-bar-text">
+
+            <div class="plate-bar-title">
+                🍽️ Build Your Plate
+            </div>
+
+            <div class="plate-bar-subtitle">
+                Select multiple dishes and create your own plate.
+            </div>
+
+        </div>
+
+
+        <button
+            class="plate-open-button"
+            onclick="openPlateBuilder()">
+
+            Your Plate
+            (<span id="plate-count">0</span>)
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =========================================================
          MAIN MENU
     ========================================================== -->
 
@@ -1301,7 +1779,9 @@
         id="menu">
 
 
-        <div class="section-header">
+        <div
+            class="section-header"
+            id="menu-header">
 
             <h2 id="section-title">
                 Today's Special
@@ -1319,6 +1799,115 @@
             id="menu-grid">
 
         </div>
+
+
+        <!-- =====================================================
+             BUILD YOUR PLATE
+        ====================================================== -->
+
+        <section
+            id="plate-builder">
+
+
+            <div class="plate-builder-header">
+
+                <div>
+
+                    <h2>
+                        🍽️ Build Your Plate
+                    </h2>
+
+                    <p>
+                        Choose multiple dishes and arrange them
+                        together on your virtual plate.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="back-menu-button"
+                    onclick="closePlateBuilder()">
+
+                    ← Back to Menu
+
+                </button>
+
+            </div>
+
+
+            <!-- SELECTED FOOD CHIPS -->
+
+            <div
+                class="selected-items"
+                id="selected-items">
+
+            </div>
+
+
+            <!-- 3D PLATE -->
+
+            <div class="plate-scene-wrapper">
+
+                <canvas
+                    id="plate-canvas">
+                </canvas>
+
+
+                <div
+                    class="empty-plate"
+                    id="empty-plate">
+
+                    <div class="empty-plate-icon">
+                        🍽️
+                    </div>
+
+                    <h3>
+                        Your plate is empty
+                    </h3>
+
+                    <p>
+                        Go back to the menu and add
+                        dishes to start building your plate.
+                    </p>
+
+                </div>
+
+
+                <div class="plate-help">
+
+                    🖱️ Drag to rotate • Scroll to zoom
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="plate-actions">
+
+                <button
+                    class="plate-action"
+                    onclick="resetPlate()">
+
+                    ↻ Reset Plate
+
+                </button>
+
+
+                <button
+                    class="plate-action secondary"
+                    onclick="closePlateBuilder()">
+
+                    + Add More Food
+
+                </button>
+
+            </div>
+
+
+        </section>
 
 
         <!-- =====================================================
@@ -1385,7 +1974,6 @@
 
 <!-- =============================================================
      JAVASCRIPT
-     FOOD DATA + CATEGORY NAVIGATION
 ============================================================== -->
 
 <script>
@@ -1405,6 +1993,30 @@
 
     const menuGrid =
         document.getElementById("menu-grid");
+
+
+    const plateBuilder =
+        document.getElementById("plate-builder");
+
+
+    const menuHeader =
+        document.getElementById("menu-header");
+
+
+    const plateCount =
+        document.getElementById("plate-count");
+
+
+    const selectedItemsContainer =
+        document.getElementById("selected-items");
+
+
+    const emptyPlate =
+        document.getElementById("empty-plate");
+
+
+    const canvas =
+        document.getElementById("plate-canvas");
 
 
     /* ============================================================
@@ -1441,13 +2053,13 @@
     const foods = {
 
 
-        /* ========================================================
-           CLASSIC PIZZA
-        ======================================================== */
-
         pizza: {
 
+            id: "pizza",
+
             name: "🍕 Classic Pizza",
+
+            shortName: "Classic Pizza",
 
             price: "₹249",
 
@@ -1470,13 +2082,13 @@
         },
 
 
-        /* ========================================================
-           CLASSIC BURGER
-        ======================================================== */
-
         burger: {
 
+            id: "burger",
+
             name: "🍔 Classic Burger",
+
+            shortName: "Classic Burger",
 
             price: "₹199",
 
@@ -1499,13 +2111,13 @@
         },
 
 
-        /* ========================================================
-           REALISTIC BURGER
-        ======================================================== */
-
         realisticBurger: {
 
+            id: "realisticBurger",
+
             name: "🍔 Realistic Burger",
+
+            shortName: "Realistic Burger",
 
             price: "₹249",
 
@@ -1528,13 +2140,13 @@
         },
 
 
-        /* ========================================================
-           CLASSIC PASTA
-        ======================================================== */
-
         pasta: {
 
+            id: "pasta",
+
             name: "🍝 Classic Pasta",
+
+            shortName: "Classic Pasta",
 
             price: "₹229",
 
@@ -1557,17 +2169,18 @@
         },
 
 
-        /* ========================================================
-           FRENCH FRIES
-        ======================================================== */
-
         fries: {
+
+            id: "fries",
 
             name: "🍟 Crispy French Fries",
 
+            shortName: "French Fries",
+
             price: "₹149",
 
-            model: "lifelike_3d_model_of_crispy_french_fries.glb",
+            model:
+                "lifelike_3d_model_of_crispy_french_fries.glb",
 
             arText: "📱 View Fries in AR",
 
@@ -1586,13 +2199,13 @@
         },
 
 
-        /* ========================================================
-           DONUT
-        ======================================================== */
-
         donut: {
 
+            id: "donut",
+
             name: "🍩 Classic Donut",
+
+            shortName: "Classic Donut",
 
             price: "₹129",
 
@@ -1618,10 +2231,42 @@
 
 
     /* ============================================================
+       PLATE STATE
+    ============================================================ */
+
+    let selectedPlateItems = [];
+
+
+    /* ============================================================
+       THREE.JS VARIABLES
+    ============================================================ */
+
+    let scene;
+
+    let camera;
+
+    let renderer;
+
+    let plateGroup;
+
+    let foodGroup;
+
+    let animationStarted = false;
+
+    let currentRotationX = 0.35;
+
+    let currentRotationY = 0;
+
+
+    /* ============================================================
        CREATE FOOD CARD
     ============================================================ */
 
     function createFoodCard(food) {
+
+        const isSelected =
+            selectedPlateItems.includes(food.id);
+
 
         return `
 
@@ -1656,7 +2301,6 @@
 
                     <div class="dish-tags">
 
-
                         ${food.tags.map(tag => `
 
                             <div class="dish-tag">
@@ -1665,8 +2309,19 @@
 
                         `).join("")}
 
-
                     </div>
+
+
+                    <button
+                        class="add-plate-button
+                        ${isSelected ? "added" : ""}"
+                        onclick="togglePlateItem('${food.id}')">
+
+                        ${isSelected
+                            ? "✓ Added to Your Plate"
+                            : "+ Add to Plate"}
+
+                    </button>
 
 
                 </div>
@@ -1747,41 +2402,937 @@
 
 
     /* ============================================================
-       CATEGORY CLICK EVENTS
+       TOGGLE PLATE ITEM
     ============================================================ */
 
-    categoryButtons.forEach(button => {
+    function togglePlateItem(foodId) {
+
+        const index =
+            selectedPlateItems.indexOf(foodId);
 
 
-        button.addEventListener(
-            "click",
-            function () {
+        if (index === -1) {
+
+            selectedPlateItems.push(foodId);
+
+        } else {
+
+            selectedPlateItems.splice(index, 1);
+
+        }
 
 
-                categoryButtons.forEach(item => {
+        updatePlateUI();
 
-                    item.classList.remove("active");
+        refreshCurrentMenu();
 
-                });
-
-
-                this.classList.add("active");
+    }
 
 
-                const selectedCategory =
-                    this.dataset.category;
+    /* ============================================================
+       REMOVE PLATE ITEM
+    ============================================================ */
+
+    function removePlateItem(foodId) {
+
+        const index =
+            selectedPlateItems.indexOf(foodId);
 
 
-                sectionTitle.textContent =
-                    categoryTitles[selectedCategory];
+        if (index !== -1) {
+
+            selectedPlateItems.splice(index, 1);
+
+        }
 
 
-                updateMenu(selectedCategory);
+        updatePlateUI();
+
+        refreshCurrentMenu();
+
+    }
+
+
+    /* ============================================================
+       UPDATE PLATE UI
+    ============================================================ */
+
+    function updatePlateUI() {
+
+        plateCount.textContent =
+            selectedPlateItems.length;
+
+
+        if (
+            selectedPlateItems.length === 0
+        ) {
+
+            selectedItemsContainer.innerHTML = "";
+
+        } else {
+
+            selectedItemsContainer.innerHTML =
+
+                selectedPlateItems.map(id => {
+
+                    const food = foods[id];
+
+                    return `
+
+                        <div class="selected-chip">
+
+                            ${food.name}
+
+                            <button
+                                class="remove-chip"
+                                onclick="removePlateItem('${id}')">
+
+                                ×
+
+                            </button>
+
+                        </div>
+
+                    `;
+
+                }).join("");
+
+        }
+
+
+        if (selectedPlateItems.length === 0) {
+
+            emptyPlate.style.display = "block";
+
+        } else {
+
+            emptyPlate.style.display = "none";
+
+        }
+
+
+        updateThreeJSPlate();
+
+    }
+
+
+    /* ============================================================
+       OPEN PLATE BUILDER
+    ============================================================ */
+
+    function openPlateBuilder() {
+
+        menuGrid.style.display = "none";
+
+        menuHeader.style.display = "none";
+
+        plateBuilder.style.display = "block";
+
+
+        initializeThreeJS();
+
+
+        updatePlateUI();
+
+
+        plateBuilder.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+
+    /* ============================================================
+       CLOSE PLATE BUILDER
+    ============================================================ */
+
+    function closePlateBuilder() {
+
+        plateBuilder.style.display = "none";
+
+        menuGrid.style.display = "grid";
+
+        menuHeader.style.display = "flex";
+
+
+        document
+            .getElementById("menu")
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+    }
+
+
+    /* ============================================================
+       RESET PLATE
+    ============================================================ */
+
+    function resetPlate() {
+
+        selectedPlateItems = [];
+
+        updatePlateUI();
+
+        refreshCurrentMenu();
+
+    }
+
+
+    /* ============================================================
+       THREE.JS INITIALIZATION
+    ============================================================ */
+
+    function initializeThreeJS() {
+
+        if (animationStarted) {
+            return;
+        }
+
+
+        animationStarted = true;
+
+
+        scene = new THREE.Scene();
+
+
+        scene.background =
+            new THREE.Color(0xe9e0cd);
+
+
+        camera =
+            new THREE.PerspectiveCamera(
+                45,
+                canvas.clientWidth /
+                canvas.clientHeight,
+                0.1,
+                100
+            );
+
+
+        camera.position.set(
+            0,
+            5.5,
+            8
+        );
+
+
+        renderer =
+            new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true,
+                alpha: true
+            });
+
+
+        renderer.setPixelRatio(
+            Math.min(
+                window.devicePixelRatio,
+                2
+            )
+        );
+
+
+        renderer.setSize(
+            canvas.clientWidth,
+            canvas.clientHeight,
+            false
+        );
+
+
+        renderer.outputEncoding =
+            THREE.sRGBEncoding;
+
+
+        /* ========================================================
+           LIGHTING
+        ======================================================== */
+
+        const ambientLight =
+            new THREE.AmbientLight(
+                0xffffff,
+                2.2
+            );
+
+
+        scene.add(ambientLight);
+
+
+        const directionalLight =
+            new THREE.DirectionalLight(
+                0xffffff,
+                3
+            );
+
+
+        directionalLight.position.set(
+            4,
+            8,
+            5
+        );
+
+
+        scene.add(
+            directionalLight
+        );
+
+
+        const fillLight =
+            new THREE.DirectionalLight(
+                0xfff2d5,
+                1.5
+            );
+
+
+        fillLight.position.set(
+            -5,
+            4,
+            -3
+        );
+
+
+        scene.add(fillLight);
+
+
+        /* ========================================================
+           PLATE
+        ======================================================== */
+
+        plateGroup =
+            new THREE.Group();
+
+
+        scene.add(
+            plateGroup
+        );
+
+
+        const outerPlateGeometry =
+            new THREE.CylinderGeometry(
+                3.7,
+                3.5,
+                0.35,
+                96
+            );
+
+
+        const outerPlateMaterial =
+            new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                roughness: 0.28,
+                metalness: 0.05
+            });
+
+
+        const outerPlate =
+            new THREE.Mesh(
+                outerPlateGeometry,
+                outerPlateMaterial
+            );
+
+
+        outerPlate.position.y =
+            -0.15;
+
+
+        plateGroup.add(
+            outerPlate
+        );
+
+
+        const innerPlateGeometry =
+            new THREE.CylinderGeometry(
+                3.15,
+                3.0,
+                0.18,
+                96
+            );
+
+
+        const innerPlateMaterial =
+            new THREE.MeshStandardMaterial({
+                color: 0xf8f4e8,
+                roughness: 0.3
+            });
+
+
+        const innerPlate =
+            new THREE.Mesh(
+                innerPlateGeometry,
+                innerPlateMaterial
+            );
+
+
+        innerPlate.position.y =
+            0.04;
+
+
+        plateGroup.add(
+            innerPlate
+        );
+
+
+        /* ========================================================
+           FOOD GROUP
+        ======================================================== */
+
+        foodGroup =
+            new THREE.Group();
+
+
+        plateGroup.add(
+            foodGroup
+        );
+
+
+        /* ========================================================
+           INITIAL ROTATION
+        ======================================================== */
+
+        plateGroup.rotation.x =
+            currentRotationX;
+
+
+        plateGroup.rotation.y =
+            currentRotationY;
+
+
+        /* ========================================================
+           RESIZE
+        ======================================================== */
+
+        window.addEventListener(
+            "resize",
+            resizePlateCanvas
+        );
+
+
+        /* ========================================================
+           MOUSE CONTROLS
+        ======================================================== */
+
+        setupPlateControls();
+
+
+        /* ========================================================
+           ANIMATION LOOP
+        ======================================================== */
+
+        animatePlate();
+
+    }
+
+
+    /* ============================================================
+       LOAD GLB
+    ============================================================ */
+
+    function loadFoodModel(
+        food,
+        position,
+        scale
+    ) {
+
+        const loader =
+            new THREE.GLTFLoader();
+
+
+        loader.load(
+
+            food.model,
+
+            function (gltf) {
+
+                const object =
+                    gltf.scene;
+
+
+                object.position.copy(
+                    position
+                );
+
+
+                object.scale.set(
+                    scale,
+                    scale,
+                    scale
+                );
+
+
+                object.rotation.y =
+                    Math.random() *
+                    Math.PI *
+                    2;
+
+
+                object.traverse(
+                    function(child) {
+
+                        if (
+                            child.isMesh
+                        ) {
+
+                            child.castShadow =
+                                true;
+
+                            child.receiveShadow =
+                                true;
+
+                        }
+
+                    }
+                );
+
+
+                foodGroup.add(
+                    object
+                );
+
+            },
+
+            undefined,
+
+            function(error) {
+
+                console.error(
+                    "Unable to load:",
+                    food.model,
+                    error
+                );
+
+            }
+
+        );
+
+    }
+
+
+    /* ============================================================
+       UPDATE THREE.JS PLATE
+    ============================================================ */
+
+    function updateThreeJSPlate() {
+
+        if (!foodGroup) {
+            return;
+        }
+
+
+        while (
+            foodGroup.children.length > 0
+        ) {
+
+            foodGroup.remove(
+                foodGroup.children[0]
+            );
+
+        }
+
+
+        const count =
+            selectedPlateItems.length;
+
+
+        if (count === 0) {
+            return;
+        }
+
+
+        /*
+         * Arrange selected food models
+         * around the center of the plate.
+         */
+
+        const positions = [
+
+            {
+                x: 0,
+                y: 0.45,
+                z: 0
+            },
+
+            {
+                x: -1.35,
+                y: 0.42,
+                z: 0.35
+            },
+
+            {
+                x: 1.35,
+                y: 0.42,
+                z: 0.35
+            },
+
+            {
+                x: 0,
+                y: 0.43,
+                z: -1.35
+            },
+
+            {
+                x: -1.15,
+                y: 0.42,
+                z: -1.25
+            },
+
+            {
+                x: 1.15,
+                y: 0.42,
+                z: -1.25
+            }
+
+        ];
+
+
+        selectedPlateItems.forEach(
+            function(foodId, index) {
+
+                const food =
+                    foods[foodId];
+
+
+                const position =
+                    positions[
+                        index %
+                        positions.length
+                    ];
+
+
+                /*
+                 * Different food models have
+                 * different original dimensions.
+                 * These values provide reasonable
+                 * starting sizes.
+                 */
+
+                let scale = 1;
+
+
+                if (foodId === "pizza") {
+                    scale = 1.15;
+                }
+
+
+                if (foodId === "burger") {
+                    scale = 0.95;
+                }
+
+
+                if (
+                    foodId ===
+                    "realisticBurger"
+                ) {
+
+                    scale = 0.85;
+
+                }
+
+
+                if (foodId === "pasta") {
+                    scale = 0.9;
+                }
+
+
+                if (foodId === "fries") {
+                    scale = 0.8;
+                }
+
+
+                if (foodId === "donut") {
+                    scale = 0.75;
+                }
+
+
+                loadFoodModel(
+
+                    food,
+
+                    new THREE.Vector3(
+                        position.x,
+                        position.y,
+                        position.z
+                    ),
+
+                    scale
+
+                );
 
             }
         );
 
-    });
+    }
+
+
+    /* ============================================================
+       RESIZE PLATE CANVAS
+    ============================================================ */
+
+    function resizePlateCanvas() {
+
+        if (
+            !renderer ||
+            !camera
+        ) {
+            return;
+        }
+
+
+        const width =
+            canvas.clientWidth;
+
+
+        const height =
+            canvas.clientHeight;
+
+
+        if (
+            width === 0 ||
+            height === 0
+        ) {
+            return;
+        }
+
+
+        camera.aspect =
+            width / height;
+
+
+        camera.updateProjectionMatrix();
+
+
+        renderer.setSize(
+            width,
+            height,
+            false
+        );
+
+    }
+
+
+    /* ============================================================
+       MOUSE / TOUCH CONTROLS
+    ============================================================ */
+
+    function setupPlateControls() {
+
+        let dragging = false;
+
+        let previousX = 0;
+
+        let previousY = 0;
+
+
+        canvas.addEventListener(
+            "pointerdown",
+            function(event) {
+
+                dragging = true;
+
+                previousX =
+                    event.clientX;
+
+                previousY =
+                    event.clientY;
+
+                canvas.setPointerCapture(
+                    event.pointerId
+                );
+
+            }
+        );
+
+
+        canvas.addEventListener(
+            "pointermove",
+            function(event) {
+
+                if (!dragging) {
+                    return;
+                }
+
+
+                const deltaX =
+                    event.clientX -
+                    previousX;
+
+
+                const deltaY =
+                    event.clientY -
+                    previousY;
+
+
+                currentRotationY +=
+                    deltaX * 0.01;
+
+
+                currentRotationX +=
+                    deltaY * 0.01;
+
+
+                currentRotationX =
+                    Math.max(
+                        -0.8,
+                        Math.min(
+                            1.1,
+                            currentRotationX
+                        )
+                    );
+
+
+                if (plateGroup) {
+
+                    plateGroup.rotation.y =
+                        currentRotationY;
+
+                    plateGroup.rotation.x =
+                        currentRotationX;
+
+                }
+
+
+                previousX =
+                    event.clientX;
+
+                previousY =
+                    event.clientY;
+
+            }
+        );
+
+
+        canvas.addEventListener(
+            "pointerup",
+            function() {
+
+                dragging = false;
+
+            }
+        );
+
+
+        canvas.addEventListener(
+            "pointercancel",
+            function() {
+
+                dragging = false;
+
+            }
+        );
+
+
+        canvas.addEventListener(
+            "wheel",
+            function(event) {
+
+                event.preventDefault();
+
+
+                camera.position.z +=
+                    event.deltaY * 0.005;
+
+
+                camera.position.z =
+                    Math.max(
+                        5,
+                        Math.min(
+                            11,
+                            camera.position.z
+                        )
+                    );
+
+            },
+            {
+                passive: false
+            }
+        );
+
+    }
+
+
+    /* ============================================================
+       ANIMATION
+    ============================================================ */
+
+    function animatePlate() {
+
+        requestAnimationFrame(
+            animatePlate
+        );
+
+
+        if (
+            renderer &&
+            scene &&
+            camera
+        ) {
+
+            renderer.render(
+                scene,
+                camera
+            );
+
+        }
+
+    }
+
+
+    /* ============================================================
+       CATEGORY CLICK EVENTS
+    ============================================================ */
+
+    categoryButtons.forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+
+                    categoryButtons.forEach(
+                        item => {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    this.classList.add(
+                        "active"
+                    );
+
+
+                    const selectedCategory =
+                        this.dataset.category;
+
+
+                    sectionTitle.textContent =
+                        categoryTitles[
+                            selectedCategory
+                        ];
+
+
+                    updateMenu(
+                        selectedCategory
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* ============================================================
+       CURRENT CATEGORY
+    ============================================================ */
+
+    let currentCategory =
+        "popular";
 
 
     /* ============================================================
@@ -1790,99 +3341,98 @@
 
     function updateMenu(category) {
 
+        currentCategory =
+            category;
 
-        /* ========================================================
-           POPULAR
-        ======================================================== */
 
         if (category === "popular") {
 
             menuGrid.innerHTML =
 
-                createFoodCard(foods.pizza) +
+                createFoodCard(
+                    foods.pizza
+                ) +
 
-                createFoodCard(foods.burger) +
+                createFoodCard(
+                    foods.burger
+                ) +
 
-                createFoodCard(foods.pasta) +
+                createFoodCard(
+                    foods.pasta
+                ) +
 
-                createFoodCard(foods.fries);
+                createFoodCard(
+                    foods.fries
+                );
 
             return;
 
         }
 
-
-        /* ========================================================
-           PIZZA
-        ======================================================== */
 
         if (category === "pizza") {
 
             menuGrid.innerHTML =
 
-                createFoodCard(foods.pizza);
+                createFoodCard(
+                    foods.pizza
+                );
 
             return;
 
         }
 
-
-        /* ========================================================
-           BURGERS
-        ======================================================== */
 
         if (category === "burgers") {
 
             menuGrid.innerHTML =
 
-                createFoodCard(foods.burger) +
+                createFoodCard(
+                    foods.burger
+                ) +
 
-                createFoodCard(foods.realisticBurger);
+                createFoodCard(
+                    foods.realisticBurger
+                );
 
             return;
 
         }
 
-
-        /* ========================================================
-           PASTA
-        ======================================================== */
 
         if (category === "pasta") {
 
             menuGrid.innerHTML =
 
-                createFoodCard(foods.pasta);
+                createFoodCard(
+                    foods.pasta
+                );
 
             return;
 
         }
 
-
-        /* ========================================================
-           SIDES
-        ======================================================== */
 
         if (category === "sides") {
 
             menuGrid.innerHTML =
 
-                createFoodCard(foods.fries);
+                createFoodCard(
+                    foods.fries
+                );
 
             return;
 
         }
 
 
-        /* ========================================================
-           DESSERTS
-        ======================================================== */
-
         if (category === "desserts") {
 
             menuGrid.innerHTML =
 
-                createFoodCard(foods.donut);
+                createFoodCard(
+                    foods.donut
+                );
 
             return;
 
@@ -1892,10 +3442,25 @@
 
 
     /* ============================================================
-       LOAD POPULAR MENU ON START
+       REFRESH CURRENT MENU
     ============================================================ */
 
-    updateMenu("popular");
+    function refreshCurrentMenu() {
+
+        updateMenu(
+            currentCategory
+        );
+
+    }
+
+
+    /* ============================================================
+       INITIAL LOAD
+    ============================================================ */
+
+    updateMenu(
+        "popular"
+    );
 
 
 </script>
