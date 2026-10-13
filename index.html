@@ -1546,6 +1546,15 @@ footer{
   .cart-line-total{grid-column:2;grid-row:2;}
   .cart-quantity-controls{grid-column:2;grid-row:1;}
 }
+.customize-panel{margin:0 13px 14px;padding:12px;border:1px solid var(--line,#ded2c5);border-radius:6px;background:#fffaf4;}
+.customize-heading{margin:0 0 9px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink,#2a211d);}
+.customize-field{display:flex;flex-direction:column;gap:5px;margin:8px 0;font-size:12px;color:var(--muted,#706760);}
+.customize-field select{width:100%;padding:9px 10px;border:1px solid #d8c9b9;border-radius:4px;background:#fff;color:var(--ink,#2a211d);font:inherit;font-size:12px;}
+.customize-checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:7px;}
+.customize-check{display:flex;align-items:center;gap:5px;padding:6px 8px;border:1px solid #e3d7ca;border-radius:4px;background:#fff;font-size:11px;color:var(--ink,#2a211d);cursor:pointer;}
+.customize-check input{accent-color:var(--warm,#8f6542);}
+.customize-price-note{margin:8px 0 0;font-size:11px;color:var(--muted,#706760);}
+.cart-item-customization{margin-top:4px;font-size:11px;line-height:1.5;color:var(--muted,#706760);}
 
 </style>
 
@@ -2261,24 +2270,151 @@ footer{
 
 
     /* ============================================================
-       SHOPPING CART STATE — independent from selectedPlateItems
+       FOOD CUSTOMIZATION + SHOPPING CART STATE
+       Cart remains independent from AR and the plate builder.
     ============================================================ */
 
-    const cartItems = new Map();
+    const customizationConfig = {
+        pizza: [
+            { key: "size", label: "Pizza size", type: "select", options: [
+                { id: "small", label: "Small", delta: -50 },
+                { id: "medium", label: "Medium (standard)", delta: 0 },
+                { id: "large", label: "Large", delta: 100 }
+            ]},
+            { key: "extras", label: "Extras", type: "checks", options: [
+                { id: "extra_cheese", label: "Extra cheese", delta: 30 },
+                { id: "olives", label: "Olives", delta: 20 },
+                { id: "mushrooms", label: "Mushrooms", delta: 25 }
+            ]}
+        ],
+        burger: [
+            { key: "addons", label: "Burger add-ons", type: "checks", options: [
+                { id: "extra_cheese", label: "Extra cheese", delta: 25 },
+                { id: "double_patty", label: "Double patty", delta: 60 },
+                { id: "extra_pickles", label: "Extra pickles", delta: 10 }
+            ]},
+            { key: "sauce", label: "Sauce", type: "select", options: [
+                { id: "signature", label: "Signature sauce", delta: 0 },
+                { id: "spicy", label: "Spicy sauce", delta: 0 },
+                { id: "bbq", label: "BBQ sauce", delta: 15 }
+            ]}
+        ],
+        realisticBurger: [
+            { key: "addons", label: "Burger add-ons", type: "checks", options: [
+                { id: "extra_cheese", label: "Extra cheese", delta: 25 },
+                { id: "double_patty", label: "Double patty", delta: 60 },
+                { id: "extra_pickles", label: "Extra pickles", delta: 10 }
+            ]},
+            { key: "sauce", label: "Sauce", type: "select", options: [
+                { id: "signature", label: "Signature sauce", delta: 0 },
+                { id: "spicy", label: "Spicy sauce", delta: 0 },
+                { id: "bbq", label: "BBQ sauce", delta: 15 }
+            ]}
+        ],
+        pasta: [
+            { key: "sauce", label: "Pasta sauce", type: "select", options: [
+                { id: "tomato", label: "Tomato herb", delta: 0 },
+                { id: "alfredo", label: "Creamy Alfredo", delta: 30 },
+                { id: "pesto", label: "Basil pesto", delta: 40 }
+            ]},
+            { key: "extras", label: "Extras", type: "checks", options: [
+                { id: "parmesan", label: "Extra cheese", delta: 25 },
+                { id: "mushrooms", label: "Mushrooms", delta: 25 }
+            ]}
+        ],
+        fries: [
+            { key: "seasoning", label: "Seasoning", type: "select", options: [
+                { id: "classic", label: "Classic salted", delta: 0 },
+                { id: "peri_peri", label: "Peri-peri", delta: 15 },
+                { id: "cheese", label: "Cheese seasoning", delta: 20 }
+            ]},
+            { key: "dip", label: "Dip", type: "select", options: [
+                { id: "ketchup", label: "Ketchup", delta: 0 },
+                { id: "mayo", label: "Garlic mayo", delta: 15 },
+                { id: "cheese_dip", label: "Cheese dip", delta: 25 }
+            ]}
+        ],
+        donut: [
+            { key: "glaze", label: "Glaze", type: "select", options: [
+                { id: "classic", label: "Classic sugar", delta: 0 },
+                { id: "chocolate", label: "Chocolate glaze", delta: 20 },
+                { id: "strawberry", label: "Strawberry glaze", delta: 20 }
+            ]},
+            { key: "toppings", label: "Toppings", type: "checks", options: [
+                { id: "sprinkles", label: "Sprinkles", delta: 15 },
+                { id: "nuts", label: "Crushed nuts", delta: 20 }
+            ]}
+        ]
+    };
 
     function getNumericFoodPrice(food) {
         return Number(String(food.price).replace(/[^0-9.]/g, "")) || 0;
     }
 
     function formatRupees(amount) {
-        return "₹" + Number(amount || 0).toLocaleString("en-IN", {
-            maximumFractionDigits: 2
-        });
+        return "₹" + Number(amount || 0).toLocaleString("en-IN", { maximumFractionDigits: 2 });
     }
+
+    function renderCustomizationControls(food) {
+        const groups = customizationConfig[food.id] || [];
+        if (!groups.length) return "";
+        return `
+            <section class="customize-panel" aria-label="Customize ${food.shortName}">
+                <h4 class="customize-heading">✨ Customize your order</h4>
+                ${groups.map(group => {
+                    if (group.type === "select") {
+                        return `<label class="customize-field">${group.label}
+                            <select data-customization-group="${group.key}" onchange="updateCustomizationPrice(this)">
+                                ${group.options.map((option, index) => `<option value="${option.id}" data-label="${option.label}" data-price-delta="${option.delta}" ${(option.delta === 0 || (index === 0 && !group.options.some(item => item.delta === 0))) ? "selected" : ""}>${option.label}${option.delta > 0 ? " (+" + formatRupees(option.delta) + ")" : option.delta < 0 ? " (−" + formatRupees(Math.abs(option.delta)) + ")" : ""}</option>`).join("")}
+                            </select>
+                        </label>`;
+                    }
+                    return `<div class="customize-field">${group.label}<div class="customize-checks">
+                        ${group.options.map(option => `<label class="customize-check"><input type="checkbox" data-customization-group="${group.key}" data-option-id="${option.id}" data-label="${option.label}" data-price-delta="${option.delta}" onchange="updateCustomizationPrice(this)"> ${option.label}${option.delta ? ` (+${formatRupees(option.delta)})` : ""}</label>`).join("")}
+                    </div></div>`;
+                }).join("")}
+                <p class="customize-price-note">Options update your price. Final selection is saved to your cart.</p>
+            </section>`;
+    }
+
+    function getFoodCustomization(card, food) {
+        const selected = [];
+        const keyParts = [];
+        let unitPrice = getNumericFoodPrice(food);
+        card.querySelectorAll('select[data-customization-group]').forEach(select => {
+            const option = select.options[select.selectedIndex];
+            if (!option) return;
+            const delta = Number(option.dataset.priceDelta || 0);
+            unitPrice += delta;
+            selected.push({ group: select.dataset.customizationGroup, label: option.dataset.label || option.textContent, delta });
+            keyParts.push(`${select.dataset.customizationGroup}-${option.value}`);
+        });
+        card.querySelectorAll('input[type="checkbox"][data-customization-group]:checked').forEach(input => {
+            const delta = Number(input.dataset.priceDelta || 0);
+            unitPrice += delta;
+            selected.push({ group: input.dataset.customizationGroup, label: input.dataset.label || input.value, delta });
+            keyParts.push(`${input.dataset.customizationGroup}-${input.dataset.optionId}`);
+        });
+        keyParts.sort();
+        return { key: `${food.id}__${keyParts.join("__") || "base"}`, selected, unitPrice };
+    }
+
+    window.updateCustomizationPrice = function(control) {
+        const card = control.closest(".food-card");
+        if (!card) return;
+        const foodId = card.dataset.foodId;
+        const food = Object.values(foods).find(item => item.id === foodId);
+        if (!food) return;
+        const custom = getFoodCustomization(card, food);
+        const priceElement = card.querySelector(".food-price");
+        if (priceElement) priceElement.textContent = formatRupees(custom.unitPrice);
+    };
+
+    const cartItems = new Map();
 
     function getCartQuantity() {
         let count = 0;
-        cartItems.forEach(quantity => { count += quantity; });
+        cartItems.forEach(item => { count += item.quantity; });
         return count;
     }
 
@@ -2287,64 +2423,67 @@ footer{
         const listElement = document.getElementById("cartItemsList");
         const subtotalElement = document.getElementById("cartSubtotal");
         if (!countElement || !listElement || !subtotalElement) return;
-
         const totalQuantity = getCartQuantity();
         countElement.textContent = `${totalQuantity} ${totalQuantity === 1 ? "item" : "items"} in cart`;
-
         if (cartItems.size === 0) {
             listElement.innerHTML = '<p class="cart-empty-message">Your cart is empty. Add a dish from the menu to begin your order.</p>';
             subtotalElement.textContent = formatRupees(0);
             return;
         }
-
         let subtotal = 0;
         const rows = [];
-        cartItems.forEach((quantity, foodId) => {
-            const food = Object.values(foods).find(item => item.id === foodId);
+        cartItems.forEach((item, cartKey) => {
+            const food = Object.values(foods).find(entry => entry.id === item.foodId);
             if (!food) return;
-            const unitPrice = getNumericFoodPrice(food);
-            const lineTotal = unitPrice * quantity;
+            const lineTotal = item.unitPrice * item.quantity;
             subtotal += lineTotal;
+            const selectionText = item.selected.length ? item.selected.map(choice => `${choice.label}${choice.delta > 0 ? ` (+${formatRupees(choice.delta)})` : choice.delta < 0 ? ` (−${formatRupees(Math.abs(choice.delta))})` : ""}`).join(", ") : "Standard options";
             rows.push(`
                 <div class="cart-item-row">
                     <div>
                         <div class="cart-item-name">${food.name}</div>
-                        <div class="cart-item-unit-price">${formatRupees(unitPrice)} each</div>
-                        <button class="cart-remove-button" type="button" onclick="removeCartItem('${food.id}')">Remove</button>
+                        <div class="cart-item-unit-price">${formatRupees(item.unitPrice)} each</div>
+                        <div class="cart-item-customization">${selectionText}</div>
+                        <button class="cart-remove-button" type="button" onclick="removeCartItem('${cartKey}')">Remove</button>
                     </div>
                     <div class="cart-quantity-controls" aria-label="Quantity for ${food.shortName}">
-                        <button class="cart-quantity-button" type="button" aria-label="Decrease ${food.shortName} quantity" onclick="changeCartQuantity('${food.id}', -1)">−</button>
-                        <span class="cart-quantity">${quantity}</span>
-                        <button class="cart-quantity-button" type="button" aria-label="Increase ${food.shortName} quantity" onclick="changeCartQuantity('${food.id}', 1)">+</button>
+                        <button class="cart-quantity-button" type="button" aria-label="Decrease ${food.shortName} quantity" onclick="changeCartQuantity('${cartKey}', -1)">−</button>
+                        <span class="cart-quantity">${item.quantity}</span>
+                        <button class="cart-quantity-button" type="button" aria-label="Increase ${food.shortName} quantity" onclick="changeCartQuantity('${cartKey}', 1)">+</button>
                     </div>
                     <div class="cart-line-total">${formatRupees(lineTotal)}</div>
-                </div>
-            `);
+                </div>`);
         });
-
         listElement.innerHTML = rows.join("");
         subtotalElement.textContent = formatRupees(subtotal);
     }
 
     window.addToCart = function(foodId) {
         const food = Object.values(foods).find(item => item.id === foodId);
-        if (!food) return;
-        cartItems.set(foodId, (cartItems.get(foodId) || 0) + 1);
+        const card = document.querySelector(`.food-card[data-food-id="${foodId}"]`);
+        if (!food || !card) return;
+        const custom = getFoodCustomization(card, food);
+        const existing = cartItems.get(custom.key);
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            cartItems.set(custom.key, { foodId, quantity: 1, selected: custom.selected, unitPrice: custom.unitPrice });
+        }
         renderCart();
         const status = document.getElementById("cartStatus");
-        if (status) status.textContent = `${food.shortName} added to your cart.`;
+        if (status) status.textContent = `${food.shortName} added to your cart with your selected options.`;
     };
 
-    window.changeCartQuantity = function(foodId, change) {
-        const current = cartItems.get(foodId) || 0;
-        const next = current + Number(change);
-        if (next <= 0) cartItems.delete(foodId);
-        else cartItems.set(foodId, next);
+    window.changeCartQuantity = function(cartKey, change) {
+        const item = cartItems.get(cartKey);
+        if (!item) return;
+        item.quantity += Number(change);
+        if (item.quantity <= 0) cartItems.delete(cartKey);
         renderCart();
     };
 
-    window.removeCartItem = function(foodId) {
-        cartItems.delete(foodId);
+    window.removeCartItem = function(cartKey) {
+        cartItems.delete(cartKey);
         renderCart();
         const status = document.getElementById("cartStatus");
         if (status) status.textContent = "Item removed from your cart.";
@@ -2422,7 +2561,7 @@ footer{
 
         return `
 
-            <article class="food-card">
+            <article class="food-card" data-food-id="${food.id}">
 
                 <div class="food-info">
 
@@ -2456,6 +2595,7 @@ footer{
 
                 </div>
 
+                ${renderCustomizationControls(food)}
 
                 <div class="model-wrapper">
 
