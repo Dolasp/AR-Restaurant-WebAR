@@ -2258,7 +2258,7 @@ footer{
 
                     <model-viewer
 
-                        src="${food.model}"
+                        src="${new URL(food.model, document.baseURI).href}"
 
                         alt="3D model of ${food.name}"
 
