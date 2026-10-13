@@ -1487,6 +1487,66 @@ footer{
 @media (min-width:1200px){.hero,.hero img{height:200px!important;}}
 @media (max-width:599px){.hero,.hero img{height:150px!important;}}
 @media (max-width:380px){.hero,.hero img{height:135px!important;}}
+
+
+/* =========================================================
+   FRONTEND DEMO CART — isolated from AR and plate-builder
+========================================================= */
+.cart-panel{
+  margin: 0 0 24px;
+  border: 1px solid var(--line, #ded2c5);
+  border-radius: 8px;
+  background: var(--paper, #fffdf9);
+  box-shadow: 0 8px 24px rgba(40,29,22,.05);
+  overflow: hidden;
+}
+.cart-panel-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:16px 18px;
+  background:#eee4d8;
+}
+.cart-panel-title{font-family:Georgia,serif;font-size:21px;color:var(--ink,#2a211d);font-weight:600;}
+.cart-panel-meta{font-size:12px;color:var(--muted,#706760);margin-top:4px;}
+.cart-header-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.cart-toggle-button,.cart-clear-button,.cart-quantity-button,.cart-checkout-demo{
+  border:1px solid var(--ink,#2a211d);border-radius:4px;padding:9px 12px;font:inherit;font-size:12px;cursor:pointer;
+}
+.cart-toggle-button,.cart-checkout-demo{background:var(--ink,#2a211d);color:#fff;}
+.cart-clear-button{background:transparent;color:var(--ink,#2a211d);}
+.cart-toggle-button:hover,.cart-checkout-demo:hover{background:var(--warm,#8f6542);border-color:var(--warm,#8f6542);}
+.cart-clear-button:hover{background:#f5eee7;}
+#cartSummaryBody[hidden]{display:none!important;}
+.cart-summary-body{padding:16px 18px 18px;}
+.cart-empty-message{padding:18px 4px;color:var(--muted,#706760);font-size:14px;}
+.cart-items-list{display:flex;flex-direction:column;gap:12px;}
+.cart-item-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line,#ded2c5);}
+.cart-item-name{font-family:Georgia,serif;font-weight:600;color:var(--ink,#2a211d);font-size:15px;}
+.cart-item-unit-price{font-size:12px;color:var(--muted,#706760);margin-top:4px;}
+.cart-quantity-controls{display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.cart-quantity-button{width:30px;height:30px;padding:0;font-size:17px;line-height:1;background:#fffdf9;color:var(--ink,#2a211d);}
+.cart-quantity{min-width:14px;text-align:center;font-weight:600;font-size:13px;}
+.cart-line-total{min-width:76px;text-align:right;font-weight:600;color:var(--ink,#2a211d);font-size:13px;}
+.cart-remove-button{display:block;margin-top:5px;margin-left:auto;border:0;background:transparent;color:#9b493c;font-size:11px;text-decoration:underline;cursor:pointer;}
+.cart-subtotal-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0 14px;font-size:16px;font-weight:700;color:var(--ink,#2a211d);}
+.cart-demo-note{font-size:11px;line-height:1.5;color:var(--muted,#706760);margin-top:10px;}
+.cart-status{min-height:18px;margin-top:8px;color:#47724a;font-size:12px;}
+.add-to-cart-button{
+  display:block;width:calc(100% - 26px);margin:0 13px 12px;padding:12px 14px;
+  border:1px solid var(--warm,#8f6542);border-radius:5px;background:var(--warm,#8f6542);color:#fff;
+  font-size:10px;letter-spacing:.9px;text-transform:uppercase;cursor:pointer;
+}
+.add-to-cart-button:hover{background:var(--ink,#2a211d);border-color:var(--ink,#2a211d);}
+@media(max-width:560px){
+  .cart-panel-header{align-items:flex-start;flex-direction:column;}
+  .cart-header-actions{justify-content:flex-start;}
+  .cart-item-row{grid-template-columns:minmax(0,1fr) auto;gap:10px;}
+  .cart-line-total{grid-column:2;grid-row:2;}
+  .cart-quantity-controls{grid-column:2;grid-row:1;}
+}
+
 </style>
 
 </head>
@@ -1726,6 +1786,33 @@ footer{
 
         </div>
 
+
+        <!-- =====================================================
+             SHOPPING CART / ORDER SUMMARY (FRONTEND DEMO)
+        ====================================================== -->
+        <section class="cart-panel" id="shoppingCart" aria-label="Shopping cart and order summary">
+            <div class="cart-panel-header">
+                <div>
+                    <div class="cart-panel-title">🛒 Your Order</div>
+                    <div class="cart-panel-meta" id="cartCount" aria-live="polite">0 items in cart</div>
+                </div>
+                <div class="cart-header-actions">
+                    <button class="cart-toggle-button" id="cartToggleButton" type="button"
+                        aria-expanded="false" aria-controls="cartSummaryBody" onclick="toggleCartSummary()">View Order Summary</button>
+                    <button class="cart-clear-button" type="button" onclick="clearCart()">Clear Cart</button>
+                </div>
+            </div>
+            <div class="cart-summary-body" id="cartSummaryBody" hidden>
+                <div id="cartItemsList" class="cart-items-list"></div>
+                <div class="cart-subtotal-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">₹0</span>
+                </div>
+                <button class="cart-checkout-demo" type="button" onclick="showCheckoutDemo()">Demo Checkout</button>
+                <p class="cart-demo-note">College demonstration only. No order is submitted and no payment is collected.</p>
+                <div class="cart-status" id="cartStatus" role="status" aria-live="polite"></div>
+            </div>
+        </section>
 
         <div
             class="menu-grid"
@@ -2173,6 +2260,122 @@ footer{
         "popular";
 
 
+    /* ============================================================
+       SHOPPING CART STATE — independent from selectedPlateItems
+    ============================================================ */
+
+    const cartItems = new Map();
+
+    function getNumericFoodPrice(food) {
+        return Number(String(food.price).replace(/[^0-9.]/g, "")) || 0;
+    }
+
+    function formatRupees(amount) {
+        return "₹" + Number(amount || 0).toLocaleString("en-IN", {
+            maximumFractionDigits: 2
+        });
+    }
+
+    function getCartQuantity() {
+        let count = 0;
+        cartItems.forEach(quantity => { count += quantity; });
+        return count;
+    }
+
+    function renderCart() {
+        const countElement = document.getElementById("cartCount");
+        const listElement = document.getElementById("cartItemsList");
+        const subtotalElement = document.getElementById("cartSubtotal");
+        if (!countElement || !listElement || !subtotalElement) return;
+
+        const totalQuantity = getCartQuantity();
+        countElement.textContent = `${totalQuantity} ${totalQuantity === 1 ? "item" : "items"} in cart`;
+
+        if (cartItems.size === 0) {
+            listElement.innerHTML = '<p class="cart-empty-message">Your cart is empty. Add a dish from the menu to begin your order.</p>';
+            subtotalElement.textContent = formatRupees(0);
+            return;
+        }
+
+        let subtotal = 0;
+        const rows = [];
+        cartItems.forEach((quantity, foodId) => {
+            const food = Object.values(foods).find(item => item.id === foodId);
+            if (!food) return;
+            const unitPrice = getNumericFoodPrice(food);
+            const lineTotal = unitPrice * quantity;
+            subtotal += lineTotal;
+            rows.push(`
+                <div class="cart-item-row">
+                    <div>
+                        <div class="cart-item-name">${food.name}</div>
+                        <div class="cart-item-unit-price">${formatRupees(unitPrice)} each</div>
+                        <button class="cart-remove-button" type="button" onclick="removeCartItem('${food.id}')">Remove</button>
+                    </div>
+                    <div class="cart-quantity-controls" aria-label="Quantity for ${food.shortName}">
+                        <button class="cart-quantity-button" type="button" aria-label="Decrease ${food.shortName} quantity" onclick="changeCartQuantity('${food.id}', -1)">−</button>
+                        <span class="cart-quantity">${quantity}</span>
+                        <button class="cart-quantity-button" type="button" aria-label="Increase ${food.shortName} quantity" onclick="changeCartQuantity('${food.id}', 1)">+</button>
+                    </div>
+                    <div class="cart-line-total">${formatRupees(lineTotal)}</div>
+                </div>
+            `);
+        });
+
+        listElement.innerHTML = rows.join("");
+        subtotalElement.textContent = formatRupees(subtotal);
+    }
+
+    window.addToCart = function(foodId) {
+        const food = Object.values(foods).find(item => item.id === foodId);
+        if (!food) return;
+        cartItems.set(foodId, (cartItems.get(foodId) || 0) + 1);
+        renderCart();
+        const status = document.getElementById("cartStatus");
+        if (status) status.textContent = `${food.shortName} added to your cart.`;
+    };
+
+    window.changeCartQuantity = function(foodId, change) {
+        const current = cartItems.get(foodId) || 0;
+        const next = current + Number(change);
+        if (next <= 0) cartItems.delete(foodId);
+        else cartItems.set(foodId, next);
+        renderCart();
+    };
+
+    window.removeCartItem = function(foodId) {
+        cartItems.delete(foodId);
+        renderCart();
+        const status = document.getElementById("cartStatus");
+        if (status) status.textContent = "Item removed from your cart.";
+    };
+
+    window.clearCart = function() {
+        cartItems.clear();
+        renderCart();
+        const status = document.getElementById("cartStatus");
+        if (status) status.textContent = "Cart cleared.";
+    };
+
+    window.toggleCartSummary = function() {
+        const body = document.getElementById("cartSummaryBody");
+        const button = document.getElementById("cartToggleButton");
+        if (!body || !button) return;
+        const opening = body.hidden;
+        body.hidden = !opening;
+        button.setAttribute("aria-expanded", String(opening));
+        button.textContent = opening ? "Hide Order Summary" : "View Order Summary";
+    };
+
+    window.showCheckoutDemo = function() {
+        const status = document.getElementById("cartStatus");
+        if (!status) return;
+        status.textContent = cartItems.size
+            ? "Demo only: checkout is not connected to a payment or ordering service."
+            : "Add at least one item before trying the demo checkout.";
+    };
+
+
 
     /* ============================================================
        THREE.JS 3D STATE
@@ -2316,6 +2519,13 @@ footer{
 
                 </button>
 
+
+                <button
+                    class="add-to-cart-button"
+                    type="button"
+                    onclick="addToCart('${food.id}')">
+                    + Add to Cart
+                </button>
 
                 <div class="model-instruction">
 
@@ -3841,6 +4051,8 @@ footer{
 
 
     updatePlateUI();
+
+    renderCart();
 
 </script>
 
